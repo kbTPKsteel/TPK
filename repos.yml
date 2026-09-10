@@ -1,0 +1,3 @@
+sources:
+  - repo: poluhovamaria-tech/testMacro
+    token_secret: TOKEN_POLUHOVAMARIA_TECH
