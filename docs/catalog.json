@@ -1,0 +1,29 @@
+{
+  "updatedAt": "2026-09-10T08:54:37Z",
+  "products": [
+    {
+      "id": "poluhovamaria-tech-testMacro",
+      "name": "Test Macro",
+      "type": "macro",
+      "description": "Тестовый макрос для проверки работы каталога TPK.\nДемонстрирует автоматическую сборку продуктов с приватных репозиториев.",
+      "sourceAccount": "https://github.com/poluhovamaria-tech",
+      "sourceRepo": "https://github.com/poluhovamaria-tech/testMacro",
+      "image": "https://raw.githubusercontent.com/kbTPKsteel/TPK/main/docs/images/poluhovamaria-tech-testMacro.png",
+      "video": null,
+      "instructions": "## Установка\n1. Скачать файл .cs из раздела версий\n2. Скопировать в папку макросов\n3. Перезапустить приложение",
+      "versions": [
+        {
+          "version": "2026.9.10.1",
+          "releaseDate": "2026-09-10",
+          "assets": [
+            {
+              "name": "AxCoDesign_ChangeMainPart.cs",
+              "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/poluhovamaria-tech-testMacro-2026.9.10.1/AxCoDesign_ChangeMainPart.cs",
+              "size": 2435
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

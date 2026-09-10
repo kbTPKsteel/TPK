@@ -30,8 +30,9 @@ jobs:
 
       - name: Commit changes
         run: |
+          cp catalog.json docs/catalog.json
           git config user.name "TPK Collector"
           git config user.email "collector@kbTPKsteel.github"
-          git add catalog.json docs/images/
+          git add catalog.json docs/
           git diff --staged --quiet || git commit -m "Update catalog [$(date -u +%Y-%m-%d)]"
           git push
