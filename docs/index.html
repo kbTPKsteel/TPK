@@ -896,7 +896,11 @@
     try {
       const r = await fetch('./catalog.json');
       const data = await r.json();
-      allProducts = data.products || [];
+      allProducts = (data.products || []).sort((a, b) => {
+        const da = a.versions?.[0]?.releaseDate || '';
+        const db = b.versions?.[0]?.releaseDate || '';
+        return db.localeCompare(da);
+      });
       if (data.updatedAt) {
         const d = new Date(data.updatedAt);
         document.getElementById('meta-bar').textContent =
