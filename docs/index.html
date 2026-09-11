@@ -849,8 +849,9 @@
         statusEl.textContent = 'Ошибка: ' + json.error;
         document.getElementById('feedback-send').disabled = false;
       }
-    } catch {
-      statusEl.textContent = 'Ошибка сети. Попробуйте позже.';
+    } catch (err) {
+      console.error('Slack feedback error:', err);
+      statusEl.textContent = 'Ошибка: ' + (err.message || err);
       document.getElementById('feedback-send').disabled = false;
     }
   });
