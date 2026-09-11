@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-10T10:02:02Z",
+  "updatedAt": "2026-09-11T02:43:17Z",
   "products": [
     {
       "id": "poluhovamaria-tech-testMacro",
@@ -10,7 +10,7 @@
       "sourceRepo": "https://github.com/poluhovamaria-tech/testMacro",
       "image": "https://raw.githubusercontent.com/kbTPKsteel/TPK/main/docs/images/poluhovamaria-tech-testMacro.png",
       "video": null,
-      "instructions": "## Установка\n1. Скачать файл .cs из раздела версий\n2. Скопировать в папку макросов\n3. Перезапустить приложение",
+      "instructions": "## Установка\n1. Скачать файл .cs из раздела версий\n2. Скопировать в папку макросов\n3. Обновить каталог в текле",
       "versions": [
         {
           "version": "2026.9.10.2",
@@ -18,6 +18,7 @@
           "assets": [
             {
               "name": "AxCoDesign_Change_Direction_Handles_Of_Contour_Plate.cs",
+              "tekla_version": null,
               "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/poluhovamaria-tech-testMacro-2026.9.10.2/AxCoDesign_Change_Direction_Handles_Of_Contour_Plate.cs",
               "size": 2582
             }
@@ -29,6 +30,7 @@
           "assets": [
             {
               "name": "AxCoDesign_ChangeMainPart.cs",
+              "tekla_version": null,
               "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/poluhovamaria-tech-testMacro-2026.9.10.1/AxCoDesign_ChangeMainPart.cs",
               "size": 2435
             }
