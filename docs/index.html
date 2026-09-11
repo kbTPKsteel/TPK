@@ -216,11 +216,16 @@
     .form-input:focus { border-color: #1e3a5f; }
     .form-textarea  { resize: vertical; min-height: 100px; }
     .feedback-send-btn {
-      flex: 1; padding: 8px 20px; background: #0f6e3d; color: white;
-      border: none; border-radius: 8px; cursor: pointer; font-size: 0.9rem; font-family: inherit;
+      flex: 1; padding: 8px 20px; background: #1e3a5f; color: white;
+      border: 1.5px solid #1e3a5f; border-radius: 8px; cursor: pointer; font-size: 0.9rem; font-family: inherit;
     }
-    .feedback-send-btn:hover { background: #0d5f34; }
-    .feedback-send-btn:disabled { background: #94a3b8; cursor: not-allowed; }
+    .feedback-send-btn:hover { background: #2d6a9f; border-color: #2d6a9f; }
+    .feedback-send-btn:disabled { background: #94a3b8; border-color: #94a3b8; cursor: not-allowed; }
+    .feedback-cancel-btn {
+      flex: 1; padding: 8px 20px; background: white; color: #1e3a5f;
+      border: 1.5px solid #1e3a5f; border-radius: 8px; cursor: pointer; font-size: 0.9rem; font-family: inherit;
+    }
+    .feedback-cancel-btn:hover { background: #f0f4f8; }
     .feedback-status { font-size: 0.85rem; min-height: 1.2em; color: #475569; }
 
     .instructions-btn {
@@ -413,7 +418,7 @@
     </div>
     <div class="feedback-status" id="feedback-status"></div>
     <div style="display:flex;gap:8px;margin-top:12px">
-      <button class="modal-close" id="feedback-close">Отмена</button>
+      <button class="feedback-cancel-btn" id="feedback-close">Отмена</button>
       <button id="feedback-send" class="feedback-send-btn">Отправить</button>
     </div>
   </div>
@@ -824,7 +829,7 @@
     document.getElementById('feedback-name').value = '';
     document.getElementById('feedback-msg').value = '';
     document.getElementById('feedback-status').textContent = '';
-    document.getElementById('feedback-send').disabled = false;
+    document.getElementById('feedback-send').disabled = true;
     document.getElementById('feedback-overlay').classList.add('open');
   }
 
@@ -833,15 +838,17 @@
   document.getElementById('feedback-overlay').addEventListener('click', e => {
     if (e.target === e.currentTarget) e.currentTarget.classList.remove('open');
   });
+  document.getElementById('feedback-msg').addEventListener('input', e =>
+    document.getElementById('feedback-send').disabled = !e.target.value.trim());
 
   document.getElementById('feedback-send').addEventListener('click', async () => {
     const p = allProducts.find(x => x.id === feedbackPid);
     if (!p) return;
-    const name = document.getElementById('feedback-name').value.trim();
+    const name = document.getElementById('feedback-name').value.trim() || 'Аноним';
     const type = document.getElementById('feedback-type').value;
     const msg  = document.getElementById('feedback-msg').value.trim();
     const statusEl = document.getElementById('feedback-status');
-    if (!name || !msg) { statusEl.textContent = 'Заполните имя и сообщение.'; return; }
+    if (!msg) { statusEl.textContent = 'Заполните сообщение.'; return; }
     const mention = p.slackUserId ? `<@${p.slackUserId}> ` : '';
     const text = `${mention}📦 *${p.name}*\n👤 ${name} · ${type}\n\n${msg}`;
     document.getElementById('feedback-send').disabled = true;
