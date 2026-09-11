@@ -201,7 +201,8 @@
       font-size: 1.5rem; color: rgba(255,255,255,0.4);
     }
     .table-name { font-weight: 600; color: #1a2332; }
-    .table-desc { color: #475569; max-width: 240px; line-height: 1.4; }
+    .table-desc { color: #475569; width: 200px; max-width: 200px; line-height: 1.4; }
+    .col-dl { width: 1%; white-space: nowrap; }
     .table-source a { color: #2563eb; text-decoration: none; font-size: 0.82rem; }
     .table-source a:hover { text-decoration: underline; }
 
@@ -495,7 +496,7 @@
         <td class="table-desc">${p.description || ''}</td>
         <td>${teklaCell}</td>
         <td>${latestVerStr}</td>
-        <td>${dlCell}</td>
+        <td class="col-dl">${dlCell}</td>
         <td>${instrCell}</td>
       </tr>`;
     }).join('');
@@ -511,7 +512,7 @@
             <th>Описание</th>
             <th>Tekla</th>
             <th>Версия</th>
-            <th>Скачать</th>
+            <th class="col-dl">Скачать</th>
             <th>Инструкция</th>
           </tr>
         </thead>
