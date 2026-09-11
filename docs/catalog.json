@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-11T05:04:04Z",
+  "updatedAt": "2026-09-11T06:10:32Z",
   "products": [
     {
       "id": "poluhovamaria-tech-testMacro",
@@ -8,6 +8,7 @@
       "description": "Тестовый макрос для проверки работы каталога TPK.\nДемонстрирует автоматическую сборку продуктов с приватных репозиториев.",
       "sourceAccount": "https://github.com/poluhovamaria-tech",
       "displayName": "Полюхова Мария",
+      "slackUserId": "U04UNPXPM63",
       "sourceRepo": "https://github.com/poluhovamaria-tech/testMacro",
       "image": "https://raw.githubusercontent.com/kbTPKsteel/TPK/main/docs/images/poluhovamaria-tech-testMacro.png",
       "video": null,
@@ -16,6 +17,7 @@
         {
           "version": "2026.9.10.2",
           "releaseDate": "2026-09-10",
+          "notes": "**Full Changelog**: https://github.com/poluhovamaria-tech/testMacro/compare/2026.9.10.1...2026.9.10.2",
           "assets": [
             {
               "name": "AxCoDesign_Change_Direction_Handles_Of_Contour_Plate.cs",
@@ -28,6 +30,7 @@
         {
           "version": "2026.9.10.1",
           "releaseDate": "2026-09-10",
+          "notes": null,
           "assets": [
             {
               "name": "AxCoDesign_ChangeMainPart.cs",
@@ -46,6 +49,7 @@
       "description": "Подготавливает комплект чертежей КМД к выпуску",
       "sourceAccount": "https://github.com/WisnakeX",
       "displayName": "Волков Андрей",
+      "slackUserId": "U04UW6YJZUP",
       "sourceRepo": "https://github.com/WisnakeX/Issue_Drawings",
       "image": "https://raw.githubusercontent.com/kbTPKsteel/TPK/main/docs/images/WisnakeX-Issue_Drawings.png",
       "video": null,
@@ -54,6 +58,7 @@
         {
           "version": "2026.9.11.1",
           "releaseDate": "2026-09-11",
+          "notes": null,
           "assets": [
             {
               "name": "Issue_Drawings_Tekla2020.exe",
