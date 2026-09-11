@@ -5,6 +5,10 @@ on:
     - cron: '0 6 * * *'   # каждый день в 6:00 UTC
   workflow_dispatch:       # ручной запуск
 
+concurrency:
+  group: collect-releases
+  cancel-in-progress: false
+
 permissions:
   contents: write
 
@@ -36,4 +40,5 @@ jobs:
           git config user.email "collector@kbTPKsteel.github"
           git add catalog.json docs/
           git diff --staged --quiet || git commit -m "Update catalog [$(date -u +%Y-%m-%d)]"
+          git pull --rebase
           git push
