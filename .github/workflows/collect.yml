@@ -26,6 +26,7 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           TOKEN_POLUHOVAMARIA_TECH: ${{ secrets.TOKEN_POLUHOVAMARIA_TECH }}
+          TOKEN_WISNAKEX: ${{ secrets.TOKEN_WISNAKEX }}
         run: python scripts/collect.py
 
       - name: Commit changes
