@@ -40,30 +40,47 @@
     .filters {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
       padding: 12px 24px;
       background: white;
       border-bottom: 1px solid #e2e8f0;
       flex-wrap: wrap;
     }
-    .filter-label {
-      font-size: 0.78rem; color: #94a3b8; font-weight: 600;
-      text-transform: uppercase; letter-spacing: 0.4px; white-space: nowrap;
-    }
-    .filter-group { display: flex; gap: 6px; flex-wrap: wrap; }
-    .filter-divider { width: 1px; height: 28px; background: #e2e8f0; margin: 0 2px; flex-shrink: 0; }
 
-    .filter-btn {
-      padding: 5px 14px; border: 2px solid #cbd5e1; background: white;
-      border-radius: 20px; cursor: pointer; font-size: 0.85rem; color: #475569;
-      transition: all 0.15s; white-space: nowrap;
+    /* ── Filter selects ── */
+    .filter-select {
+      padding: 5px 28px 5px 14px;
+      border: 2px solid #cbd5e1;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      outline: none;
+      background-color: white;
+      background-repeat: no-repeat;
+      background-position: right 10px center;
+      background-size: 10px 6px;
+      -webkit-appearance: none;
+      appearance: none;
+      transition: border-color 0.15s, color 0.15s, background-color 0.15s;
     }
-    .filter-btn:hover  { border-color: #1e3a5f; color: #1e3a5f; }
-    .filter-btn.active { background: #1e3a5f; border-color: #1e3a5f; color: white; }
-    .filter-btn.tekla-filter.active  { background: #0f6e3d; border-color: #0f6e3d; }
-    .filter-btn.tekla-filter:hover   { border-color: #0f6e3d; color: #0f6e3d; }
-    .filter-btn.author-filter.active { background: #7c3aed; border-color: #7c3aed; }
-    .filter-btn.author-filter:hover  { border-color: #7c3aed; color: #7c3aed; }
+    .filter-select:hover { background-color: #f8fafc; }
+
+    .filter-type {
+      color: #1e3a5f;
+      border-color: #1e3a5f;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath fill='%231e3a5f' d='M0 0l5 6 5-6z'/%3E%3C/svg%3E");
+    }
+    .filter-tekla {
+      color: #0f6e3d;
+      border-color: #0f6e3d;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath fill='%230f6e3d' d='M0 0l5 6 5-6z'/%3E%3C/svg%3E");
+    }
+    .filter-author {
+      color: #7c3aed;
+      border-color: #7c3aed;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath fill='%237c3aed' d='M0 0l5 6 5-6z'/%3E%3C/svg%3E");
+    }
 
     /* View toggle — правый край */
     .view-toggle { margin-left: auto; display: flex; gap: 4px; flex-shrink: 0; }
@@ -139,16 +156,21 @@
       padding: 5px 0; border-bottom: 1px solid #f1f5f9;
     }
     .version-row:last-child { border-bottom: none; }
-    .version-tag  { font-size: 0.85rem; font-family: monospace; color: #334155; flex: 1; }
-    .version-date { font-size: 0.78rem; color: #94a3b8; white-space: nowrap; }
+    .version-tag { font-size: 0.85rem; font-family: monospace; color: #334155; flex: 1; cursor: default; }
 
-    /* ── Buttons ── */
+    /* ── Download button ── */
     .download-btn {
-      padding: 3px 10px; background: #1e3a5f; color: white; border: none;
-      border-radius: 6px; font-size: 0.78rem; cursor: pointer;
-      text-decoration: none; white-space: nowrap; display: inline-block;
+      width: 50px; height: 28px;
+      padding: 0;
+      background: #1e3a5f; color: white; border: none;
+      border-radius: 6px; cursor: pointer;
+      text-decoration: none;
+      display: inline-flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
     }
     .download-btn:hover { background: #2d6a9f; }
+    .download-btn svg { pointer-events: none; }
+
     .no-asset { font-size: 0.8rem; color: #cbd5e1; }
     .instructions-btn {
       width: 100%; padding: 8px; background: #f8fafc; border: 1px solid #e2e8f0;
@@ -171,7 +193,6 @@
 
     .table-img {
       width: 60px; height: 60px; object-fit: cover; border-radius: 8px;
-      background: linear-gradient(135deg, #1e3a5f, #2d6a9f);
     }
     .table-img-placeholder {
       width: 60px; height: 60px; border-radius: 8px;
@@ -226,7 +247,6 @@
       .search-wrap { max-width: 100%; width: 100%; }
       main { padding: 16px; }
       .grid { grid-template-columns: 1fr; }
-      .filter-divider { display: none; }
       .view-toggle { margin-left: 0; }
     }
   </style>
@@ -241,25 +261,20 @@
 </header>
 
 <div class="filters">
-  <span class="filter-label">Тип:</span>
-  <div class="filter-group" id="type-filters">
-    <button class="filter-btn active" data-type="all">Все</button>
-    <button class="filter-btn" data-type="app">Приложения</button>
-    <button class="filter-btn" data-type="plugin">Плагины</button>
-    <button class="filter-btn" data-type="macro">Макросы</button>
-  </div>
+  <select id="type-filter" class="filter-select filter-type">
+    <option value="all">Все типы</option>
+    <option value="app">Приложения</option>
+    <option value="plugin">Плагины</option>
+    <option value="macro">Макросы</option>
+  </select>
 
-  <div class="filter-divider"></div>
-  <span class="filter-label">Tekla:</span>
-  <div class="filter-group" id="tekla-filters">
-    <button class="filter-btn tekla-filter active" data-tekla="all">Все</button>
-  </div>
+  <select id="tekla-filter" class="filter-select filter-tekla">
+    <option value="all">Все версии Tekla</option>
+  </select>
 
-  <div class="filter-divider"></div>
-  <span class="filter-label">Автор:</span>
-  <div class="filter-group" id="author-filters">
-    <button class="filter-btn author-filter active" data-author="all">Все</button>
-  </div>
+  <select id="author-filter" class="filter-select filter-author">
+    <option value="all">Все авторы</option>
+  </select>
 
   <div class="view-toggle">
     <button class="view-btn active" id="btn-grid" title="Карточки">
@@ -299,13 +314,14 @@
 <script>
   const TYPE_LABELS  = { app: 'Приложение', plugin: 'Плагин', macro: 'Макрос' };
   const TYPE_CLASSES = { app: 'type-app', plugin: 'type-plugin', macro: 'type-macro' };
+  const DL_SVG = `<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v13"/><polyline points="5 14 12 21 19 14"/><line x1="3" y1="21" x2="21" y2="21"/></svg>`;
 
   let allProducts = [];
   let activeType   = 'all';
   let activeTekla  = 'all';
   let activeAuthor = 'all';
   let searchQuery  = '';
-  let viewMode     = 'grid'; // 'grid' | 'table'
+  let viewMode     = 'grid';
 
   /* ── helpers ── */
   function authorLabel(p) {
@@ -324,42 +340,27 @@
     return (p.versions || []).some(v => (v.assets || []).some(a => a.tekla_version === tekla));
   }
 
-  function bestAsset(version, tekla) {
-    const assets = version.assets || [];
-    if (tekla !== 'all') {
-      const a = assets.find(a => a.tekla_version === tekla);
-      if (a) return a;
-    }
-    return assets.find(a => a.tekla_version) || assets[0] || null;
-  }
-
   /* ── dynamic filters ── */
   function buildDynamicFilters() {
-    // Tekla
     const teklaSet = new Set();
     allProducts.forEach(p => (p.versions || []).forEach(v =>
       (v.assets || []).forEach(a => { if (a.tekla_version) teklaSet.add(a.tekla_version); })
     ));
-    const teklaContainer = document.getElementById('tekla-filters');
-    teklaContainer.innerHTML = `<button class="filter-btn tekla-filter active" data-tekla="all">Все</button>`;
+    const teklaSel = document.getElementById('tekla-filter');
+    teklaSel.innerHTML = `<option value="all">Все версии Tekla</option>`;
     [...teklaSet].sort().forEach(tv => {
-      const b = document.createElement('button');
-      b.className = 'filter-btn tekla-filter';
-      b.dataset.tekla = tv;
-      b.textContent = tv;
-      teklaContainer.appendChild(b);
+      const o = document.createElement('option');
+      o.value = tv; o.textContent = `Tekla ${tv}`;
+      teklaSel.appendChild(o);
     });
 
-    // Author
     const authors = [...new Map(allProducts.map(p => [authorLabel(p), p.sourceAccount])).entries()];
-    const authorContainer = document.getElementById('author-filters');
-    authorContainer.innerHTML = `<button class="filter-btn author-filter active" data-author="all">Все</button>`;
-    authors.forEach(([label, url]) => {
-      const b = document.createElement('button');
-      b.className = 'filter-btn author-filter';
-      b.dataset.author = label;
-      b.textContent = label;
-      authorContainer.appendChild(b);
+    const authorSel = document.getElementById('author-filter');
+    authorSel.innerHTML = `<option value="all">Все авторы</option>`;
+    authors.forEach(([label]) => {
+      const o = document.createElement('option');
+      o.value = label; o.textContent = label;
+      authorSel.appendChild(o);
     });
   }
 
@@ -417,15 +418,14 @@
           const a = byT[tv];
           const h = tv !== defaultTekla ? 'style="display:none"' : '';
           return a
-            ? `<a class="download-btn tekla-asset" data-tekla="${tv}" href="${a.downloadUrl}" ${h}>&#8595; ${a.name}</a>`
+            ? `<a class="download-btn tekla-asset" data-tekla="${tv}" href="${a.downloadUrl}" title="${a.name}" ${h}>${DL_SVG}</a>`
             : `<span class="no-asset tekla-asset" data-tekla="${tv}" ${h}>—</span>`;
         }).join('');
       } else {
-        dl = (v.assets || []).map(a => `<a class="download-btn" href="${a.downloadUrl}">&#8595; ${a.name}</a>`).join(' ');
+        dl = (v.assets || []).map(a => `<a class="download-btn" href="${a.downloadUrl}" title="${a.name}">${DL_SVG}</a>`).join(' ');
       }
       return `<div class="version-row">
-        <span class="version-tag">${v.version}</span>
-        <span class="version-date">${v.releaseDate}</span>
+        <span class="version-tag" title="${v.releaseDate}">${v.version}</span>
         <div>${dl || '<span class="no-asset">нет файлов</span>'}</div>
       </div>`;
     }).join('');
@@ -454,13 +454,11 @@
       const hasTekla = teklaVersions.length > 0;
       const latestVer = p.versions?.[0];
 
-      // Image cell
       const imgCell = p.image
         ? `<img class="table-img" src="${p.image}" alt="${p.name}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
            <div class="table-img-placeholder" style="display:none">&#128230;</div>`
         : `<div class="table-img-placeholder">&#128230;</div>`;
 
-      // Tekla cell
       let teklaCell = '—';
       let dlCell = '—';
       if (hasTekla) {
@@ -470,21 +468,19 @@
         ).join('');
         teklaCell = `<select class="tekla-select table-tekla-sel" id="${selId}" data-pid="${p.id}">${opts}</select>`;
 
-        // Download for selected tekla
         const selTekla = activeTekla !== 'all' && teklaVersions.includes(activeTekla)
           ? activeTekla : teklaVersions[teklaVersions.length - 1];
         const asset = latestVer ? bestAssetForTekla(latestVer, selTekla) : null;
         dlCell = asset
-          ? `<a class="download-btn table-dl" data-pid="${p.id}" href="${asset.downloadUrl}">&#8595; Скачать</a>`
+          ? `<a class="download-btn table-dl" data-pid="${p.id}" href="${asset.downloadUrl}" title="${asset.name}">${DL_SVG}</a>`
           : '—';
       } else if (latestVer) {
         const asset = (latestVer.assets || [])[0];
-        dlCell = asset ? `<a class="download-btn" href="${asset.downloadUrl}">&#8595; ${asset.name}</a>` : '—';
+        dlCell = asset ? `<a class="download-btn" href="${asset.downloadUrl}" title="${asset.name}">${DL_SVG}</a>` : '—';
       }
 
-      // Latest version
       const latestVerStr = latestVer
-        ? `<span style="font-family:monospace;font-size:.85rem">${latestVer.version}</span><br><span style="font-size:.75rem;color:#94a3b8">${latestVer.releaseDate}</span>`
+        ? `<span style="font-family:monospace;font-size:.85rem" title="${latestVer.releaseDate}">${latestVer.version}</span>`
         : '—';
 
       const instrCell = p.instructions
@@ -540,7 +536,10 @@
     const latestVer = p.versions?.[0];
     const asset = latestVer ? bestAssetForTekla(latestVer, tekla) : null;
     const dlBtn = document.querySelector(`.table-dl[data-pid="${pid}"]`);
-    if (dlBtn && asset) dlBtn.href = asset.downloadUrl;
+    if (dlBtn && asset) {
+      dlBtn.href  = asset.downloadUrl;
+      dlBtn.title = asset.name;
+    }
   });
 
   /* ── Tekla tabs in grid ── */
@@ -571,30 +570,16 @@
   });
 
   /* ── Filter listeners ── */
-  document.getElementById('type-filters').addEventListener('click', e => {
-    const btn = e.target.closest('.filter-btn');
-    if (!btn) return;
-    document.querySelectorAll('#type-filters .filter-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    activeType = btn.dataset.type;
+  document.getElementById('type-filter').addEventListener('change', e => {
+    activeType = e.target.value;
     render();
   });
-
-  document.getElementById('tekla-filters').addEventListener('click', e => {
-    const btn = e.target.closest('.tekla-filter');
-    if (!btn) return;
-    document.querySelectorAll('#tekla-filters .tekla-filter').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    activeTekla = btn.dataset.tekla;
+  document.getElementById('tekla-filter').addEventListener('change', e => {
+    activeTekla = e.target.value;
     render();
   });
-
-  document.getElementById('author-filters').addEventListener('click', e => {
-    const btn = e.target.closest('.author-filter');
-    if (!btn) return;
-    document.querySelectorAll('#author-filters .author-filter').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    activeAuthor = btn.dataset.author;
+  document.getElementById('author-filter').addEventListener('change', e => {
+    activeAuthor = e.target.value;
     render();
   });
 
