@@ -636,8 +636,11 @@
            </select>`
         : '—';
 
-      const instrCell = p.instructions
-        ? `<button class="instr-btn-sm" onclick="showInstructions('${p.id}')">📄 Инструкция</button>`
+      const instrParts = [];
+      if (p.instructions) instrParts.push(`<button class="instr-btn-sm" onclick="showInstructions('${p.id}')">📄 Инструкция</button>`);
+      if (p.slackUserId)  instrParts.push(`<button class="instr-btn-sm" onclick="showFeedback('${p.id}')">💬 Написать</button>`);
+      const instrCell = instrParts.length
+        ? `<div style="display:flex;flex-direction:column;gap:4px">${instrParts.join('')}</div>`
         : '—';
 
       return `<tr data-pid="${p.id}">
