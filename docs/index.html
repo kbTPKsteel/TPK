@@ -219,6 +219,13 @@
     }
     .tekla-select:focus { border-color: #0f6e3d; }
 
+    .version-select {
+      padding: 4px 8px; border: 1.5px solid #cbd5e1; border-radius: 8px;
+      font-size: 0.82rem; font-family: monospace; color: #334155;
+      background: white; cursor: pointer; outline: none;
+    }
+    .version-select:focus { border-color: #1e3a5f; }
+
     .instr-btn-sm {
       padding: 4px 10px; background: #f1f5f9; border: 1px solid #e2e8f0;
       border-radius: 6px; color: #475569; font-size: 0.78rem; cursor: pointer; white-space: nowrap;
@@ -504,13 +511,15 @@
       } else if (latestVer) {
         const asset = (latestVer.assets || [])[0];
         dlCell = asset
-          ? `<a class="download-btn" href="${asset.downloadUrl}" title="${asset.name}">${DL_SVG}</a>`
+          ? `<a class="download-btn table-dl" data-pid="${p.id}" href="${asset.downloadUrl}" title="${asset.name}">${DL_SVG}</a>`
           : '—';
       }
 
-      // Version — date in tooltip
-      const latestVerStr = latestVer
-        ? `<span style="font-family:monospace;font-size:.85rem" title="${latestVer.releaseDate}">${latestVer.version}</span>`
+      // Version dropdown — latest selected by default
+      const latestVerStr = (p.versions?.length)
+        ? `<select class="version-select table-ver-sel" data-pid="${p.id}">
+             ${p.versions.map(v => `<option value="${v.version}" title="${v.releaseDate}">${v.version}</option>`).join('')}
+           </select>`
         : '—';
 
       const instrCell = p.instructions
@@ -579,18 +588,27 @@
     imgTooltip.classList.remove('visible');
   });
 
-  /* ── Tekla dropdown in table ── */
-  document.getElementById('catalog-output').addEventListener('change', e => {
-    const sel = e.target.closest('.table-tekla-sel');
-    if (!sel) return;
-    const pid   = sel.dataset.pid;
-    const tekla = sel.value;
-    const p     = allProducts.find(x => x.id === pid);
+  /* ── Version / Tekla dropdowns in table ── */
+  function updateTableDownload(pid) {
+    const p = allProducts.find(x => x.id === pid);
     if (!p) return;
-    const latestVer = p.versions?.[0];
-    const asset = latestVer ? bestAssetForTekla(latestVer, tekla) : null;
+    const verSel   = document.querySelector(`.table-ver-sel[data-pid="${pid}"]`);
+    const teklaSel = document.querySelector(`.table-tekla-sel[data-pid="${pid}"]`);
+    const ver   = verSel ? p.versions?.find(v => v.version === verSel.value) : p.versions?.[0];
+    const tekla = teklaSel?.value ?? null;
+    const asset = ver
+      ? (tekla ? bestAssetForTekla(ver, tekla) : (ver.assets || [])[0] || null)
+      : null;
     const dlBtn = document.querySelector(`.table-dl[data-pid="${pid}"]`);
-    if (dlBtn && asset) { dlBtn.href = asset.downloadUrl; dlBtn.title = asset.name; }
+    if (dlBtn) {
+      if (asset) { dlBtn.href = asset.downloadUrl; dlBtn.title = asset.name; }
+      else        { dlBtn.removeAttribute('href');  dlBtn.title = ''; }
+    }
+  }
+
+  document.getElementById('catalog-output').addEventListener('change', e => {
+    const sel = e.target.closest('.table-ver-sel, .table-tekla-sel');
+    if (sel) updateTableDownload(sel.dataset.pid);
   });
 
   /* ── Tekla tabs in grid ── */
