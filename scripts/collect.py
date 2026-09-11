@@ -1,8 +1,13 @@
 #!/usr/bin/env python3
-import os, json, yaml, base64, subprocess
+import os, json, yaml, base64, subprocess, re
 from pathlib import Path
 from datetime import datetime, timezone
 import requests
+
+
+def detect_tekla_version(filename):
+    match = re.search(r'tekla(\d{4})', filename, re.IGNORECASE)
+    return match.group(1) if match else None
 
 CENTRAL_REPO = "kbTPKsteel/TPK"
 CATALOG_FILE = Path("catalog.json")
@@ -130,6 +135,7 @@ def process_repo(repo_full_name, token, central_token, products):
                     upload_to_release(central_tag, tmp_path, central_token)
                     assets_info.append({
                         "name": asset["name"],
+                        "tekla_version": detect_tekla_version(asset["name"]),
                         "downloadUrl": f"https://github.com/{CENTRAL_REPO}/releases/download/{central_tag}/{asset['name']}",
                         "size": asset["size"]
                     })

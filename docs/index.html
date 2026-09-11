@@ -51,6 +51,16 @@
       background: white;
       border-bottom: 1px solid #e2e8f0;
       flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .filter-group { display: flex; gap: 6px; flex-wrap: wrap; }
+
+    .filter-divider {
+      width: 1px;
+      height: 28px;
+      background: #e2e8f0;
+      margin: 0 4px;
     }
 
     .filter-btn {
@@ -65,6 +75,19 @@
     }
     .filter-btn:hover { border-color: #1e3a5f; color: #1e3a5f; }
     .filter-btn.active { background: #1e3a5f; border-color: #1e3a5f; color: white; }
+
+    .filter-btn.tekla-filter.active { background: #0f6e3d; border-color: #0f6e3d; }
+    .filter-btn.tekla-filter:hover  { border-color: #0f6e3d; color: #0f6e3d; }
+
+    .filter-label {
+      font-size: 0.8rem;
+      color: #94a3b8;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      white-space: nowrap;
+      align-self: center;
+    }
 
     main {
       padding: 24px;
@@ -96,77 +119,78 @@
     }
     .card:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.12); }
 
-    .card-image {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-    }
+    .card-image { width: 100%; height: 180px; object-fit: cover; }
 
     .card-image-placeholder {
-      width: 100%;
-      height: 180px;
+      width: 100%; height: 180px;
       background: linear-gradient(135deg, #1e3a5f, #2d6a9f);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 3rem;
-      color: rgba(255,255,255,0.3);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 3rem; color: rgba(255,255,255,0.3);
     }
 
-    .card-body {
-      padding: 16px;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
+    .card-body { padding: 16px; flex: 1; display: flex; flex-direction: column; gap: 10px; }
 
     .card-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; }
-
     .card-name { font-size: 1.05rem; font-weight: 600; line-height: 1.3; }
 
     .type-badge {
-      font-size: 0.72rem;
-      font-weight: 600;
-      padding: 3px 10px;
-      border-radius: 12px;
-      white-space: nowrap;
-      flex-shrink: 0;
+      font-size: 0.72rem; font-weight: 600;
+      padding: 3px 10px; border-radius: 12px;
+      white-space: nowrap; flex-shrink: 0;
     }
     .type-app    { background: #dbeafe; color: #1d4ed8; }
     .type-plugin { background: #ede9fe; color: #6d28d9; }
     .type-macro  { background: #dcfce7; color: #15803d; }
 
     .card-desc {
-      font-size: 0.88rem;
-      color: #475569;
-      line-height: 1.5;
-      display: -webkit-box;
-      -webkit-line-clamp: 3;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
+      font-size: 0.88rem; color: #475569; line-height: 1.5;
+      display: -webkit-box; -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical; overflow: hidden;
     }
 
     .card-source { font-size: 0.82rem; color: #94a3b8; }
     .card-source a { color: #2563eb; text-decoration: none; }
     .card-source a:hover { text-decoration: underline; }
 
-    .versions-label {
+    /* Tekla selector на карточке */
+    .tekla-selector {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .tekla-label-card {
       font-size: 0.75rem;
       font-weight: 600;
       color: #64748b;
       text-transform: uppercase;
-      letter-spacing: 0.5px;
+      letter-spacing: 0.4px;
+    }
+
+    .tekla-tab {
+      padding: 3px 12px;
+      border: 1.5px solid #bbf7d0;
+      background: white;
+      border-radius: 12px;
+      cursor: pointer;
+      font-size: 0.8rem;
+      color: #15803d;
+      transition: all 0.12s;
+    }
+    .tekla-tab:hover  { background: #f0fdf4; }
+    .tekla-tab.active { background: #0f6e3d; border-color: #0f6e3d; color: white; }
+
+    .versions-label {
+      font-size: 0.75rem; font-weight: 600;
+      color: #64748b; text-transform: uppercase; letter-spacing: 0.5px;
     }
 
     .versions-list { display: flex; flex-direction: column; gap: 2px; }
 
     .version-row {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 5px 0;
-      border-bottom: 1px solid #f1f5f9;
+      display: flex; align-items: center; gap: 8px;
+      padding: 5px 0; border-bottom: 1px solid #f1f5f9;
     }
     .version-row:last-child { border-bottom: none; }
 
@@ -175,61 +199,43 @@
 
     .download-btn {
       padding: 3px 10px;
-      background: #1e3a5f;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      font-size: 0.78rem;
-      cursor: pointer;
-      text-decoration: none;
-      white-space: nowrap;
+      background: #1e3a5f; color: white;
+      border: none; border-radius: 6px;
+      font-size: 0.78rem; cursor: pointer;
+      text-decoration: none; white-space: nowrap;
       display: inline-block;
     }
     .download-btn:hover { background: #2d6a9f; }
 
+    .no-asset { font-size: 0.8rem; color: #cbd5e1; }
+
     .card-footer { padding: 12px 16px; border-top: 1px solid #f1f5f9; }
 
     .instructions-btn {
-      width: 100%;
-      padding: 8px;
-      background: #f8fafc;
-      border: 1px solid #e2e8f0;
-      border-radius: 8px;
-      color: #475569;
-      font-size: 0.85rem;
-      cursor: pointer;
-      transition: background 0.15s;
+      width: 100%; padding: 8px;
+      background: #f8fafc; border: 1px solid #e2e8f0;
+      border-radius: 8px; color: #475569;
+      font-size: 0.85rem; cursor: pointer; transition: background 0.15s;
     }
     .instructions-btn:hover { background: #f1f5f9; }
 
     /* Modal */
     .modal-overlay {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.5);
-      z-index: 200;
-      align-items: center;
-      justify-content: center;
-      padding: 24px;
+      display: none; position: fixed; inset: 0;
+      background: rgba(0,0,0,0.5); z-index: 200;
+      align-items: center; justify-content: center; padding: 24px;
     }
     .modal-overlay.open { display: flex; }
 
     .modal {
-      background: white;
-      border-radius: 12px;
-      max-width: 600px;
-      width: 100%;
-      max-height: 80vh;
-      overflow-y: auto;
-      padding: 24px;
+      background: white; border-radius: 12px;
+      max-width: 600px; width: 100%;
+      max-height: 80vh; overflow-y: auto; padding: 24px;
     }
 
     .modal-title {
-      font-size: 1.1rem;
-      font-weight: 600;
-      margin-bottom: 16px;
-      padding-bottom: 12px;
+      font-size: 1.1rem; font-weight: 600;
+      margin-bottom: 16px; padding-bottom: 12px;
       border-bottom: 1px solid #e2e8f0;
     }
 
@@ -240,15 +246,9 @@
     .modal-content code { background: #f1f5f9; padding: 2px 6px; border-radius: 4px; font-size: 0.85em; }
 
     .modal-close {
-      display: block;
-      margin-top: 20px;
-      padding: 8px 20px;
-      background: #1e3a5f;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 0.9rem;
+      display: block; margin-top: 20px; padding: 8px 20px;
+      background: #1e3a5f; color: white; border: none;
+      border-radius: 8px; cursor: pointer; font-size: 0.9rem;
     }
     .modal-close:hover { background: #2d6a9f; }
 
@@ -259,6 +259,7 @@
       .search-wrap { max-width: 100%; width: 100%; }
       main { padding: 16px; }
       .grid { grid-template-columns: 1fr; }
+      .filter-divider { display: none; }
     }
   </style>
 </head>
@@ -272,10 +273,18 @@
 </header>
 
 <div class="filters">
-  <button class="filter-btn active" data-type="all">Все</button>
-  <button class="filter-btn" data-type="app">Приложения</button>
-  <button class="filter-btn" data-type="plugin">Плагины</button>
-  <button class="filter-btn" data-type="macro">Макросы</button>
+  <span class="filter-label">Тип:</span>
+  <div class="filter-group" id="type-filters">
+    <button class="filter-btn active" data-type="all">Все</button>
+    <button class="filter-btn" data-type="app">Приложения</button>
+    <button class="filter-btn" data-type="plugin">Плагины</button>
+    <button class="filter-btn" data-type="macro">Макросы</button>
+  </div>
+  <div class="filter-divider"></div>
+  <span class="filter-label">Tekla:</span>
+  <div class="filter-group" id="tekla-filters">
+    <button class="filter-btn tekla-filter active" data-tekla="all">Все версии</button>
+  </div>
 </div>
 
 <main>
@@ -296,11 +305,57 @@
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 <script>
   const TYPE_LABELS  = { app: 'Приложение', plugin: 'Плагин', macro: 'Макрос' };
-  const TYPE_CLASSES = { app: 'type-app',   plugin: 'type-plugin', macro: 'type-macro' };
+  const TYPE_CLASSES = { app: 'type-app', plugin: 'type-plugin', macro: 'type-macro' };
 
-  let allProducts = [];
-  let activeType  = 'all';
-  let searchQuery = '';
+  let allProducts  = [];
+  let activeType   = 'all';
+  let activeTekla  = 'all';
+  let searchQuery  = '';
+
+  // Собрать все уникальные версии Tekla из каталога
+  function getAllTeklaVersions() {
+    const versions = new Set();
+    allProducts.forEach(p => {
+      (p.versions || []).forEach(v => {
+        (v.assets || []).forEach(a => {
+          if (a.tekla_version) versions.add(a.tekla_version);
+        });
+      });
+    });
+    return [...versions].sort();
+  }
+
+  // Построить кнопки фильтра Tekla динамически
+  function buildTeklaFilters() {
+    const container = document.getElementById('tekla-filters');
+    const teklaVersions = getAllTeklaVersions();
+    container.innerHTML = `<button class="filter-btn tekla-filter active" data-tekla="all">Все версии</button>`;
+    teklaVersions.forEach(tv => {
+      const btn = document.createElement('button');
+      btn.className = 'filter-btn tekla-filter';
+      btn.dataset.tekla = tv;
+      btn.textContent = `Tekla ${tv}`;
+      container.appendChild(btn);
+    });
+    container.querySelectorAll('.tekla-filter').forEach(btn => {
+      btn.addEventListener('click', () => {
+        container.querySelectorAll('.tekla-filter').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        activeTekla = btn.dataset.tekla;
+        render();
+      });
+    });
+  }
+
+  // Есть ли у продукта файлы для данной версии Tekla?
+  function productHasTekla(p, tekla) {
+    if (tekla === 'all') return true;
+    // Макросы — Tekla-агностики, всегда показываем
+    if (p.type === 'macro') return true;
+    return (p.versions || []).some(v =>
+      (v.assets || []).some(a => a.tekla_version === tekla)
+    );
+  }
 
   async function loadCatalog() {
     try {
@@ -311,12 +366,16 @@
       if (data.updatedAt) {
         const d = new Date(data.updatedAt);
         document.getElementById('meta-bar').textContent =
-          'Обновлено: ' + d.toLocaleString('ru-RU', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' });
+          'Обновлено: ' + d.toLocaleString('ru-RU', {
+            day: '2-digit', month: '2-digit', year: 'numeric',
+            hour: '2-digit', minute: '2-digit'
+          });
       }
-    } catch (e) {
+    } catch {
       document.getElementById('grid').innerHTML = '<div class="empty">Не удалось загрузить каталог</div>';
       return;
     }
+    buildTeklaFilters();
     render();
   }
 
@@ -324,15 +383,16 @@
     const query = searchQuery.toLowerCase();
     const filtered = allProducts.filter(p => {
       const matchType   = activeType === 'all' || p.type === activeType;
+      const matchTekla  = productHasTekla(p, activeTekla);
       const matchSearch = !query
         || p.name.toLowerCase().includes(query)
         || (p.description || '').toLowerCase().includes(query);
-      return matchType && matchSearch;
+      return matchType && matchTekla && matchSearch;
     });
 
     const grid = document.getElementById('grid');
     grid.innerHTML = filtered.length
-      ? filtered.map(cardHTML).join('')
+      ? filtered.map(p => cardHTML(p)).join('')
       : '<div class="empty">Ничего не найдено</div>';
   }
 
@@ -345,14 +405,53 @@
       : '';
     const placeholder = `<div class="card-image-placeholder" ${p.image ? 'style="display:none"' : ''}>&#128230;</div>`;
 
+    // Собираем уникальные Tekla-версии для этого продукта
+    const teklaSet = new Set();
+    (p.versions || []).forEach(v =>
+      (v.assets || []).forEach(a => { if (a.tekla_version) teklaSet.add(a.tekla_version); })
+    );
+    const teklaVersions = [...teklaSet].sort();
+    const hasTekla = teklaVersions.length > 0;
+
+    // Стартовая Tekla-версия: либо выбранная глобально, либо последняя
+    const defaultTekla = (activeTekla !== 'all' && teklaVersions.includes(activeTekla))
+      ? activeTekla
+      : teklaVersions[teklaVersions.length - 1];
+
+    // Переключатель Tekla-версий на карточке
+    const teklaSelectorHTML = hasTekla ? `
+      <div class="tekla-selector">
+        <span class="tekla-label-card">Tekla:</span>
+        ${teklaVersions.map(tv =>
+          `<button class="tekla-tab ${tv === defaultTekla ? 'active' : ''}" data-tekla="${tv}">${tv}</button>`
+        ).join('')}
+      </div>` : '';
+
+    // Строки версий
     const versionsHTML = (p.versions || []).map(v => {
-      const links = (v.assets || []).map(a =>
-        `<a class="download-btn" href="${a.downloadUrl}">${a.name}</a>`
-      ).join(' ');
+      let downloadsHTML;
+
+      if (hasTekla) {
+        const byTekla = {};
+        (v.assets || []).forEach(a => { if (a.tekla_version) byTekla[a.tekla_version] = a; });
+
+        downloadsHTML = teklaVersions.map(tv => {
+          const a = byTekla[tv];
+          const hidden = tv !== defaultTekla ? 'style="display:none"' : '';
+          return a
+            ? `<a class="download-btn tekla-asset" data-tekla="${tv}" href="${a.downloadUrl}" ${hidden}>&#8595; ${a.name}</a>`
+            : `<span class="no-asset tekla-asset" data-tekla="${tv}" ${hidden}>—</span>`;
+        }).join('');
+      } else {
+        downloadsHTML = (v.assets || []).map(a =>
+          `<a class="download-btn" href="${a.downloadUrl}">&#8595; ${a.name}</a>`
+        ).join(' ');
+      }
+
       return `<div class="version-row">
         <span class="version-tag">${v.version}</span>
         <span class="version-date">${v.releaseDate}</span>
-        ${links}
+        <div>${downloadsHTML || '<span class="no-asset">нет файлов</span>'}</div>
       </div>`;
     }).join('');
 
@@ -377,12 +476,27 @@
             ${p.sourceAccount.replace('https://github.com/', '')}
           </a>
         </div>
+        ${teklaSelectorHTML}
         <div class="versions-label">Версии</div>
         <div class="versions-list">${versionsHTML || '<span style="font-size:.85rem;color:#94a3b8">Нет версий</span>'}</div>
       </div>
       ${footer}
     </div>`;
   }
+
+  // Переключение Tekla-вкладок на карточке (event delegation)
+  document.getElementById('grid').addEventListener('click', e => {
+    const tab = e.target.closest('.tekla-tab');
+    if (!tab) return;
+    const card  = tab.closest('.card');
+    const tekla = tab.dataset.tekla;
+
+    card.querySelectorAll('.tekla-tab').forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    card.querySelectorAll('.tekla-asset').forEach(a => {
+      a.style.display = a.dataset.tekla === tekla ? '' : 'none';
+    });
+  });
 
   function showInstructions(id) {
     const p = allProducts.find(x => x.id === id);
@@ -399,13 +513,13 @@
     if (e.target === e.currentTarget) e.currentTarget.classList.remove('open');
   });
 
-  document.querySelectorAll('.filter-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      activeType = btn.dataset.type;
-      render();
-    });
+  document.getElementById('type-filters').addEventListener('click', e => {
+    const btn = e.target.closest('.filter-btn');
+    if (!btn) return;
+    document.querySelectorAll('#type-filters .filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    activeType = btn.dataset.type;
+    render();
   });
 
   document.getElementById('search').addEventListener('input', e => {
