@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-11T02:43:17Z",
+  "updatedAt": "2026-09-11T02:50:44Z",
   "products": [
     {
       "id": "poluhovamaria-tech-testMacro",
@@ -33,6 +33,49 @@
               "tekla_version": null,
               "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/poluhovamaria-tech-testMacro-2026.9.10.1/AxCoDesign_ChangeMainPart.cs",
               "size": 2435
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WisnakeX-Issue_Drawings",
+      "name": "Issue_Drawings",
+      "type": "app",
+      "description": "Подготавливает комплект чертежей КМД к выпуску",
+      "sourceAccount": "https://github.com/WisnakeX",
+      "sourceRepo": "https://github.com/WisnakeX/Issue_Drawings",
+      "image": "https://raw.githubusercontent.com/kbTPKsteel/TPK/main/docs/images/WisnakeX-Issue_Drawings.png",
+      "video": null,
+      "instructions": "## Установка\n1. Скачать `Issue_Drawings.exe` (под Tekla 2020) или `Issue_Drawings2024.exe`\n   (под Tekla 2024) из раздела версий.\n2. Положить рядом `PdfSharp-gdi.dll` и `PdfSharp.Charting-gdi.dll` из того же\n   релиза — без них не заработает склейка PDF.\n\n## Использование\n1. Открыть Tekla Structures с моделью.\n2. Выделить в модели объекты сборками.\n3. В диспетчере документов выделить чертежи сборок (A) и чертежи деталей (W).\n4. Запустить exe → вкладка «Проверка готовности» → «Выполнить проверку».",
+      "versions": [
+        {
+          "version": "2026.9.11.1",
+          "releaseDate": "2026-09-11",
+          "assets": [
+            {
+              "name": "Issue_Drawings_Tekla2020.exe",
+              "tekla_version": "2020",
+              "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/WisnakeX-Issue_Drawings-2026.9.11.1/Issue_Drawings_Tekla2020.exe",
+              "size": 416768
+            },
+            {
+              "name": "Issue_Drawings_Tekla2024.exe",
+              "tekla_version": "2024",
+              "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/WisnakeX-Issue_Drawings-2026.9.11.1/Issue_Drawings_Tekla2024.exe",
+              "size": 416768
+            }
+          ]
+        },
+        {
+          "version": "2026.9.10.1",
+          "releaseDate": "2026-09-10",
+          "assets": [
+            {
+              "name": "Issue_Drawings.exe",
+              "tekla_version": null,
+              "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/WisnakeX-Issue_Drawings-2026.9.10.1/Issue_Drawings.exe",
+              "size": 416768
             }
           ]
         }
