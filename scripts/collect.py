@@ -9,6 +9,23 @@ def detect_tekla_version(filename):
     match = re.search(r'tekla(\d{4})', filename, re.IGNORECASE)
     return match.group(1) if match else None
 
+ARCHIVE_EXTS = {'.zip', '.7z', '.rar', '.gz', '.tar'}
+
+def is_archive(filename):
+    name = filename.lower()
+    return name.endswith('.tar.gz') or Path(name).suffix in ARCHIVE_EXTS
+
+def find_best_for_tekla(assets, tekla_ver, primary_ext):
+    """Archive first, then primary_ext (.dll or .exe), for the given Tekla version."""
+    candidates = [a for a in assets if detect_tekla_version(a['name']) == tekla_ver]
+    for a in candidates:
+        if is_archive(a['name']):
+            return a
+    for a in candidates:
+        if a['name'].lower().endswith(primary_ext):
+            return a
+    return None
+
 CENTRAL_REPO = "kbTPKsteel/TPK"
 CATALOG_FILE = Path("catalog.json")
 REPOS_FILE   = Path("repos.yml")
@@ -82,7 +99,7 @@ def upload_to_release(tag, file_path, central_token):
     ], env={**os.environ, "GH_TOKEN": central_token}, check=True)
 
 
-def process_repo(repo_full_name, token, central_token, products):
+def process_repo(repo_full_name, token, central_token, products, display_name=None):
     """Обрабатывает один репо. Возвращает True если продукт найден и обработан."""
 
     # Проверяем наличие catalog.yml
@@ -117,25 +134,49 @@ def process_repo(repo_full_name, token, central_token, products):
             print(f"    ПРЕДУПРЕЖДЕНИЕ: не удалось получить картинку: {e}")
 
     # Релизы
+    product_type = meta.get("type", "app")
     releases = api_get(f"https://api.github.com/repos/{repo_full_name}/releases", token)
     versions = []
 
     for release in releases:
         tag = release["tag_name"]
         central_tag = f"{product_id}-{tag}"
+        raw_assets = release.get("assets", [])
         assets_info = []
 
-        if release.get("assets"):
+        if raw_assets:
+            if product_type in ("macro", "other"):
+                # Все файлы без Tekla-версионирования
+                assets_to_upload = [(a, None) for a in raw_assets]
+            else:
+                # Plugin / App: лучший файл на каждую версию Tekla
+                primary_ext = ".dll" if product_type == "plugin" else ".exe"
+                tekla_set = set()
+                for a in raw_assets:
+                    tv = detect_tekla_version(a['name'])
+                    if tv:
+                        tekla_set.add(tv)
+
+                assets_to_upload = []
+                for tv in sorted(tekla_set):
+                    best = find_best_for_tekla(raw_assets, tv, primary_ext)
+                    if best:
+                        assets_to_upload.append((best, tv))
+
+                if not assets_to_upload:
+                    print(f"    Пропущен релиз {tag}: нет подходящих файлов для {product_type}")
+                    continue
+
             ensure_central_release(central_tag, f"{meta['name']} {tag}", central_token)
 
-            for asset in release["assets"]:
+            for asset, tekla_ver in assets_to_upload:
                 tmp_path = Path(f"/tmp/{asset['name']}")
                 try:
                     download_asset(asset["url"], token, tmp_path)
                     upload_to_release(central_tag, tmp_path, central_token)
                     assets_info.append({
                         "name": asset["name"],
-                        "tekla_version": detect_tekla_version(asset["name"]),
+                        "tekla_version": tekla_ver,
                         "downloadUrl": f"https://github.com/{CENTRAL_REPO}/releases/download/{central_tag}/{asset['name']}",
                         "size": asset["size"]
                     })
@@ -155,6 +196,7 @@ def process_repo(repo_full_name, token, central_token, products):
         "type": meta.get("type", "app"),
         "description": meta.get("description", "").strip(),
         "sourceAccount": f"https://github.com/{owner}",
+        "displayName": display_name or owner,
         "sourceRepo": f"https://github.com/{repo_full_name}",
         "image": image_url,
         "video": meta.get("video"),
@@ -190,7 +232,7 @@ def main():
 
         found = 0
         for repo in repos:
-            if process_repo(repo["full_name"], token, central_token, products):
+            if process_repo(repo["full_name"], token, central_token, products, contributor.get("display_name")):
                 found += 1
 
         print(f"  Продуктов с catalog.yml: {found}")

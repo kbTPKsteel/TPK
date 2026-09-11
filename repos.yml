@@ -1,5 +1,7 @@
 contributors:
   - username: poluhovamaria-tech
     token_secret: TOKEN_POLUHOVAMARIA_TECH
+    display_name: Полюхова Мария
   - username: WisnakeX
     token_secret: TOKEN_WISNAKEX
+    display_name: Волков Андрей

@@ -135,6 +135,7 @@
     .type-app    { background: #dbeafe; color: #1d4ed8; }
     .type-plugin { background: #ede9fe; color: #6d28d9; }
     .type-macro  { background: #dcfce7; color: #15803d; }
+    .type-other  { background: #fef3c7; color: #b45309; }
 
     /* ── Tekla tabs (card) ── */
     .tekla-selector { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
@@ -290,6 +291,7 @@
     <option value="app">Приложения</option>
     <option value="plugin">Плагины</option>
     <option value="macro">Макросы</option>
+    <option value="other">Прочие инструменты</option>
   </select>
 
   <select id="tekla-filter" class="filter-select filter-tekla">
@@ -339,8 +341,8 @@
 
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 <script>
-  const TYPE_LABELS  = { app: 'Приложение', plugin: 'Плагин', macro: 'Макрос' };
-  const TYPE_CLASSES = { app: 'type-app', plugin: 'type-plugin', macro: 'type-macro' };
+  const TYPE_LABELS  = { app: 'Приложение', plugin: 'Плагин', macro: 'Макрос', other: 'Прочие инструменты' };
+  const TYPE_CLASSES = { app: 'type-app', plugin: 'type-plugin', macro: 'type-macro', other: 'type-other' };
   const DL_SVG = `<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v13"/><polyline points="5 14 12 21 19 14"/><line x1="3" y1="21" x2="21" y2="21"/></svg>`;
 
   let allProducts = [];
@@ -352,7 +354,7 @@
 
   /* ── helpers ── */
   function authorLabel(p) {
-    return p.sourceAccount.replace('https://github.com/', '');
+    return p.displayName || p.sourceAccount.replace('https://github.com/', '');
   }
 
   function getProductTeklaVersions(p) {
@@ -469,7 +471,7 @@
       <div class="card-body">
         <div class="card-header"><div class="card-name">${p.name}</div>${badge}</div>
         <div class="card-desc">${p.description || ''}</div>
-        <div class="card-source">Источник: <a href="${p.sourceAccount}" target="_blank">${authorLabel(p)}</a></div>
+        <div class="card-source">Автор: <a href="${p.sourceAccount}" target="_blank">${authorLabel(p)}</a></div>
         ${teklaSel}
         <div class="versions-label">Версии</div>
         <div class="versions-list">${versionsHTML || '<span style="font-size:.85rem;color:#94a3b8">Нет версий</span>'}</div>
