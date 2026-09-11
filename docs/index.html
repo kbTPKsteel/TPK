@@ -227,6 +227,19 @@
     }
     .feedback-cancel-btn:hover { background: #f0f4f8; }
     .feedback-status { font-size: 0.85rem; min-height: 1.2em; color: #475569; }
+    .feedback-files-hint { font-size: 0.78rem; color: #94a3b8; margin-top: 4px; }
+    .feedback-files-list { display: flex; flex-direction: column; gap: 4px; margin-top: 6px; }
+    .feedback-file-row {
+      display: flex; align-items: center; gap: 6px; font-size: 0.82rem; color: #334155;
+      background: #f8fafc; border-radius: 6px; padding: 4px 8px;
+    }
+    .feedback-file-row .feedback-file-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .feedback-file-row .feedback-file-size { color: #94a3b8; flex-shrink: 0; }
+    .feedback-file-row button {
+      margin-left: auto; background: none; border: none; color: #94a3b8;
+      cursor: pointer; font-size: 1rem; line-height: 1; padding: 0 2px; flex-shrink: 0;
+    }
+    .feedback-file-row button:hover { color: #dc2626; }
 
     .instructions-btn {
       width: 100%; padding: 8px; background: #f8fafc; border: 1px solid #e2e8f0;
@@ -415,6 +428,12 @@
     <div class="form-group">
       <label class="form-label">Сообщение</label>
       <textarea id="feedback-msg" class="form-input form-textarea" placeholder="Опишите проблему или идею..."></textarea>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Файлы (скриншоты, логи, PDF)</label>
+      <input type="file" id="feedback-files" accept="image/*,.txt,.log,.pdf" multiple>
+      <div class="feedback-files-list" id="feedback-files-list"></div>
+      <div class="feedback-files-hint">До 5 файлов, не более 5 МБ каждый</div>
     </div>
     <div class="feedback-status" id="feedback-status"></div>
     <div style="display:flex;gap:8px;margin-top:12px">
@@ -818,8 +837,76 @@
 
   /* ── Slack feedback (via GitHub Actions dispatch to avoid CORS) ── */
   const GH_DISPATCH_TOKEN = 'FtoXc2XUtleYzD7ZWsO4ICndlWhkHq73erYc_phg'.split('').reverse().join('');
-  const GH_DISPATCH_URL   = 'https://api.github.com/repos/kbTPKsteel/TPK/dispatches';
+  const GH_REPO           = 'kbTPKsteel/TPK';
+  const GH_DISPATCH_URL   = `https://api.github.com/repos/${GH_REPO}/dispatches`;
+  const GH_CONTENTS_URL   = `https://api.github.com/repos/${GH_REPO}/contents/`;
+  const FEEDBACK_MAX_FILES = 5;
+  const FEEDBACK_MAX_SIZE  = 5 * 1024 * 1024;
   let feedbackPid = null;
+  let feedbackFiles = [];
+
+  function formatFileSize(bytes) {
+    return bytes < 1024 * 1024 ? `${Math.round(bytes / 1024)} КБ` : `${(bytes / (1024 * 1024)).toFixed(1)} МБ`;
+  }
+
+  function renderFeedbackFiles() {
+    const list = document.getElementById('feedback-files-list');
+    list.innerHTML = feedbackFiles.map((f, i) => `
+      <div class="feedback-file-row">
+        <span class="feedback-file-name">${f.name}</span>
+        <span class="feedback-file-size">${formatFileSize(f.size)}</span>
+        <button type="button" data-idx="${i}" title="Убрать">✕</button>
+      </div>
+    `).join('');
+    list.querySelectorAll('button').forEach(btn => btn.addEventListener('click', () => {
+      feedbackFiles.splice(Number(btn.dataset.idx), 1);
+      renderFeedbackFiles();
+    }));
+  }
+
+  document.getElementById('feedback-files').addEventListener('change', e => {
+    const statusEl = document.getElementById('feedback-status');
+    for (const file of e.target.files) {
+      if (feedbackFiles.length >= FEEDBACK_MAX_FILES) {
+        statusEl.textContent = `Можно приложить не больше ${FEEDBACK_MAX_FILES} файлов.`;
+        break;
+      }
+      if (file.size > FEEDBACK_MAX_SIZE) {
+        statusEl.textContent = `Файл «${file.name}» больше 5 МБ — пропущен.`;
+        continue;
+      }
+      feedbackFiles.push(file);
+    }
+    e.target.value = '';
+    renderFeedbackFiles();
+  });
+
+  function fileToBase64(file) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(reader.result.split(',')[1]);
+      reader.onerror = reject;
+      reader.readAsDataURL(file);
+    });
+  }
+
+  async function uploadFeedbackFile(file, idx) {
+    const safeName = file.name.replace(/[^a-zA-Z0-9._-]/g, '_');
+    const path = `feedback-uploads/${Date.now()}-${idx}-${safeName}`;
+    const content = await fileToBase64(file);
+    const resp = await fetch(GH_CONTENTS_URL + path, {
+      method: 'PUT',
+      headers: {
+        'Authorization': `Bearer ${GH_DISPATCH_TOKEN}`,
+        'Accept': 'application/vnd.github+json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ message: `Feedback attachment: ${file.name}`, content })
+    });
+    const json = await resp.json();
+    if (!resp.ok) throw new Error(json.message || `Ошибка загрузки файла ${file.name}`);
+    return file.type.startsWith('image/') ? json.content.download_url : json.content.html_url;
+  }
 
   function showFeedback(pid) {
     const p = allProducts.find(x => x.id === pid);
@@ -830,6 +917,8 @@
     document.getElementById('feedback-msg').value = '';
     document.getElementById('feedback-status').textContent = '';
     document.getElementById('feedback-send').disabled = true;
+    feedbackFiles = [];
+    renderFeedbackFiles();
     document.getElementById('feedback-overlay').classList.add('open');
   }
 
@@ -849,11 +938,17 @@
     const msg  = document.getElementById('feedback-msg').value.trim();
     const statusEl = document.getElementById('feedback-status');
     if (!msg) { statusEl.textContent = 'Заполните сообщение.'; return; }
-    const mention = p.slackUserId ? `<@${p.slackUserId}> ` : '';
-    const text = `${mention}📦 *${p.name}*\n👤 ${name} · ${type}\n\n${msg}`;
     document.getElementById('feedback-send').disabled = true;
-    statusEl.textContent = 'Отправляем...';
     try {
+      const links = [];
+      for (let i = 0; i < feedbackFiles.length; i++) {
+        statusEl.textContent = `Загружаем файлы (${i + 1}/${feedbackFiles.length})...`;
+        links.push(await uploadFeedbackFile(feedbackFiles[i], i));
+      }
+      const mention = p.slackUserId ? `<@${p.slackUserId}> ` : '';
+      const attachments = links.length ? `\n\n📎 Файлы:\n${links.join('\n')}` : '';
+      const text = `${mention}📦 *${p.name}*\n👤 ${name} · ${type}\n\n${msg}${attachments}`;
+      statusEl.textContent = 'Отправляем...';
       const resp = await fetch(GH_DISPATCH_URL, {
         method: 'POST',
         headers: {
