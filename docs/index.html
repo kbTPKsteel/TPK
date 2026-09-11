@@ -92,6 +92,7 @@
 
     /* ── Main ── */
     main { padding: 24px; max-width: 1300px; margin: 0 auto; }
+    main.wide { max-width: none; margin: 0; }
     .meta-bar { text-align: right; font-size: 0.78rem; color: #94a3b8; margin-bottom: 16px; }
 
     /* ── Card grid ── */
@@ -206,8 +207,8 @@
     }
 
     .table-name { font-weight: 600; color: #1a2332; }
-    /* description: no fixed width — takes all remaining space */
-    .table-desc { color: #475569; line-height: 1.4; }
+    /* description: flexible, but never narrower than 200px */
+    .table-desc { color: #475569; line-height: 1.4; min-width: 200px; }
     .table-source { white-space: nowrap; }
     .table-source a { color: #2563eb; text-decoration: none; font-size: 0.82rem; }
     .table-source a:hover { text-decoration: underline; }
@@ -227,7 +228,7 @@
     /* ── Image preview tooltip (fixed, never clipped) ── */
     #img-tooltip {
       display: none; position: fixed; z-index: 1000; pointer-events: none;
-      width: 200px; height: 200px; object-fit: cover;
+      width: 400px; height: 400px; object-fit: cover;
       border-radius: 10px; box-shadow: 0 6px 24px rgba(0,0,0,0.35);
       border: 3px solid white;
     }
@@ -398,6 +399,7 @@
   /* ── render ── */
   function render() {
     const out = filtered();
+    document.querySelector('main').classList.toggle('wide', viewMode === 'table');
     const container = document.getElementById('catalog-output');
     if (!out.length) {
       container.innerHTML = '<div class="grid"><div class="empty">Ничего не найдено</div></div>';
@@ -565,8 +567,8 @@
     if (!imgTooltip.classList.contains('visible')) return;
     const x = e.clientX + 16;
     const y = e.clientY - 100;
-    imgTooltip.style.left = Math.min(x, window.innerWidth  - 220) + 'px';
-    imgTooltip.style.top  = Math.max(y, 8) + 'px';
+    imgTooltip.style.left = Math.min(x, window.innerWidth  - 420) + 'px';
+    imgTooltip.style.top  = Math.max(Math.min(y, window.innerHeight - 420), 8) + 'px';
   });
 
   document.getElementById('catalog-output').addEventListener('mouseout', e => {
