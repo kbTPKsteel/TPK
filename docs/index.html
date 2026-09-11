@@ -170,6 +170,59 @@
     .download-btn svg { pointer-events: none; }
 
     .no-asset { font-size: 0.8rem; color: #cbd5e1; }
+
+    /* ── Card version row / download row ── */
+    .card-ver-row { display: flex; align-items: center; gap: 8px; }
+    .card-dl-row  { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .card-dl-name {
+      font-size: 0.78rem; color: #64748b;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 180px;
+    }
+
+    /* ── Changelog (card) ── */
+    .changelog-section { border-top: 1px solid #f1f5f9; margin-top: 6px; padding-top: 6px; }
+    .changelog-toggle {
+      display: flex; align-items: center; justify-content: space-between;
+      width: 100%; background: none; border: none; cursor: pointer; padding: 3px 0;
+      font-size: 0.8rem; font-weight: 600; color: #64748b; text-align: left;
+    }
+    .changelog-toggle:hover { color: #1e3a5f; }
+    .changelog-chevron { flex-shrink: 0; transition: transform 0.2s; }
+    .changelog-body {
+      font-size: 0.83rem; color: #334155; line-height: 1.6; padding: 6px 0 2px;
+    }
+    .changelog-body h1, .changelog-body h2, .changelog-body h3 {
+      font-size: 0.88rem; font-weight: 600; margin: 8px 0 4px; color: #1e3a5f;
+    }
+    .changelog-body p  { margin-bottom: 6px; }
+    .changelog-body ul, .changelog-body ol { padding-left: 16px; margin-bottom: 6px; }
+
+    /* ── Feedback button (card) ── */
+    .feedback-btn {
+      width: 100%; padding: 6px 12px; margin-top: 4px;
+      background: white; border: 1.5px solid #e2e8f0;
+      border-radius: 8px; color: #64748b; font-size: 0.82rem;
+      cursor: pointer; text-align: left; transition: border-color 0.15s, color 0.15s;
+    }
+    .feedback-btn:hover { border-color: #0f6e3d; color: #0f6e3d; }
+
+    /* ── Feedback modal form ── */
+    .form-group  { display: flex; flex-direction: column; gap: 4px; margin-bottom: 14px; }
+    .form-label  { font-size: 0.85rem; font-weight: 600; color: #334155; }
+    .form-input  {
+      padding: 8px 12px; border: 1.5px solid #cbd5e1; border-radius: 8px;
+      font-size: 0.9rem; color: #1a2332; outline: none; font-family: inherit; background: white;
+    }
+    .form-input:focus { border-color: #1e3a5f; }
+    .form-textarea  { resize: vertical; min-height: 100px; }
+    .feedback-send-btn {
+      flex: 1; padding: 8px 20px; background: #0f6e3d; color: white;
+      border: none; border-radius: 8px; cursor: pointer; font-size: 0.9rem; font-family: inherit;
+    }
+    .feedback-send-btn:hover { background: #0d5f34; }
+    .feedback-send-btn:disabled { background: #94a3b8; cursor: not-allowed; }
+    .feedback-status { font-size: 0.85rem; min-height: 1.2em; color: #475569; }
+
     .instructions-btn {
       width: 100%; padding: 8px; background: #f8fafc; border: 1px solid #e2e8f0;
       border-radius: 8px; color: #475569; font-size: 0.85rem; cursor: pointer; transition: background 0.15s;
@@ -339,6 +392,33 @@
   </div>
 </div>
 
+<div class="modal-overlay" id="feedback-overlay">
+  <div class="modal">
+    <div class="modal-title" id="feedback-title">Написать автору</div>
+    <div class="form-group">
+      <label class="form-label">Ваше имя</label>
+      <input type="text" id="feedback-name" class="form-input" placeholder="Иван Иванов">
+    </div>
+    <div class="form-group">
+      <label class="form-label">Тема</label>
+      <select id="feedback-type" class="form-input">
+        <option value="🐛 Ошибка">Ошибка</option>
+        <option value="💡 Предложение">Предложение</option>
+        <option value="💬 Обсуждение">Обсуждение</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Сообщение</label>
+      <textarea id="feedback-msg" class="form-input form-textarea" placeholder="Опишите проблему или идею..."></textarea>
+    </div>
+    <div class="feedback-status" id="feedback-status"></div>
+    <div style="display:flex;gap:8px;margin-top:12px">
+      <button class="modal-close" id="feedback-close">Отмена</button>
+      <button id="feedback-send" class="feedback-send-btn">Отправить</button>
+    </div>
+  </div>
+</div>
+
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 <script>
   const TYPE_LABELS  = { app: 'Приложение', plugin: 'Плагин', macro: 'Макрос', other: 'Прочие инструменты' };
@@ -422,6 +502,14 @@
     return `<div class="grid">${products.map(cardHTML).join('')}</div>`;
   }
 
+  const CHEVRON_SVG = `<svg class="changelog-chevron" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>`;
+
+  function getCardAsset(version, tekla) {
+    if (!version) return null;
+    if (tekla) return (version.assets || []).find(a => a.tekla_version === tekla) || null;
+    return (version.assets || [])[0] || null;
+  }
+
   function cardHTML(p) {
     const badge = `<span class="type-badge ${TYPE_CLASSES[p.type] || 'type-app'}">${TYPE_LABELS[p.type] || p.type}</span>`;
     const img = p.image
@@ -439,42 +527,66 @@
       ${teklaVersions.map(tv => `<button class="tekla-tab ${tv === defaultTekla ? 'active' : ''}" data-tekla="${tv}">${tv}</button>`).join('')}
     </div>` : '';
 
-    const versionsHTML = (p.versions || []).map(v => {
-      let dl;
-      if (hasTekla) {
-        const byT = {};
-        (v.assets || []).forEach(a => { if (a.tekla_version) byT[a.tekla_version] = a; });
-        dl = teklaVersions.map(tv => {
-          const a = byT[tv];
-          const h = tv !== defaultTekla ? 'style="display:none"' : '';
-          return a
-            ? `<a class="download-btn tekla-asset" data-tekla="${tv}" href="${a.downloadUrl}" title="${a.name}" ${h}>${DL_SVG}</a>`
-            : `<span class="no-asset tekla-asset" data-tekla="${tv}" ${h}>—</span>`;
-        }).join('');
-      } else {
-        dl = (v.assets || []).map(a =>
-          `<a class="download-btn" href="${a.downloadUrl}" title="${a.name}">${DL_SVG}</a>`
-        ).join(' ');
-      }
-      return `<div class="version-row">
-        <span class="version-tag" title="${v.releaseDate}">${v.version}</span>
-        <div>${dl || '<span class="no-asset">нет файлов</span>'}</div>
+    const versions = p.versions || [];
+    let versionRow = '';
+    let dlArea = '';
+    let changelogArea = '';
+
+    if (versions.length > 0) {
+      const firstVer = versions[0];
+      versionRow = `<div class="card-ver-row">
+        <span class="versions-label">Версия:</span>
+        <select class="version-select card-ver-sel" data-pid="${p.id}">
+          ${versions.map(v => `<option value="${v.version}" title="${v.releaseDate}">${v.version}</option>`).join('')}
+        </select>
       </div>`;
-    }).join('');
+
+      let dlInner;
+      if (hasTekla) {
+        const asset = getCardAsset(firstVer, defaultTekla);
+        dlInner = asset
+          ? `<a class="download-btn" href="${asset.downloadUrl}" title="${asset.name}">${DL_SVG}</a><span class="card-dl-name">${asset.name}</span>`
+          : `<span class="no-asset">нет файлов</span>`;
+      } else {
+        const assets = firstVer.assets || [];
+        dlInner = assets.length
+          ? assets.map(a => `<a class="download-btn" href="${a.downloadUrl}" title="${a.name}">${DL_SVG}</a>`).join(' ')
+          : `<span class="no-asset">нет файлов</span>`;
+      }
+      dlArea = `<div class="card-dl-row">${dlInner}</div>`;
+
+      const firstNotes = firstVer.notes;
+      changelogArea = `<div class="changelog-section">
+        <button class="changelog-toggle" data-pid="${p.id}">
+          <span>История изменений</span>${CHEVRON_SVG}
+        </button>
+        <div class="changelog-body" data-pid="${p.id}" style="display:none">
+          ${firstNotes ? marked.parse(firstNotes) : '<p style="color:#94a3b8;font-size:.85rem">Нет описания изменений</p>'}
+        </div>
+      </div>`;
+    } else {
+      dlArea = '<span style="font-size:.85rem;color:#94a3b8">Нет версий</span>';
+    }
+
+    const feedbackBtn = p.slackUserId
+      ? `<button class="feedback-btn" onclick="showFeedback('${p.id}')">💬 Написать автору</button>`
+      : '';
 
     const footer = p.instructions
       ? `<div class="card-footer"><button class="instructions-btn" onclick="showInstructions('${p.id}')">📄 Инструкция по установке</button></div>`
       : '';
 
-    return `<div class="card">
+    return `<div class="card" data-pid="${p.id}">
       ${img}${placeholder}
       <div class="card-body">
         <div class="card-header"><div class="card-name">${p.name}</div>${badge}</div>
         <div class="card-desc">${p.description || ''}</div>
         <div class="card-source">Автор: <a href="${p.sourceAccount}" target="_blank">${authorLabel(p)}</a></div>
         ${teklaSel}
-        <div class="versions-label">Версии</div>
-        <div class="versions-list">${versionsHTML || '<span style="font-size:.85rem;color:#94a3b8">Нет версий</span>'}</div>
+        ${versionRow}
+        ${dlArea}
+        ${changelogArea}
+        ${feedbackBtn}
       </div>${footer}
     </div>`;
   }
@@ -609,21 +721,32 @@
   }
 
   document.getElementById('catalog-output').addEventListener('change', e => {
-    const sel = e.target.closest('.table-ver-sel, .table-tekla-sel');
-    if (sel) updateTableDownload(sel.dataset.pid);
+    const tableSel = e.target.closest('.table-ver-sel, .table-tekla-sel');
+    if (tableSel) updateTableDownload(tableSel.dataset.pid);
+    const cardSel = e.target.closest('.card-ver-sel');
+    if (cardSel) updateCardDownload(cardSel.dataset.pid, true);
   });
 
-  /* ── Tekla tabs in grid ── */
+  /* ── Tekla tabs + changelog toggle in grid ── */
   document.getElementById('catalog-output').addEventListener('click', e => {
     const tab = e.target.closest('.tekla-tab');
-    if (!tab) return;
-    const card  = tab.closest('.card');
-    const tekla = tab.dataset.tekla;
-    card.querySelectorAll('.tekla-tab').forEach(t => t.classList.remove('active'));
-    tab.classList.add('active');
-    card.querySelectorAll('.tekla-asset').forEach(a => {
-      a.style.display = a.dataset.tekla === tekla ? '' : 'none';
-    });
+    if (tab) {
+      const card = tab.closest('.card');
+      card.querySelectorAll('.tekla-tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      updateCardDownload(card.dataset.pid, false);
+      return;
+    }
+    const toggle = e.target.closest('.changelog-toggle');
+    if (toggle) {
+      const pid = toggle.dataset.pid;
+      const body = document.querySelector(`.changelog-body[data-pid="${pid}"]`);
+      if (!body) return;
+      const isOpen = body.style.display !== 'none';
+      body.style.display = isOpen ? 'none' : '';
+      const chevron = toggle.querySelector('.changelog-chevron');
+      if (chevron) chevron.style.transform = isOpen ? '' : 'rotate(180deg)';
+    }
   });
 
   /* ── Modal ── */
@@ -638,6 +761,95 @@
     document.getElementById('modal-overlay').classList.remove('open'));
   document.getElementById('modal-overlay').addEventListener('click', e => {
     if (e.target === e.currentTarget) e.currentTarget.classList.remove('open');
+  });
+
+  /* ── Card download / changelog updater ── */
+  function updateCardDownload(pid, updateChangelog) {
+    const p = allProducts.find(x => x.id === pid);
+    if (!p) return;
+    const card = document.querySelector(`.card[data-pid="${pid}"]`);
+    if (!card) return;
+    const verSel   = card.querySelector('.card-ver-sel');
+    const teklaTab = card.querySelector('.tekla-tab.active');
+    const ver      = verSel ? p.versions?.find(v => v.version === verSel.value) : p.versions?.[0];
+    const hasTekla = getProductTeklaVersions(p).length > 0;
+    const dlRow    = card.querySelector('.card-dl-row');
+    if (dlRow) {
+      if (hasTekla) {
+        const asset = getCardAsset(ver, teklaTab?.dataset.tekla ?? null);
+        dlRow.innerHTML = asset
+          ? `<a class="download-btn" href="${asset.downloadUrl}" title="${asset.name}">${DL_SVG}</a><span class="card-dl-name">${asset.name}</span>`
+          : `<span class="no-asset">нет файлов</span>`;
+      } else {
+        const assets = ver?.assets || [];
+        dlRow.innerHTML = assets.length
+          ? assets.map(a => `<a class="download-btn" href="${a.downloadUrl}" title="${a.name}">${DL_SVG}</a>`).join(' ')
+          : `<span class="no-asset">нет файлов</span>`;
+      }
+    }
+    if (updateChangelog) {
+      const body = card.querySelector('.changelog-body');
+      if (body) {
+        body.innerHTML = ver?.notes
+          ? marked.parse(ver.notes)
+          : '<p style="color:#94a3b8;font-size:.85rem">Нет описания изменений</p>';
+      }
+    }
+  }
+
+  /* ── Slack feedback ── */
+  const SLACK_TOKEN   = 'xoxb-4981986206854-12031874290211-wDHxH0HAzFzZruqCH61lCJPv';
+  const SLACK_CHANNEL = 'C05092Y0B5X';
+  let feedbackPid = null;
+
+  function showFeedback(pid) {
+    const p = allProducts.find(x => x.id === pid);
+    if (!p) return;
+    feedbackPid = pid;
+    document.getElementById('feedback-title').textContent = `${p.name} — Написать автору`;
+    document.getElementById('feedback-name').value = '';
+    document.getElementById('feedback-msg').value = '';
+    document.getElementById('feedback-status').textContent = '';
+    document.getElementById('feedback-send').disabled = false;
+    document.getElementById('feedback-overlay').classList.add('open');
+  }
+
+  document.getElementById('feedback-close').addEventListener('click', () =>
+    document.getElementById('feedback-overlay').classList.remove('open'));
+  document.getElementById('feedback-overlay').addEventListener('click', e => {
+    if (e.target === e.currentTarget) e.currentTarget.classList.remove('open');
+  });
+
+  document.getElementById('feedback-send').addEventListener('click', async () => {
+    const p = allProducts.find(x => x.id === feedbackPid);
+    if (!p) return;
+    const name = document.getElementById('feedback-name').value.trim();
+    const type = document.getElementById('feedback-type').value;
+    const msg  = document.getElementById('feedback-msg').value.trim();
+    const statusEl = document.getElementById('feedback-status');
+    if (!name || !msg) { statusEl.textContent = 'Заполните имя и сообщение.'; return; }
+    const mention = p.slackUserId ? `<@${p.slackUserId}> ` : '';
+    const text = `${mention}📦 *${p.name}*\n👤 ${name} · ${type}\n\n${msg}`;
+    document.getElementById('feedback-send').disabled = true;
+    statusEl.textContent = 'Отправляем...';
+    try {
+      const resp = await fetch('https://slack.com/api/chat.postMessage', {
+        method: 'POST',
+        headers: { 'Authorization': `Bearer ${SLACK_TOKEN}`, 'Content-Type': 'application/json' },
+        body: JSON.stringify({ channel: SLACK_CHANNEL, text })
+      });
+      const json = await resp.json();
+      if (json.ok) {
+        statusEl.textContent = '✅ Сообщение отправлено!';
+        setTimeout(() => document.getElementById('feedback-overlay').classList.remove('open'), 1500);
+      } else {
+        statusEl.textContent = 'Ошибка: ' + json.error;
+        document.getElementById('feedback-send').disabled = false;
+      }
+    } catch {
+      statusEl.textContent = 'Ошибка сети. Попробуйте позже.';
+      document.getElementById('feedback-send').disabled = false;
+    }
   });
 
   /* ── Filter listeners ── */

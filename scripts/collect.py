@@ -99,7 +99,7 @@ def upload_to_release(tag, file_path, central_token):
     ], env={**os.environ, "GH_TOKEN": central_token}, check=True)
 
 
-def process_repo(repo_full_name, token, central_token, products, display_name=None):
+def process_repo(repo_full_name, token, central_token, products, display_name=None, slack_id=None):
     """Обрабатывает один репо. Возвращает True если продукт найден и обработан."""
 
     # Проверяем наличие catalog.yml
@@ -187,6 +187,7 @@ def process_repo(repo_full_name, token, central_token, products, display_name=No
         versions.append({
             "version": tag,
             "releaseDate": release["published_at"][:10],
+            "notes": release.get("body") or None,
             "assets": assets_info
         })
 
@@ -197,6 +198,7 @@ def process_repo(repo_full_name, token, central_token, products, display_name=No
         "description": meta.get("description", "").strip(),
         "sourceAccount": f"https://github.com/{owner}",
         "displayName": display_name or owner,
+        "slackUserId": slack_id,
         "sourceRepo": f"https://github.com/{repo_full_name}",
         "image": image_url,
         "video": meta.get("video"),
@@ -232,7 +234,7 @@ def main():
 
         found = 0
         for repo in repos:
-            if process_repo(repo["full_name"], token, central_token, products, contributor.get("display_name")):
+            if process_repo(repo["full_name"], token, central_token, products, contributor.get("display_name"), contributor.get("slack_id")):
                 found += 1
 
         print(f"  Продуктов с catalog.yml: {found}")

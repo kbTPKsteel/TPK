@@ -2,6 +2,8 @@ contributors:
   - username: poluhovamaria-tech
     token_secret: TOKEN_POLUHOVAMARIA_TECH
     display_name: Полюхова Мария
+    slack_id: U04UNPXPM63
   - username: WisnakeX
     token_secret: TOKEN_WISNAKEX
     display_name: Волков Андрей
+    slack_id: U04UW6YJZUP
