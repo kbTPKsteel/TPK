@@ -800,9 +800,9 @@
     }
   }
 
-  /* ── Slack feedback ── */
-  const SLACK_TOKEN   = 'xoxb-4981986206854-12031874290211-wDHxH0HAzFzZruqCH61lCJPv';
-  const SLACK_CHANNEL = 'C05092Y0B5X';
+  /* ── Slack feedback (via GitHub Actions dispatch to avoid CORS) ── */
+  const GH_DISPATCH_TOKEN = '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';
+  const GH_DISPATCH_URL   = 'https://api.github.com/repos/kbTPKsteel/TPK/dispatches';
   let feedbackPid = null;
 
   function showFeedback(pid) {
@@ -836,17 +836,21 @@
     document.getElementById('feedback-send').disabled = true;
     statusEl.textContent = 'Отправляем...';
     try {
-      const resp = await fetch('https://slack.com/api/chat.postMessage', {
+      const resp = await fetch(GH_DISPATCH_URL, {
         method: 'POST',
-        headers: { 'Authorization': `Bearer ${SLACK_TOKEN}`, 'Content-Type': 'application/json' },
-        body: JSON.stringify({ channel: SLACK_CHANNEL, text })
+        headers: {
+          'Authorization': `Bearer ${GH_DISPATCH_TOKEN}`,
+          'Accept': 'application/vnd.github+json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ event_type: 'slack-feedback', client_payload: { text } })
       });
-      const json = await resp.json();
-      if (json.ok) {
+      if (resp.status === 204) {
         statusEl.textContent = '✅ Сообщение отправлено!';
         setTimeout(() => document.getElementById('feedback-overlay').classList.remove('open'), 1500);
       } else {
-        statusEl.textContent = 'Ошибка: ' + json.error;
+        const json = await resp.json();
+        statusEl.textContent = 'Ошибка: ' + (json.message || resp.status);
         document.getElementById('feedback-send').disabled = false;
       }
     } catch (err) {

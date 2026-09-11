@@ -1,0 +1,30 @@
+name: Send Slack Feedback
+
+on:
+  repository_dispatch:
+    types: [slack-feedback]
+
+jobs:
+  send:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send to Slack
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+          PAYLOAD: ${{ toJson(github.event.client_payload) }}
+        run: |
+          python3 << 'EOF'
+          import os, json, urllib.request
+          token   = os.environ['SLACK_BOT_TOKEN']
+          payload = json.loads(os.environ['PAYLOAD'])
+          text    = payload['text']
+          body    = json.dumps({'channel': 'C05092Y0B5X', 'text': text}).encode()
+          req     = urllib.request.Request(
+              'https://slack.com/api/chat.postMessage', data=body,
+              headers={'Authorization': f'Bearer {token}', 'Content-Type': 'application/json'}
+          )
+          resp = json.load(urllib.request.urlopen(req))
+          if not resp.get('ok'):
+              raise SystemExit(f"Slack error: {resp.get('error')}")
+          print('Sent OK, ts:', resp.get('ts'))
+          EOF
