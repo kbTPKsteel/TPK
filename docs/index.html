@@ -305,6 +305,8 @@
     }
     .instr-btn-sm:hover { background: #e2e8f0; }
 
+    .table-stack { display: flex; flex-direction: column; align-items: flex-start; gap: 4px; }
+
     /* ── Image preview tooltip (fixed, never clipped) ── */
     #img-tooltip {
       display: none; position: fixed; z-index: 1000; pointer-events: none;
@@ -658,25 +660,26 @@
              ${p.versions.map(v => `<option value="${v.version}" title="${v.releaseDate}">${v.version}</option>`).join('')}
            </select>`
         : '—';
+      const versionCell = p.versions?.length
+        ? `<div class="table-stack">${latestVerStr}<button class="instr-btn-sm" onclick="showChangelog('${p.id}')">📋 История</button></div>`
+        : latestVerStr;
 
-      const instrParts = [];
-      if (p.instructions) instrParts.push(`<button class="instr-btn-sm" onclick="showInstructions('${p.id}')">📄 Инструкция</button>`);
-      if (p.versions?.length) instrParts.push(`<button class="instr-btn-sm" onclick="showChangelog('${p.id}')">📋 История</button>`);
-      if (p.slackUserId)  instrParts.push(`<button class="instr-btn-sm" onclick="showFeedback('${p.id}')">💬 Написать</button>`);
-      const instrCell = instrParts.length
-        ? `<div style="display:flex;flex-direction:column;gap:4px">${instrParts.join('')}</div>`
-        : '—';
+      const dlCellFull = p.instructions
+        ? `<div class="table-stack">${dlCell}<button class="instr-btn-sm" onclick="showInstructions('${p.id}')">📄 Инструкция</button></div>`
+        : dlCell;
+
+      const authorCell = p.slackUserId
+        ? `<div class="table-stack"><a href="${p.sourceAccount}" target="_blank">${authorLabel(p)}</a><button class="instr-btn-sm" onclick="showFeedback('${p.id}')">💬 Написать</button></div>`
+        : `<a href="${p.sourceAccount}" target="_blank">${authorLabel(p)}</a>`;
 
       return `<tr data-pid="${p.id}">
         <td class="col-shrink">${imgInner}</td>
-        <td class="table-name">${p.name}</td>
-        <td class="col-shrink"><span class="type-badge ${TYPE_CLASSES[p.type] || 'type-app'}">${TYPE_LABELS[p.type] || p.type}</span></td>
-        <td class="table-source"><a href="${p.sourceAccount}" target="_blank">${authorLabel(p)}</a></td>
+        <td class="table-name"><div class="table-stack">${p.name}<span class="type-badge ${TYPE_CLASSES[p.type] || 'type-app'}">${TYPE_LABELS[p.type] || p.type}</span></div></td>
+        <td class="table-source">${authorCell}</td>
         <td class="table-desc">${p.description || ''}</td>
         <td class="col-shrink">${teklaCell}</td>
-        <td class="col-shrink">${latestVerStr}</td>
-        <td class="col-dl">${dlCell}</td>
-        <td class="col-shrink">${instrCell}</td>
+        <td class="col-shrink">${versionCell}</td>
+        <td class="col-dl">${dlCellFull}</td>
       </tr>`;
     }).join('');
 
@@ -685,13 +688,11 @@
         <thead><tr>
           <th class="col-shrink"></th>
           <th>Название</th>
-          <th class="col-shrink">Тип</th>
           <th>Автор</th>
           <th>Описание</th>
           <th class="col-shrink">Tekla</th>
           <th class="col-shrink">Версия</th>
           <th class="col-dl">Скачать</th>
-          <th class="col-shrink">Инструкция</th>
         </tr></thead>
         <tbody>${rows}</tbody>
       </table>
