@@ -306,6 +306,12 @@
     .instr-btn-sm:hover { background: #e2e8f0; }
 
     .table-stack { display: flex; flex-direction: column; align-items: flex-start; gap: 4px; }
+    .table-stack-fill { align-items: stretch; }
+    .table-stack-fill select,
+    .table-stack-fill .download-btn,
+    .table-stack-fill .instr-btn-sm {
+      width: 100%; box-sizing: border-box; text-align: center;
+    }
 
     /* ── Image preview tooltip (fixed, never clipped) ── */
     #img-tooltip {
@@ -661,11 +667,11 @@
            </select>`
         : '—';
       const versionCell = p.versions?.length
-        ? `<div class="table-stack">${latestVerStr}<button class="instr-btn-sm" onclick="showChangelog('${p.id}')">📋 История</button></div>`
+        ? `<div class="table-stack table-stack-fill">${latestVerStr}<button class="instr-btn-sm" onclick="showChangelog('${p.id}')">📋 История</button></div>`
         : latestVerStr;
 
       const dlCellFull = p.instructions
-        ? `<div class="table-stack">${dlCell}<button class="instr-btn-sm" onclick="showInstructions('${p.id}')">📄 Инструкция</button></div>`
+        ? `<div class="table-stack table-stack-fill">${dlCell}<button class="instr-btn-sm" onclick="showInstructions('${p.id}')">📄 Инструкция</button></div>`
         : dlCell;
 
       const authorCell = p.slackUserId
