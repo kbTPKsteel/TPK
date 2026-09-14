@@ -7,3 +7,7 @@ contributors:
     token_secret: TOKEN_WISNAKEX
     display_name: Волков Андрей
     slack_id: U04UW6YJZUP
+  - username: learnpartner
+    token_secret: TOKEN_LEARNPARTNER
+    display_name: Куликов Павел
+    slack_id: U050248KTLH
