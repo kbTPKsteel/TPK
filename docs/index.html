@@ -356,14 +356,6 @@
       <input type="text" id="feedback-name" class="form-input" placeholder="Иван Иванов">
     </div>
     <div class="form-group">
-      <label class="form-label">Тема</label>
-      <select id="feedback-type" class="form-input">
-        <option value="🐛 Ошибка">Ошибка</option>
-        <option value="💡 Предложение">Предложение</option>
-        <option value="💬 Обсуждение">Обсуждение</option>
-      </select>
-    </div>
-    <div class="form-group">
       <label class="form-label">Сообщение</label>
       <textarea id="feedback-msg" class="form-input form-textarea" placeholder="Опишите проблему или идею..."></textarea>
     </div>
@@ -740,7 +732,6 @@
     const p = allProducts.find(x => x.id === feedbackPid);
     if (!p) return;
     const name = document.getElementById('feedback-name').value.trim() || 'Аноним';
-    const type = document.getElementById('feedback-type').value;
     const msg  = document.getElementById('feedback-msg').value.trim();
     const statusEl = document.getElementById('feedback-status');
     if (!msg) { statusEl.textContent = 'Заполните сообщение.'; return; }
@@ -753,7 +744,7 @@
       }
       const mention = p.slackUserId ? `<@${p.slackUserId}> ` : '';
       const attachments = links.length ? `\n\n📎 Файлы:\n${links.join('\n')}` : '';
-      const text = `${mention}📦 *${p.name}*\n👤 ${name} · ${type}\n\n${msg}${attachments}`;
+      const text = `${mention}📦 *${p.name}*\n👤 ${name}\n\n${msg}${attachments}`;
       statusEl.textContent = 'Отправляем...';
       const resp = await fetch(GH_DISPATCH_URL, {
         method: 'POST',
