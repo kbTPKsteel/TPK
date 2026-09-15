@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-15T08:15:42Z",
+  "updatedAt": "2026-09-15T08:36:18Z",
   "products": [
     {
       "id": "poluhovamaria-tech-testMacro",
@@ -101,12 +101,6 @@
               "size": 15549762
             }
           ]
-        },
-        {
-          "version": "2026.09.15.1",
-          "releaseDate": "2026-09-15",
-          "notes": "Пересбор в 1 файл",
-          "assets": []
         }
       ]
     }
