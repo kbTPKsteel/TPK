@@ -454,10 +454,12 @@
     return file.type.startsWith('image/') ? json.content.download_url : json.content.html_url;
   }
 
+  const FEEDBACK_NAME_KEY = 'tpkFeedbackName';
+
   function showFeedback() {
     const p = currentProduct;
     document.getElementById('feedback-title').textContent = `${p.name} — Написать автору`;
-    document.getElementById('feedback-name').value = '';
+    document.getElementById('feedback-name').value = localStorage.getItem(FEEDBACK_NAME_KEY) || '';
     document.getElementById('feedback-msg').value = '';
     document.getElementById('feedback-status').textContent = '';
     document.getElementById('feedback-send').disabled = true;
@@ -476,10 +478,12 @@
 
   document.getElementById('feedback-send').addEventListener('click', async () => {
     const p = currentProduct;
-    const name = document.getElementById('feedback-name').value.trim() || 'Аноним';
+    const nameInput = document.getElementById('feedback-name').value.trim();
+    const name = nameInput || 'Аноним';
     const msg  = document.getElementById('feedback-msg').value.trim();
     const statusEl = document.getElementById('feedback-status');
     if (!msg) { statusEl.textContent = 'Заполните сообщение.'; return; }
+    if (nameInput) { try { localStorage.setItem(FEEDBACK_NAME_KEY, nameInput); } catch {} }
     document.getElementById('feedback-send').disabled = true;
     try {
       const links = [];
