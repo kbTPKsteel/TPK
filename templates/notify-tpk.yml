@@ -2,7 +2,7 @@ name: Notify TPK Catalog
 
 on:
   release:
-    types: [published]
+    types: [published, edited]
 
 jobs:
   notify:
