@@ -310,6 +310,7 @@
 
   /* ── render ── */
   function render() {
+    saveState();
     const out = filtered();
     const container = document.getElementById('catalog-output');
     if (!out.length) {
@@ -417,6 +418,49 @@
     imgTooltip.classList.remove('visible');
   });
 
+  /* ── Persist view + filters across reloads ── */
+  const STATE_KEY = 'tpkCatalogState';
+
+  function saveState() {
+    try {
+      localStorage.setItem(STATE_KEY, JSON.stringify({ viewMode, activeType, activeTekla, activeAuthor, searchQuery }));
+    } catch {}
+  }
+
+  function loadSavedState() {
+    try {
+      return JSON.parse(localStorage.getItem(STATE_KEY)) || {};
+    } catch { return {}; }
+  }
+
+  function restoreState() {
+    const saved = loadSavedState();
+    const teklaSel  = document.getElementById('tekla-filter');
+    const authorSel = document.getElementById('author-filter');
+
+    if (saved.viewMode === 'grid' || saved.viewMode === 'list') {
+      viewMode = saved.viewMode;
+      document.getElementById('btn-grid').classList.toggle('active', viewMode === 'grid');
+      document.getElementById('btn-table').classList.toggle('active', viewMode === 'list');
+    }
+    if (saved.activeType) {
+      activeType = saved.activeType;
+      document.getElementById('type-filter').value = activeType;
+    }
+    if (saved.activeTekla && [...teklaSel.options].some(o => o.value === saved.activeTekla)) {
+      activeTekla = saved.activeTekla;
+      teklaSel.value = activeTekla;
+    }
+    if (saved.activeAuthor && [...authorSel.options].some(o => o.value === saved.activeAuthor)) {
+      activeAuthor = saved.activeAuthor;
+      authorSel.value = activeAuthor;
+    }
+    if (typeof saved.searchQuery === 'string') {
+      searchQuery = saved.searchQuery;
+      document.getElementById('search').value = searchQuery;
+    }
+  }
+
   /* ── Filter listeners ── */
   document.getElementById('type-filter').addEventListener('change', e => { activeType = e.target.value; render(); });
   document.getElementById('tekla-filter').addEventListener('change', e => { activeTekla = e.target.value; render(); });
@@ -458,6 +502,7 @@
       return;
     }
     buildDynamicFilters();
+    restoreState();
     render();
   }
 
