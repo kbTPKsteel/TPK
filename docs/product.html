@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title id="page-title">TPK-warehouse</title>
+  <title id="page-title">TPK Warehouse</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -211,7 +211,7 @@
 
 <header>
   <a href="index.html" style="display:flex;align-items:center">
-    <img class="header-logo" src="tpk-logo.png" alt="TPK-warehouse">
+    <img class="header-logo" src="tpk-logo.png" alt="TPK Warehouse">
   </a>
   <a class="back-link" href="index.html">← Назад к каталогу</a>
 </header>
@@ -531,7 +531,7 @@
         return;
       }
       currentProduct = p;
-      document.getElementById('page-title').textContent = `${p.name} — TPK-warehouse`;
+      document.getElementById('page-title').textContent = `${p.name} — TPK Warehouse`;
       const teklaVersions = getProductTeklaVersions(p);
       selTekla   = teklaVersions.length ? teklaVersions[teklaVersions.length - 1] : null;
       selVersion = p.versions?.[0] || null;
