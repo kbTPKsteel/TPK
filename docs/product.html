@@ -344,7 +344,7 @@
       <div class="ver-section">
         <span class="ver-label">Версия продукта</span>
         <select class="version-select" id="ver-select">
-          ${versions.map(v => `<option value="${v.version}" ${v.version === selVersion.version ? 'selected' : ''} title="${v.releaseDate}">${v.version} (${v.releaseDate})</option>`).join('')}
+          ${versions.map(v => `<option value="${v.version}" ${v.version === selVersion.version ? 'selected' : ''} title="${v.releaseDate}">${v.version}</option>`).join('')}
         </select>
       </div>`;
 
