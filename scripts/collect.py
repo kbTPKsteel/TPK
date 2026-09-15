@@ -136,6 +136,7 @@ def process_repo(repo_full_name, token, central_token, products, display_name=No
     # Релизы
     product_type = meta.get("type", "app")
     releases = api_get(f"https://api.github.com/repos/{repo_full_name}/releases", token)
+    releases = [r for r in releases if not r.get("draft")]
     releases.sort(key=lambda r: r["published_at"], reverse=True)
     versions = []
 
