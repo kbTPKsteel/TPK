@@ -149,6 +149,7 @@
     }
     .list-tile:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.12); }
 
+    .list-tile-img-wrap { display: inline-flex; flex-shrink: 0; cursor: default; }
     .list-tile-img { width: 60px; height: 60px; object-fit: cover; border-radius: 8px; display: block; flex-shrink: 0; }
     .list-tile-img-placeholder {
       width: 60px; height: 60px; border-radius: 8px; flex-shrink: 0;
@@ -167,6 +168,15 @@
       color: #475569; line-height: 1.4; font-size: 0.82rem;
       display: -webkit-box; -webkit-line-clamp: 2; line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
     }
+
+    /* ── Image preview tooltip (fixed, never clipped) ── */
+    #img-tooltip {
+      display: none; position: fixed; z-index: 1000; pointer-events: none;
+      width: 400px; height: 400px; object-fit: cover;
+      border-radius: 10px; box-shadow: 0 6px 24px rgba(0,0,0,0.35);
+      border: 3px solid white;
+    }
+    #img-tooltip.visible { display: block; }
 
     /* ── Empty ── */
     .empty { text-align: center; padding: 60px 20px; color: #94a3b8; grid-column: 1 / -1; }
@@ -231,6 +241,9 @@
     <div class="grid"><div class="empty">Загрузка...</div></div>
   </div>
 </main>
+
+<!-- fixed-position image preview, never clipped by tile overflow -->
+<img id="img-tooltip" src="" alt="">
 
 <script>
   const DL_SVG = `<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v13"/><polyline points="5 14 12 21 19 14"/><line x1="3" y1="21" x2="21" y2="21"/></svg>`;
@@ -336,10 +349,13 @@
   }
 
   function tileHTML(p) {
-    const img = p.image
-      ? `<img class="list-tile-img" src="${p.image}" alt="${p.name}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">`
-      : '';
-    const placeholder = `<div class="list-tile-img-placeholder" ${p.image ? 'style="display:none"' : ''}>&#128230;</div>`;
+    const imgInner = p.image
+      ? `<div class="list-tile-img-wrap" data-preview="${p.image}">
+           <img class="list-tile-img" src="${p.image}" alt="${p.name}"
+             onerror="this.parentElement.removeAttribute('data-preview');this.style.display='none';this.nextElementSibling.style.display='flex'">
+           <div class="list-tile-img-placeholder" style="display:none">&#128230;</div>
+         </div>`
+      : `<div class="list-tile-img-wrap"><div class="list-tile-img-placeholder">&#128230;</div></div>`;
 
     const teklaVersions = getProductTeklaVersions(p);
     const latestVer = p.versions?.[0];
@@ -358,7 +374,7 @@
       : '';
 
     return `<div class="list-tile" data-id="${p.id}">
-      ${img}${placeholder}
+      ${imgInner}
       <div class="list-tile-body">
         <div class="list-tile-top">
           <div class="list-tile-name">${p.name}</div>
@@ -373,6 +389,32 @@
     const tile = e.target.closest('.list-tile');
     if (!tile || e.target.closest('.download-btn')) return;
     window.location.href = `product.html?id=${encodeURIComponent(tile.dataset.id)}`;
+  });
+
+  /* ── Image preview tooltip ── */
+  const imgTooltip = document.getElementById('img-tooltip');
+
+  document.getElementById('catalog-output').addEventListener('mouseover', e => {
+    const wrap = e.target.closest('.list-tile-img-wrap[data-preview]');
+    if (!wrap) return;
+    imgTooltip.src = wrap.dataset.preview;
+    imgTooltip.classList.add('visible');
+  });
+
+  document.getElementById('catalog-output').addEventListener('mousemove', e => {
+    if (!imgTooltip.classList.contains('visible')) return;
+    const x = e.clientX + 16;
+    const y = e.clientY - 100;
+    imgTooltip.style.left = Math.min(x, window.innerWidth  - 420) + 'px';
+    imgTooltip.style.top  = Math.max(Math.min(y, window.innerHeight - 420), 8) + 'px';
+  });
+
+  document.getElementById('catalog-output').addEventListener('mouseout', e => {
+    const wrap = e.target.closest('.list-tile-img-wrap[data-preview]');
+    if (!wrap) return;
+    // Don't hide when moving between children of the same wrap
+    if (wrap.contains(e.relatedTarget)) return;
+    imgTooltip.classList.remove('visible');
   });
 
   /* ── Filter listeners ── */
