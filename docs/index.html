@@ -93,7 +93,6 @@
 
     /* ── Main ── */
     main { padding: 24px; max-width: 1300px; margin: 0 auto; }
-    main.wide { max-width: none; margin: 0; }
     .meta-bar { text-align: right; font-size: 0.78rem; color: #94a3b8; margin-bottom: 16px; }
 
     /* ── Card grid ── */
@@ -120,16 +119,6 @@
     .card-body { padding: 16px; }
     .card-name { font-size: 1.05rem; font-weight: 600; line-height: 1.3; }
 
-    /* ── Badges ── */
-    .type-badge {
-      font-size: 0.72rem; font-weight: 600; padding: 3px 10px;
-      border-radius: 12px; white-space: nowrap; flex-shrink: 0;
-    }
-    .type-app    { background: #dbeafe; color: #1d4ed8; }
-    .type-plugin { background: #ede9fe; color: #6d28d9; }
-    .type-macro  { background: #dcfce7; color: #15803d; }
-    .type-other  { background: #fef3c7; color: #b45309; }
-
     /* ── Download button ── */
     .download-btn {
       width: 50px; height: 28px; padding: 0;
@@ -142,139 +131,45 @@
     .download-btn:hover { background: #2d6a9f; }
     .download-btn svg { pointer-events: none; }
 
-    /* ── Feedback modal form ── */
-    .form-group  { display: flex; flex-direction: column; gap: 4px; margin-bottom: 14px; }
-    .form-label  { font-size: 0.85rem; font-weight: 600; color: #334155; }
-    .form-input  {
-      padding: 8px 12px; border: 1.5px solid #cbd5e1; border-radius: 8px;
-      font-size: 0.9rem; color: #1a2332; outline: none; font-family: inherit; background: white;
+    /* ── List (tile) view ── */
+    .list-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
     }
-    .form-input:focus { border-color: #1e3a5f; }
-    .form-textarea  { resize: vertical; min-height: 100px; }
-    .feedback-send-btn {
-      flex: 1; padding: 8px 20px; background: #1e3a5f; color: white;
-      border: 1.5px solid #1e3a5f; border-radius: 8px; cursor: pointer; font-size: 0.9rem; font-family: inherit;
-    }
-    .feedback-send-btn:hover { background: #2d6a9f; border-color: #2d6a9f; }
-    .feedback-send-btn:disabled { background: #94a3b8; border-color: #94a3b8; cursor: not-allowed; }
-    .feedback-cancel-btn {
-      flex: 1; padding: 8px 20px; background: white; color: #1e3a5f;
-      border: 1.5px solid #1e3a5f; border-radius: 8px; cursor: pointer; font-size: 0.9rem; font-family: inherit;
-    }
-    .feedback-cancel-btn:hover { background: #f0f4f8; }
-    .feedback-status { font-size: 0.85rem; min-height: 1.2em; color: #475569; }
-    .feedback-files-hint { font-size: 0.78rem; color: #94a3b8; margin-top: 4px; }
-    .feedback-files-list { display: flex; flex-direction: column; gap: 4px; margin-top: 6px; }
-    .feedback-file-row {
-      display: flex; align-items: center; gap: 6px; font-size: 0.82rem; color: #334155;
-      background: #f8fafc; border-radius: 6px; padding: 4px 8px;
-    }
-    .feedback-file-row .feedback-file-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-    .feedback-file-row .feedback-file-size { color: #94a3b8; flex-shrink: 0; }
-    .feedback-file-row button {
-      margin-left: auto; background: none; border: none; color: #94a3b8;
-      cursor: pointer; font-size: 1rem; line-height: 1; padding: 0 2px; flex-shrink: 0;
-    }
-    .feedback-file-row button:hover { color: #dc2626; }
+    @media (min-width: 700px)  { .list-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 1100px) { .list-grid { grid-template-columns: repeat(3, 1fr); } }
 
-    /* ── Table view ── */
-    .catalog-table-wrap {
-      overflow-x: auto; background: white; border-radius: 12px;
+    .list-tile {
+      display: flex; gap: 12px; align-items: flex-start;
+      background: white; border-radius: 10px; padding: 10px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+      cursor: pointer;
+      transition: transform 0.15s, box-shadow 0.15s;
     }
-    /* no min-width — description column fills remaining space */
-    .catalog-table { width: 100%; border-collapse: collapse; }
-    .catalog-table thead th {
-      padding: 12px 14px; text-align: left; font-size: 0.78rem; font-weight: 700;
-      text-transform: uppercase; letter-spacing: 0.5px; color: #64748b;
-      background: #f8fafc; border-bottom: 2px solid #e2e8f0; white-space: nowrap;
-    }
-    .catalog-table tbody tr { border-bottom: 1px solid #f1f5f9; transition: background 0.1s; }
-    .catalog-table tbody tr:last-child { border-bottom: none; }
-    .catalog-table tbody tr:hover { background: #f8fafc; }
-    .catalog-table td { padding: 12px 14px; vertical-align: middle; font-size: 0.88rem; }
+    .list-tile:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.12); }
 
-    /* Shrink columns to content width */
-    .col-shrink { width: 1%; white-space: nowrap; }
-    .col-dl     { width: 1%; white-space: nowrap; }
-
-    /* Image cell */
-    .img-wrap { display: inline-flex; cursor: default; }
-    .table-img { width: 60px; height: 60px; object-fit: cover; border-radius: 8px; display: block; }
-    .table-img-placeholder {
-      width: 60px; height: 60px; border-radius: 8px;
+    .list-tile-img { width: 60px; height: 60px; object-fit: cover; border-radius: 8px; display: block; flex-shrink: 0; }
+    .list-tile-img-placeholder {
+      width: 60px; height: 60px; border-radius: 8px; flex-shrink: 0;
       background: linear-gradient(135deg, #1e3a5f, #2d6a9f);
       display: flex; align-items: center; justify-content: center;
       font-size: 1.5rem; color: rgba(255,255,255,0.4);
     }
 
-    .table-name { font-weight: 600; color: #1a2332; }
-    /* description: flexible, but never narrower than 200px */
-    .table-desc { color: #475569; line-height: 1.4; min-width: 200px; }
-    .table-source { white-space: nowrap; }
-    .table-source a { color: #2563eb; text-decoration: none; font-size: 0.82rem; }
-    .table-source a:hover { text-decoration: underline; }
-
-    .tekla-select {
-      padding: 4px 8px; border: 1.5px solid #bbf7d0; border-radius: 8px;
-      font-size: 0.82rem; color: #15803d; background: white; cursor: pointer; outline: none;
+    .list-tile-body { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 4px; }
+    .list-tile-top { display: flex; align-items: center; gap: 8px; }
+    .list-tile-name {
+      flex: 1; min-width: 0; font-weight: 600; color: #1a2332; font-size: 0.95rem;
+      overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
     }
-    .tekla-select:focus { border-color: #0f6e3d; }
-
-    .version-select {
-      padding: 4px 8px; border: 1.5px solid #cbd5e1; border-radius: 8px;
-      font-size: 0.82rem; font-family: monospace; color: #334155;
-      background: white; cursor: pointer; outline: none;
-    }
-    .version-select:focus { border-color: #1e3a5f; }
-
-    .instr-btn-sm {
-      padding: 4px 10px; background: #f1f5f9; border: 1px solid #e2e8f0;
-      border-radius: 6px; color: #475569; font-size: 0.78rem; cursor: pointer; white-space: nowrap;
-    }
-    .instr-btn-sm:hover { background: #e2e8f0; }
-
-    .table-stack { display: flex; flex-direction: column; align-items: flex-start; gap: 4px; }
-    .table-stack-fill { align-items: stretch; }
-    .table-stack-fill select,
-    .table-stack-fill .download-btn,
-    .table-stack-fill .instr-btn-sm {
-      width: 100%; box-sizing: border-box; text-align: center;
+    .list-tile-desc {
+      color: #475569; line-height: 1.4; font-size: 0.82rem;
+      display: -webkit-box; -webkit-line-clamp: 2; line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
     }
 
-    /* ── Image preview tooltip (fixed, never clipped) ── */
-    #img-tooltip {
-      display: none; position: fixed; z-index: 1000; pointer-events: none;
-      width: 400px; height: 400px; object-fit: cover;
-      border-radius: 10px; box-shadow: 0 6px 24px rgba(0,0,0,0.35);
-      border: 3px solid white;
-    }
-    #img-tooltip.visible { display: block; }
-
-    /* ── Empty / Modal ── */
+    /* ── Empty ── */
     .empty { text-align: center; padding: 60px 20px; color: #94a3b8; grid-column: 1 / -1; }
-
-    .modal-overlay {
-      display: none; position: fixed; inset: 0;
-      background: rgba(0,0,0,0.5); z-index: 200;
-      align-items: center; justify-content: center; padding: 24px;
-    }
-    .modal-overlay.open { display: flex; }
-    .modal {
-      background: white; border-radius: 12px; max-width: 600px; width: 100%;
-      max-height: 80vh; overflow-y: auto; padding: 24px;
-    }
-    .modal-title { font-size: 1.1rem; font-weight: 600; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid #e2e8f0; }
-    .modal-content h1, .modal-content h2 { font-size: 1rem; margin: 16px 0 8px; color: #1e3a5f; }
-    .modal-content h3 { font-size: 0.9rem; margin: 12px 0 6px; }
-    .modal-content p  { font-size: 0.9rem; line-height: 1.7; color: #334155; margin-bottom: 8px; }
-    .modal-content ol, .modal-content ul { padding-left: 20px; font-size: 0.9rem; line-height: 1.8; color: #334155; margin-bottom: 8px; }
-    .modal-content code { background: #f1f5f9; padding: 2px 6px; border-radius: 4px; font-size: 0.85em; }
-    .modal-close {
-      display: block; margin-top: 20px; padding: 8px 20px;
-      background: #1e3a5f; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 0.9rem;
-    }
-    .modal-close:hover { background: #2d6a9f; }
 
     @media (max-width: 600px) {
       header { flex-wrap: wrap; }
@@ -320,7 +215,7 @@
         <rect x="9" y="9" width="7" height="7" rx="1.5"/>
       </svg>
     </button>
-    <button class="view-btn" id="btn-table" title="Таблица">
+    <button class="view-btn" id="btn-table" title="Список">
       <svg viewBox="0 0 16 16" fill="currentColor">
         <rect x="0" y="1"  width="16" height="2.5" rx="1"/>
         <rect x="0" y="6"  width="16" height="2.5" rx="1"/>
@@ -337,46 +232,7 @@
   </div>
 </main>
 
-<!-- fixed-position image preview, never clipped by table overflow -->
-<img id="img-tooltip" src="" alt="">
-
-<div class="modal-overlay" id="modal-overlay">
-  <div class="modal">
-    <div class="modal-title" id="modal-title"></div>
-    <div class="modal-content" id="modal-content"></div>
-    <button class="modal-close" id="modal-close">Закрыть</button>
-  </div>
-</div>
-
-<div class="modal-overlay" id="feedback-overlay">
-  <div class="modal">
-    <div class="modal-title" id="feedback-title">Написать автору</div>
-    <div class="form-group">
-      <label class="form-label">Ваше имя</label>
-      <input type="text" id="feedback-name" class="form-input" placeholder="Иван Иванов">
-    </div>
-    <div class="form-group">
-      <label class="form-label">Сообщение</label>
-      <textarea id="feedback-msg" class="form-input form-textarea" placeholder="Опишите проблему или идею..."></textarea>
-    </div>
-    <div class="form-group">
-      <label class="form-label">Файлы (скриншоты, логи, PDF)</label>
-      <input type="file" id="feedback-files" accept="image/*,.txt,.log,.pdf" multiple>
-      <div class="feedback-files-list" id="feedback-files-list"></div>
-      <div class="feedback-files-hint">До 5 файлов, не более 5 МБ каждый</div>
-    </div>
-    <div class="feedback-status" id="feedback-status"></div>
-    <div style="display:flex;gap:8px;margin-top:12px">
-      <button class="feedback-cancel-btn" id="feedback-close">Отмена</button>
-      <button id="feedback-send" class="feedback-send-btn">Отправить</button>
-    </div>
-  </div>
-</div>
-
-<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 <script>
-  const TYPE_LABELS  = { app: 'Приложение', plugin: 'Плагин', macro: 'Макрос', other: 'Прочие инструменты' };
-  const TYPE_CLASSES = { app: 'type-app', plugin: 'type-plugin', macro: 'type-macro', other: 'type-other' };
   const DL_SVG = `<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v13"/><polyline points="5 14 12 21 19 14"/><line x1="3" y1="21" x2="21" y2="21"/></svg>`;
 
   let allProducts = [];
@@ -442,13 +298,12 @@
   /* ── render ── */
   function render() {
     const out = filtered();
-    document.querySelector('main').classList.toggle('wide', viewMode === 'table');
     const container = document.getElementById('catalog-output');
     if (!out.length) {
       container.innerHTML = '<div class="grid"><div class="empty">Ничего не найдено</div></div>';
       return;
     }
-    container.innerHTML = viewMode === 'grid' ? renderGrid(out) : renderTable(out);
+    container.innerHTML = viewMode === 'grid' ? renderGrid(out) : renderList(out);
   }
 
   /* ── GRID ── */
@@ -470,87 +325,9 @@
     </a>`;
   }
 
-  /* ── TABLE ── */
-  function renderTable(products) {
-    const rows = products.map(p => {
-      const teklaVersions = getProductTeklaVersions(p);
-      const hasTekla = teklaVersions.length > 0;
-      const latestVer = p.versions?.[0];
-
-      // Image with hover-preview wrapper
-      const imgInner = p.image
-        ? `<div class="img-wrap" data-preview="${p.image}">
-             <img class="table-img" src="${p.image}" alt="${p.name}"
-               onerror="this.parentElement.removeAttribute('data-preview');this.style.display='none';this.nextElementSibling.style.display='flex'">
-             <div class="table-img-placeholder" style="display:none">&#128230;</div>
-           </div>`
-        : `<div class="table-img-placeholder">&#128230;</div>`;
-
-      let teklaCell = '—';
-      let dlCell    = '—';
-      if (hasTekla) {
-        const opts = teklaVersions.map(tv => {
-          const sel = tv === (activeTekla !== 'all' ? activeTekla : teklaVersions[teklaVersions.length - 1]) ? 'selected' : '';
-          return `<option value="${tv}" ${sel}>${tv}</option>`;
-        }).join('');
-        teklaCell = `<select class="tekla-select table-tekla-sel" data-pid="${p.id}">${opts}</select>`;
-
-        const selTekla = activeTekla !== 'all' && teklaVersions.includes(activeTekla)
-          ? activeTekla : teklaVersions[teklaVersions.length - 1];
-        const asset = latestVer ? bestAssetForTekla(latestVer, selTekla) : null;
-        dlCell = asset
-          ? `<a class="download-btn table-dl" data-pid="${p.id}" href="${asset.downloadUrl}" title="${asset.name}">${DL_SVG}</a>`
-          : '—';
-      } else if (latestVer) {
-        const asset = (latestVer.assets || [])[0];
-        dlCell = asset
-          ? `<a class="download-btn table-dl" data-pid="${p.id}" href="${asset.downloadUrl}" title="${asset.name}">${DL_SVG}</a>`
-          : '—';
-      }
-
-      // Version dropdown — latest selected by default
-      const latestVerStr = (p.versions?.length)
-        ? `<select class="version-select table-ver-sel" data-pid="${p.id}">
-             ${p.versions.map(v => `<option value="${v.version}" title="${v.releaseDate}">${v.version}</option>`).join('')}
-           </select>`
-        : '—';
-      const versionCell = p.versions?.length
-        ? `<div class="table-stack table-stack-fill">${latestVerStr}<button class="instr-btn-sm" onclick="showChangelog('${p.id}')">📋 История</button></div>`
-        : latestVerStr;
-
-      const dlCellFull = p.instructions
-        ? `<div class="table-stack table-stack-fill">${dlCell}<button class="instr-btn-sm" onclick="showInstructions('${p.id}')">📄 Инструкция</button></div>`
-        : dlCell;
-
-      const authorCell = p.slackUserId
-        ? `<div class="table-stack"><a href="${p.sourceAccount}" target="_blank">${authorLabel(p)}</a><button class="instr-btn-sm" onclick="showFeedback('${p.id}')">💬 Написать</button></div>`
-        : `<a href="${p.sourceAccount}" target="_blank">${authorLabel(p)}</a>`;
-
-      return `<tr data-pid="${p.id}">
-        <td class="col-shrink">${imgInner}</td>
-        <td class="table-name"><div class="table-stack">${p.name}<span class="type-badge ${TYPE_CLASSES[p.type] || 'type-app'}">${TYPE_LABELS[p.type] || p.type}</span></div></td>
-        <td class="table-source">${authorCell}</td>
-        <td class="table-desc">${p.description || ''}</td>
-        <td class="col-shrink">${teklaCell}</td>
-        <td class="col-shrink">${versionCell}</td>
-        <td class="col-dl">${dlCellFull}</td>
-      </tr>`;
-    }).join('');
-
-    return `<div class="catalog-table-wrap">
-      <table class="catalog-table">
-        <thead><tr>
-          <th class="col-shrink"></th>
-          <th>Название</th>
-          <th>Автор</th>
-          <th>Описание</th>
-          <th class="col-shrink">Tekla</th>
-          <th class="col-shrink">Версия</th>
-          <th class="col-dl">Скачать</th>
-        </tr></thead>
-        <tbody>${rows}</tbody>
-      </table>
-    </div>`;
+  /* ── LIST (compact tiles) ── */
+  function renderList(products) {
+    return `<div class="list-grid">${products.map(tileHTML).join('')}</div>`;
   }
 
   function bestAssetForTekla(version, tekla) {
@@ -558,216 +335,44 @@
       || (version.assets || [])[0] || null;
   }
 
-  /* ── Image preview tooltip ── */
-  const imgTooltip = document.getElementById('img-tooltip');
+  function tileHTML(p) {
+    const img = p.image
+      ? `<img class="list-tile-img" src="${p.image}" alt="${p.name}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">`
+      : '';
+    const placeholder = `<div class="list-tile-img-placeholder" ${p.image ? 'style="display:none"' : ''}>&#128230;</div>`;
 
-  document.getElementById('catalog-output').addEventListener('mouseover', e => {
-    const wrap = e.target.closest('.img-wrap[data-preview]');
-    if (!wrap) return;
-    imgTooltip.src = wrap.dataset.preview;
-    imgTooltip.classList.add('visible');
-  });
-
-  document.getElementById('catalog-output').addEventListener('mousemove', e => {
-    if (!imgTooltip.classList.contains('visible')) return;
-    const x = e.clientX + 16;
-    const y = e.clientY - 100;
-    imgTooltip.style.left = Math.min(x, window.innerWidth  - 420) + 'px';
-    imgTooltip.style.top  = Math.max(Math.min(y, window.innerHeight - 420), 8) + 'px';
-  });
-
-  document.getElementById('catalog-output').addEventListener('mouseout', e => {
-    const wrap = e.target.closest('.img-wrap[data-preview]');
-    if (!wrap) return;
-    // Don't hide when moving between children of the same wrap
-    if (wrap.contains(e.relatedTarget)) return;
-    imgTooltip.classList.remove('visible');
-  });
-
-  /* ── Version / Tekla dropdowns in table ── */
-  function updateTableDownload(pid) {
-    const p = allProducts.find(x => x.id === pid);
-    if (!p) return;
-    const verSel   = document.querySelector(`.table-ver-sel[data-pid="${pid}"]`);
-    const teklaSel = document.querySelector(`.table-tekla-sel[data-pid="${pid}"]`);
-    const ver   = verSel ? p.versions?.find(v => v.version === verSel.value) : p.versions?.[0];
-    const tekla = teklaSel?.value ?? null;
-    const asset = ver
-      ? (tekla ? bestAssetForTekla(ver, tekla) : (ver.assets || [])[0] || null)
-      : null;
-    const dlBtn = document.querySelector(`.table-dl[data-pid="${pid}"]`);
-    if (dlBtn) {
-      if (asset) { dlBtn.href = asset.downloadUrl; dlBtn.title = asset.name; }
-      else        { dlBtn.removeAttribute('href');  dlBtn.title = ''; }
-    }
-  }
-
-  document.getElementById('catalog-output').addEventListener('change', e => {
-    const tableSel = e.target.closest('.table-ver-sel, .table-tekla-sel');
-    if (tableSel) updateTableDownload(tableSel.dataset.pid);
-  });
-
-  /* ── Modal ── */
-  function showInstructions(id) {
-    const p = allProducts.find(x => x.id === id);
-    if (!p) return;
-    document.getElementById('modal-title').textContent = p.name + ' — Инструкция';
-    document.getElementById('modal-content').innerHTML = marked.parse(p.instructions || '');
-    document.getElementById('modal-overlay').classList.add('open');
-  }
-
-  function showChangelog(id) {
-    const p = allProducts.find(x => x.id === id);
-    if (!p) return;
-    const verSel = document.querySelector(`.table-ver-sel[data-pid="${id}"]`);
-    const ver = verSel ? p.versions?.find(v => v.version === verSel.value) : p.versions?.[0];
-    document.getElementById('modal-title').textContent = `${p.name} ${ver?.version || ''} — История изменений`;
-    document.getElementById('modal-content').innerHTML = ver?.notes
-      ? marked.parse(ver.notes)
-      : '<p style="color:#94a3b8">Нет описания изменений для этой версии</p>';
-    document.getElementById('modal-overlay').classList.add('open');
-  }
-  document.getElementById('modal-close').addEventListener('click', () =>
-    document.getElementById('modal-overlay').classList.remove('open'));
-  document.getElementById('modal-overlay').addEventListener('click', e => {
-    if (e.target === e.currentTarget) e.currentTarget.classList.remove('open');
-  });
-
-  /* ── Slack feedback (via GitHub Actions dispatch to avoid CORS) ── */
-  const GH_DISPATCH_TOKEN = 'FtoXc2XUtleYzD7ZWsO4ICndlWhkHq73erYc_phg'.split('').reverse().join('');
-  const GH_REPO           = 'kbTPKsteel/TPK';
-  const GH_DISPATCH_URL   = `https://api.github.com/repos/${GH_REPO}/dispatches`;
-  const GH_CONTENTS_URL   = `https://api.github.com/repos/${GH_REPO}/contents/`;
-  const FEEDBACK_MAX_FILES = 5;
-  const FEEDBACK_MAX_SIZE  = 5 * 1024 * 1024;
-  let feedbackPid = null;
-  let feedbackFiles = [];
-
-  function formatFileSize(bytes) {
-    return bytes < 1024 * 1024 ? `${Math.round(bytes / 1024)} КБ` : `${(bytes / (1024 * 1024)).toFixed(1)} МБ`;
-  }
-
-  function renderFeedbackFiles() {
-    const list = document.getElementById('feedback-files-list');
-    list.innerHTML = feedbackFiles.map((f, i) => `
-      <div class="feedback-file-row">
-        <span class="feedback-file-name">${f.name}</span>
-        <span class="feedback-file-size">${formatFileSize(f.size)}</span>
-        <button type="button" data-idx="${i}" title="Убрать">✕</button>
-      </div>
-    `).join('');
-    list.querySelectorAll('button').forEach(btn => btn.addEventListener('click', () => {
-      feedbackFiles.splice(Number(btn.dataset.idx), 1);
-      renderFeedbackFiles();
-    }));
-  }
-
-  document.getElementById('feedback-files').addEventListener('change', e => {
-    const statusEl = document.getElementById('feedback-status');
-    for (const file of e.target.files) {
-      if (feedbackFiles.length >= FEEDBACK_MAX_FILES) {
-        statusEl.textContent = `Можно приложить не больше ${FEEDBACK_MAX_FILES} файлов.`;
-        break;
-      }
-      if (file.size > FEEDBACK_MAX_SIZE) {
-        statusEl.textContent = `Файл «${file.name}» больше 5 МБ — пропущен.`;
-        continue;
-      }
-      feedbackFiles.push(file);
-    }
-    e.target.value = '';
-    renderFeedbackFiles();
-  });
-
-  function fileToBase64(file) {
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.onload = () => resolve(reader.result.split(',')[1]);
-      reader.onerror = reject;
-      reader.readAsDataURL(file);
-    });
-  }
-
-  async function uploadFeedbackFile(file, idx) {
-    const safeName = file.name.replace(/[^a-zA-Z0-9._-]/g, '_');
-    const path = `feedback-uploads/${Date.now()}-${idx}-${safeName}`;
-    const content = await fileToBase64(file);
-    const resp = await fetch(GH_CONTENTS_URL + path, {
-      method: 'PUT',
-      headers: {
-        'Authorization': `Bearer ${GH_DISPATCH_TOKEN}`,
-        'Accept': 'application/vnd.github+json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ message: `Feedback attachment: ${file.name}`, content })
-    });
-    const json = await resp.json();
-    if (!resp.ok) throw new Error(json.message || `Ошибка загрузки файла ${file.name}`);
-    return file.type.startsWith('image/') ? json.content.download_url : json.content.html_url;
-  }
-
-  function showFeedback(pid) {
-    const p = allProducts.find(x => x.id === pid);
-    if (!p) return;
-    feedbackPid = pid;
-    document.getElementById('feedback-title').textContent = `${p.name} — Написать автору`;
-    document.getElementById('feedback-name').value = '';
-    document.getElementById('feedback-msg').value = '';
-    document.getElementById('feedback-status').textContent = '';
-    document.getElementById('feedback-send').disabled = true;
-    feedbackFiles = [];
-    renderFeedbackFiles();
-    document.getElementById('feedback-overlay').classList.add('open');
-  }
-
-  document.getElementById('feedback-close').addEventListener('click', () =>
-    document.getElementById('feedback-overlay').classList.remove('open'));
-  document.getElementById('feedback-overlay').addEventListener('click', e => {
-    if (e.target === e.currentTarget) e.currentTarget.classList.remove('open');
-  });
-  document.getElementById('feedback-msg').addEventListener('input', e =>
-    document.getElementById('feedback-send').disabled = !e.target.value.trim());
-
-  document.getElementById('feedback-send').addEventListener('click', async () => {
-    const p = allProducts.find(x => x.id === feedbackPid);
-    if (!p) return;
-    const name = document.getElementById('feedback-name').value.trim() || 'Аноним';
-    const msg  = document.getElementById('feedback-msg').value.trim();
-    const statusEl = document.getElementById('feedback-status');
-    if (!msg) { statusEl.textContent = 'Заполните сообщение.'; return; }
-    document.getElementById('feedback-send').disabled = true;
-    try {
-      const links = [];
-      for (let i = 0; i < feedbackFiles.length; i++) {
-        statusEl.textContent = `Загружаем файлы (${i + 1}/${feedbackFiles.length})...`;
-        links.push(await uploadFeedbackFile(feedbackFiles[i], i));
-      }
-      const mention = p.slackUserId ? `<@${p.slackUserId}> ` : '';
-      const attachments = links.length ? `\n\n📎 Файлы:\n${links.join('\n')}` : '';
-      const text = `${mention}📦 *${p.name}*\n👤 ${name}\n\n${msg}${attachments}`;
-      statusEl.textContent = 'Отправляем...';
-      const resp = await fetch(GH_DISPATCH_URL, {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${GH_DISPATCH_TOKEN}`,
-          'Accept': 'application/vnd.github+json',
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ event_type: 'slack-feedback', client_payload: { text } })
-      });
-      if (resp.status === 204) {
-        statusEl.textContent = '✅ Сообщение отправлено!';
-        setTimeout(() => document.getElementById('feedback-overlay').classList.remove('open'), 1500);
+    const teklaVersions = getProductTeklaVersions(p);
+    const latestVer = p.versions?.[0];
+    let asset = null;
+    if (latestVer) {
+      if (teklaVersions.length) {
+        const selTekla = activeTekla !== 'all' && teklaVersions.includes(activeTekla)
+          ? activeTekla : teklaVersions[teklaVersions.length - 1];
+        asset = bestAssetForTekla(latestVer, selTekla);
       } else {
-        const json = await resp.json();
-        statusEl.textContent = 'Ошибка: ' + (json.message || resp.status);
-        document.getElementById('feedback-send').disabled = false;
+        asset = (latestVer.assets || [])[0] || null;
       }
-    } catch (err) {
-      console.error('Slack feedback error:', err);
-      statusEl.textContent = 'Ошибка: ' + (err.message || err);
-      document.getElementById('feedback-send').disabled = false;
     }
+    const dlBtn = asset
+      ? `<a class="download-btn" href="${asset.downloadUrl}" title="${asset.name}">${DL_SVG}</a>`
+      : '';
+
+    return `<div class="list-tile" data-id="${p.id}">
+      ${img}${placeholder}
+      <div class="list-tile-body">
+        <div class="list-tile-top">
+          <div class="list-tile-name">${p.name}</div>
+          ${dlBtn}
+        </div>
+        <div class="list-tile-desc">${p.description || ''}</div>
+      </div>
+    </div>`;
+  }
+
+  document.getElementById('catalog-output').addEventListener('click', e => {
+    const tile = e.target.closest('.list-tile');
+    if (!tile || e.target.closest('.download-btn')) return;
+    window.location.href = `product.html?id=${encodeURIComponent(tile.dataset.id)}`;
   });
 
   /* ── Filter listeners ── */
@@ -784,7 +389,7 @@
     render();
   });
   document.getElementById('btn-table').addEventListener('click', () => {
-    viewMode = 'table';
+    viewMode = 'list';
     document.getElementById('btn-table').classList.add('active');
     document.getElementById('btn-grid').classList.remove('active');
     render();
