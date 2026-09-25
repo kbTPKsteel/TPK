@@ -11,3 +11,7 @@ contributors:
     token_secret: TOKEN_LEARNPARTNER
     display_name: Куликов Павел
     slack_id: U050248KTLH
+  - username: SomebodyDaDaDa-tpk
+    token_secret: TOKEN_SOMEBODYDADADA_TPK
+    display_name: Куликов Даниил
+    slack_id: U05BAV31Y6T

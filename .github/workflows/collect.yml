@@ -32,6 +32,7 @@ jobs:
           TOKEN_POLUHOVAMARIA_TECH: ${{ secrets.TOKEN_POLUHOVAMARIA_TECH }}
           TOKEN_WISNAKEX: ${{ secrets.TOKEN_WISNAKEX }}
           TOKEN_LEARNPARTNER: ${{ secrets.TOKEN_LEARNPARTNER }}
+          TOKEN_SOMEBODYDADADA_TPK: ${{ secrets.TOKEN_SOMEBODYDADADA_TPK }}
         run: python scripts/collect.py
 
       - name: Commit changes
