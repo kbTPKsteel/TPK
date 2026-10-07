@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-07T09:45:28Z",
+  "updatedAt": "2026-10-07T10:03:56Z",
   "products": [
     {
       "id": "poluhovamaria-tech-testMacro",
@@ -273,6 +273,34 @@
               "tekla_version": "2024",
               "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/WisnakeX-NumberDrw-2026.10.7.1/NumberDrw_Tekla2024.exe",
               "size": 148992
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WisnakeX-XlsxToTeklaRTF",
+      "name": "XlsxToTeklaRTF",
+      "type": "app",
+      "description": "Конвертирует таблицу из Excel в RTF-файлы для текстовых полей чертежей Tekla Structures 2020.\nПодбирает размер таблицы под выбранный формат листа (A3, A2, A1, A0) и при необходимости разбивает её на несколько листов с сквозной нумерацией.",
+      "sourceAccount": "https://github.com/WisnakeX",
+      "displayName": "Волков Андрей",
+      "slackUserId": "U04UW6YJZUP",
+      "sourceRepo": "https://github.com/WisnakeX/XlsxToTeklaRTF",
+      "image": "https://raw.githubusercontent.com/kbTPKsteel/TPK/main/docs/images/WisnakeX-XlsxToTeklaRTF.png",
+      "video": null,
+      "instructions": "## Установка\n1. Скачайте файл `XlsxToTeklaRTF_Tekla2020.exe` из раздела версий.\n2. Положите его в любую папку и запустите. Установка не нужна.\n\n**Важно:** перед запуском откройте Tekla Structures 2020 и модель. Без открытой модели программа не подключится к Tekla.\n\n## Использование\n### Шаг 1. Выберите файлы\nУкажите файл `.xlsx` с таблицей и папку, куда сохранить RTF-файлы.\n\n### Шаг 2. Настройте таблицу\n- Высота шрифта — размер текста в таблице на чертеже.\n- Число строк заголовка — сколько верхних строк повторять на каждом листе.\n\n### Шаг 3. Выберите форматы листа\nОтметьте нужные форматы (A3, A2, A1, A0) и для каждого выберите шаблон чертежа Tekla.\n\n### Шаг 4. Настройте нумерацию листов\nЗадайте UDA для номера листа и стартовый номер.\n\n### Шаг 5. Запустите\nНажмите **Выполнить**. В выбранной папке появятся RTF-файлы. Если таблица не влезла на один лист, программа создаст несколько файлов.\n\n*Совет:* для светлого оформления окна включите переключатель «Светлая тема».",
+      "versions": [
+        {
+          "version": "2026.10.7.1",
+          "releaseDate": "2026-10-07",
+          "notes": null,
+          "assets": [
+            {
+              "name": "XlsxToTeklaRTF_Tekla2020.exe",
+              "tekla_version": "2020",
+              "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/WisnakeX-XlsxToTeklaRTF-2026.10.7.1/XlsxToTeklaRTF_Tekla2020.exe",
+              "size": 2492928
             }
           ]
         }
