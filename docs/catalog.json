@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-07T09:19:20Z",
+  "updatedAt": "2026-10-07T09:45:28Z",
   "products": [
     {
       "id": "poluhovamaria-tech-testMacro",
@@ -233,6 +233,46 @@
               "tekla_version": null,
               "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/WisnakeX-ScreenshotEngeneers-2026.10.7.1/ScreenshotEngeneers.exe",
               "size": 51719221
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WisnakeX-NumberDrw",
+      "name": "NumberDrw — нумерация чертежей",
+      "type": "app",
+      "description": "Нумерует чертежи, выбранные в диспетчере документов Tekla Structures, и записывает номера в нужное поле каждого чертежа (атрибут или UDA). Поддерживает чертежи типов G, A и W, сквозную нумерацию и доп. листы сборок (7.1, 7.2, …).",
+      "sourceAccount": "https://github.com/WisnakeX",
+      "displayName": "Волков Андрей",
+      "slackUserId": "U04UW6YJZUP",
+      "sourceRepo": "https://github.com/WisnakeX/NumberDrw",
+      "image": "https://raw.githubusercontent.com/kbTPKsteel/TPK/main/docs/images/WisnakeX-NumberDrw.png",
+      "video": null,
+      "instructions": "## Установка\nСкачайте файл для вашей версии Tekla из раздела версий. Установка не нужна — это один `.exe`.\n\n**Важно:** версия Tekla в имени файла должна совпадать с версией запущенной Tekla Structures. Запускайте приложение только после запуска Tekla.\n\n## Использование\n### Шаг 1. Выберите чертежи\nВ Tekla откройте диспетчер документов и выделите чертежи, которые нужно пронумеровать.\n\n### Шаг 2. Запустите NumberDrw\nОкно покажет выбранные чертежи в таблице. Тип чертежа (G, A или W) определяется автоматически.\n\n### Шаг 3. Выберите поле для номера\nДля каждого типа чертежа выберите, куда записывать номер:\n- стандартные атрибуты — `Name`, `Title1`, `Title2`, `Title3`;\n- любое UDA из `objects*.inp` или с самих чертежей. Имя UDA можно вписать вручную.\n\n**Важно:** выбранное поле всегда перезаписывается.\n\n### Шаг 4. Расставьте порядок\nНажмите «Предв. нумерация» — номера присвоятся в порядке строк таблицы сверху вниз. Порядок можно менять: сортировка по заголовку столбца или перетаскивание строк за ячейку «Тип».\n\n### Шаг 5. Запишите номера\n- «Нумеровать чертежи» — надёжная запись, около 3 секунд на чертёж.\n- «Быстрая нумерация» — быстрее, но значение может не отобразиться в диспетчере до сохранения модели.\n\nПовторный клик по активной кнопке отменяет запись.\n\n## Правила нумерации\nОдин сквозной счётчик по всем выбранным чертежам в порядке таблицы:\n- чертёж типа G или W — очередное целое число: 7, 8, 9;\n- чертёж типа A без доп. листов — тоже очередное целое;\n- сборка из нескольких листов — главный лист `7.1`, доп. листы `7.2`, `7.3` и т.д.\n\nДоп. лист сборки определяется по дефису в метке: `Б.1` — главный, `Б.1-1`, `Б.1-2` — доп. листы.",
+      "versions": [
+        {
+          "version": "2026.10.7.1",
+          "releaseDate": "2026-10-07",
+          "notes": "Первый релиз в каталоге TPK. Сборки под Tekla 2020, 2021 и 2024.",
+          "assets": [
+            {
+              "name": "NumberDrw_Tekla2020.exe",
+              "tekla_version": "2020",
+              "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/WisnakeX-NumberDrw-2026.10.7.1/NumberDrw_Tekla2020.exe",
+              "size": 148992
+            },
+            {
+              "name": "NumberDrw_Tekla2021.exe",
+              "tekla_version": "2021",
+              "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/WisnakeX-NumberDrw-2026.10.7.1/NumberDrw_Tekla2021.exe",
+              "size": 148992
+            },
+            {
+              "name": "NumberDrw_Tekla2024.exe",
+              "tekla_version": "2024",
+              "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/WisnakeX-NumberDrw-2026.10.7.1/NumberDrw_Tekla2024.exe",
+              "size": 148992
             }
           ]
         }
