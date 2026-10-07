@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-07T04:41:54Z",
+  "updatedAt": "2026-10-07T08:42:07Z",
   "products": [
     {
       "id": "poluhovamaria-tech-testMacro",
@@ -165,6 +165,46 @@
               "tekla_version": "2024",
               "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/SomebodyDaDaDa-weld-album-2026.9.25.1/WeldAlbum_Tekla2024.zip",
               "size": 22177282
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WisnakeX-StiffenerBWLD",
+      "name": "StiffenerBWLD",
+      "type": "plugin",
+      "description": "Плагин Tekla Structures: ставит поперечные рёбра жёсткости в сварном двутавре.\nПользователь выбирает верхнюю полку, стенку и нижнюю полку, указывает точку — плагин создаёт ребро\nсправа, слева или с обеих сторон стенки, со скосами углов и швами. Работает с прямыми и радиальными двутаврами.",
+      "sourceAccount": "https://github.com/WisnakeX",
+      "displayName": "Волков Андрей",
+      "slackUserId": "U04UW6YJZUP",
+      "sourceRepo": "https://github.com/WisnakeX/StiffenerBWLD",
+      "image": "https://raw.githubusercontent.com/kbTPKsteel/TPK/main/docs/images/WisnakeX-StiffenerBWLD.png",
+      "video": null,
+      "instructions": "## Установка\n1. Скачать из раздела версий архив под свою версию Tekla (`StiffenerBWLD_Tekla2020.zip`, `_Tekla2021.zip` или `_Tekla2024.zip`).\n2. Закрыть Tekla.\n3. Положить `StiffenerBWLD.dll` в папку плагинов своей версии:\n   - Tekla 2020: `C:\\TeklaStructures\\2020.0\\nt\\bin\\plugins\\StiffenerBWLD\\`\n   - Tekla 2021: `C:\\TeklaStructures\\2021.0\\Environments\\common\\Extensions\\StiffenerBWLD\\`\n   - Tekla 2024: `C:\\TeklaStructures\\2024.0\\Environments\\common\\Extensions\\StiffenerBWLD\\`\n4. Положить `et_element_StiffenerBWLD.bmp` (картинка плагина в каталоге) в папку `Bitmaps` своей версии, например `C:\\TeklaStructures\\2020.0\\Bitmaps\\`. Этот шаг необязателен.\n5. Запустить Tekla. Плагин появится в каталоге «Приложения и компоненты».\n\nDLL собрана под одну версию Tekla и в другой не загрузится — берите архив своей версии.\n\n## Использование\n1. Открыть каталог «Приложения и компоненты» и выбрать `StiffenerBWLD`.\n2. Выбрать три элемента двутавра: верхнюю полку, стенку и нижнюю полку (в любом порядке, можно рамкой), затем нажать среднюю кнопку мыши.\n3. Указать точку на двутавре или рядом с ним. В этом месте плагин ставит ребро.\n\nВ диалоге плагина задаются: положение рёбер (справа, слева, оба), толщина, зазор до полок, отступ от кромки полки, скос углов, катеты и тип швов (заводской или монтажный).\n\nУ вертикального двутавра (и двутавра, лежащего на боку) полки выбирайте по очереди, начиная с верхней: от этого зависит, какая сторона считается «справа».\n\nРебро — обычный компонент модели: смена параметров в диалоге или правка двутавра пересоздаёт его, удаление компонента удаляет ребро.",
+      "versions": [
+        {
+          "version": "2026.10.7.1",
+          "releaseDate": "2026-10-07",
+          "notes": "Плагин поперечных рёбер жёсткости сварного двутавра. Архив под каждую версию Tekla: 2020, 2021, 2024.",
+          "assets": [
+            {
+              "name": "StiffenerBWLD_Tekla2020.zip",
+              "tekla_version": "2020",
+              "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/WisnakeX-StiffenerBWLD-2026.10.7.1/StiffenerBWLD_Tekla2020.zip",
+              "size": 35992
+            },
+            {
+              "name": "StiffenerBWLD_Tekla2021.zip",
+              "tekla_version": "2021",
+              "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/WisnakeX-StiffenerBWLD-2026.10.7.1/StiffenerBWLD_Tekla2021.zip",
+              "size": 36003
+            },
+            {
+              "name": "StiffenerBWLD_Tekla2024.zip",
+              "tekla_version": "2024",
+              "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/WisnakeX-StiffenerBWLD-2026.10.7.1/StiffenerBWLD_Tekla2024.zip",
+              "size": 36003
             }
           ]
         }
