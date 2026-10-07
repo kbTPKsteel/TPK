@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-07T10:03:56Z",
+  "updatedAt": "2026-10-07T11:07:54Z",
   "products": [
     {
       "id": "poluhovamaria-tech-testMacro",
@@ -301,6 +301,62 @@
               "tekla_version": "2020",
               "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/WisnakeX-XlsxToTeklaRTF-2026.10.7.1/XlsxToTeklaRTF_Tekla2020.exe",
               "size": 2492928
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WisnakeX-FIND_CURVE_PART",
+      "name": "FIND_CURVE_PART",
+      "type": "macro",
+      "description": "Оставляет в текущем выделении только гнутые детали: гнутые пластины (BentPlate)\nи полибалки PL с дугой или радиусом в контуре. Если выделены сборки, проверяет детали внутри.",
+      "sourceAccount": "https://github.com/WisnakeX",
+      "displayName": "Волков Андрей",
+      "slackUserId": "U04UW6YJZUP",
+      "sourceRepo": "https://github.com/WisnakeX/FIND_CURVE_PART",
+      "image": null,
+      "video": null,
+      "instructions": "## Установка\n1. Скачайте файл `FIND_CURVE_PART.cs` из раздела версий.\n2. Положите его в папку макросов Tekla: `...\\Environments\\<среда>\\macros\\modeling\\`.\n\n## Использование\n### Шаг 1. Выделите объекты\nВ модели выделите детали или сборки, среди которых нужно найти гнутые.\n\n### Шаг 2. Запустите макрос\nЗапустите `FIND_CURVE_PART` из списка макросов (Tools → Macros).\n\n### Шаг 3. Проверьте результат\nВ выделении останутся только гнутые детали. Окно с итогом покажет, сколько объектов проверено и сколько оставлено.\n\n## Настройки\nВ начале файла `.cs` есть две настройки:\n- `MIN_RADIUS` — минимальный радиус в мм. Дуги с меньшим радиусом считаются технологической фаской, а не гибом.\n- `CHECK_ASSEMBLIES` — если `true`, для выделенных сборок проверяются детали внутри, и сборка остаётся целиком.\n\n**Важно:** если гнутых деталей нет, выделение будет очищено.",
+      "versions": [
+        {
+          "version": "2026.10.7.1",
+          "releaseDate": "2026-10-07",
+          "notes": "Первая публикация.",
+          "assets": [
+            {
+              "name": "FIND_CURVE_PART.cs",
+              "tekla_version": null,
+              "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/WisnakeX-FIND_CURVE_PART-2026.10.7.1/FIND_CURVE_PART.cs",
+              "size": 10696
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WisnakeX-OpenClose_DRW",
+      "name": "OpenClose_DRW",
+      "type": "macro",
+      "description": "Открывает и закрывает с сохранением все чертежи, выделенные в Диспетчере чертежей.\nРаботает пакетно, без диалогов сохранения.",
+      "sourceAccount": "https://github.com/WisnakeX",
+      "displayName": "Волков Андрей",
+      "slackUserId": "U04UW6YJZUP",
+      "sourceRepo": "https://github.com/WisnakeX/OpenClose_DRW",
+      "image": null,
+      "video": null,
+      "instructions": "## Установка\n1. Скачайте файл `OpenClose_DRW.cs` из раздела версий.\n2. Положите его в папку чертёжных макросов Tekla: `...\\Environments\\<среда>\\macros\\drawings\\`.\n\n## Использование\n### Шаг 1. Выделите чертежи\nВ Диспетчере чертежей выделите чертежи, которые нужно обработать.\n\n### Шаг 2. Запустите макрос\nЗапустите `OpenClose_DRW` из списка макросов. Каждый чертёж будет открыт и закрыт с сохранением.\n\n### Шаг 3. Проверьте итог\nВ конце появится сообщение с числом обработанных чертежей.\n\n**Важно:** если в Диспетчере чертежей ничего не выделено, макрос покажет предупреждение и ничего не сделает.",
+      "versions": [
+        {
+          "version": "2026.10.7.1",
+          "releaseDate": "2026-10-07",
+          "notes": "Первая публикация.",
+          "assets": [
+            {
+              "name": "OpenClose_DRW.cs",
+              "tekla_version": null,
+              "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/WisnakeX-OpenClose_DRW-2026.10.7.1/OpenClose_DRW.cs",
+              "size": 2561
             }
           ]
         }
