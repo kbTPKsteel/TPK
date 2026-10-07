@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-07T08:42:07Z",
+  "updatedAt": "2026-10-07T09:19:20Z",
   "products": [
     {
       "id": "poluhovamaria-tech-testMacro",
@@ -205,6 +205,34 @@
               "tekla_version": "2024",
               "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/WisnakeX-StiffenerBWLD-2026.10.7.1/StiffenerBWLD_Tekla2024.zip",
               "size": 36003
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WisnakeX-ScreenshotEngeneers",
+      "name": "Screenshot Engineers",
+      "type": "other",
+      "description": "Скриншотер в стиле Lightshot с инструментами для инженеров: стрелки, размерные линии, выноски, метки разрезов и уровней, фигуры, текст. Живёт в трее, вызывается по Ctrl+Print Screen. Работает без установки .NET и не зависит от версии Tekla.",
+      "sourceAccount": "https://github.com/WisnakeX",
+      "displayName": "Волков Андрей",
+      "slackUserId": "U04UW6YJZUP",
+      "sourceRepo": "https://github.com/WisnakeX/ScreenshotEngeneers",
+      "image": "https://raw.githubusercontent.com/kbTPKsteel/TPK/main/docs/images/WisnakeX-ScreenshotEngeneers.png",
+      "video": null,
+      "instructions": "## Установка\n1. Скачайте `ScreenshotEngeneers.exe` из раздела версий.\n2. Положите файл в **локальную** папку, например `%LocalAppData%\\ScreenshotEngeneers\\`. Не запускайте его из OneDrive: автозапуск может ссылаться на ещё не скачанный файл.\n3. Запустите файл один раз — приложение появится в системном трее и пропишется в автозагрузку.\n\n**Важно:** антивирус (например, Kaspersky) может ложно сработать на скриншотер без цифровой подписи. Добавьте файл в исключения антивируса.\n\n## Использование\n### Шаг 1. Сделайте снимок\nНажмите **Ctrl+Print Screen**. Экран замрёт. Зажмите левую кнопку мыши и протяните рамку выделения. Края рамки можно менять после выделения.\n\n### Шаг 2. Поставьте пометки\nВ плавающем тулбаре выберите инструмент и рисуйте прямо на снимке:\n- Стрелка и двойная стрелка — «клик — начало, клик — конец».\n- Размер — 3 клика: начало, конец, отступ размерной линии. Режим «С меткой» добавляет текст.\n- Разрез, Уровень, Выноска — метки с текстом.\n- Прямоугольник, Овал, Карандаш, Текст — свободная разметка.\n- Выбор — правка уже поставленных пометок.\n\n*Совет:* колесо мыши меняет толщину линий и размер шрифта, `Shift` рисует строго по горизонтали или вертикали.\n\n### Шаг 3. Скопируйте или сохраните\n- `Enter` или `Ctrl+C` — скопировать результат в буфер обмена.\n- `Ctrl+S` — сохранить в файл PNG, JPG или BMP.\n- `Ctrl+Z` — отменить последнюю пометку.\n- `Esc` — закрыть без сохранения.\n\n## Настройки\nВ меню значка в трее можно сменить клавишу запуска (Ctrl+Print Screen или Ctrl+F12), отключить автозапуск и выйти из приложения.",
+      "versions": [
+        {
+          "version": "2026.10.7.1",
+          "releaseDate": "2026-10-07",
+          "notes": "Первая публикация в каталоге TPK.\n\n- Скриншотер с инструментами для инженеров: стрелки, размеры, выноски, метки разрезов и уровней, фигуры, текст.\n- Инструмент «Выбор» для правки поставленных пометок.\n- Перемещение области выделения, заливка у прямоугольника и овала.",
+          "assets": [
+            {
+              "name": "ScreenshotEngeneers.exe",
+              "tekla_version": null,
+              "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/WisnakeX-ScreenshotEngeneers-2026.10.7.1/ScreenshotEngeneers.exe",
+              "size": 51719221
             }
           ]
         }
