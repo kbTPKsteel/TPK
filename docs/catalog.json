@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-07T12:33:18Z",
+  "updatedAt": "2026-10-08T03:25:05Z",
   "products": [
     {
       "id": "poluhovamaria-tech-testMacro",
@@ -357,6 +357,34 @@
               "tekla_version": null,
               "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/WisnakeX-OpenClose_DRW-2026.10.7.1/OpenClose_DRW.cs",
               "size": 2561
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WisnakeX-SplitPL",
+      "name": "SplitPL",
+      "type": "app",
+      "description": "Приложение для Tekla Structures 2024: режет пластину или балку вместе со сварными швами.\nШтатный Split копирует полигональные швы на оба куска во всю исходную длину. SplitPL режет и шов:\nпластина 5000 мм превращается в 2000 + 3000, а шов на ней — в два шва по 2000 и 3000, с теми же атрибутами.",
+      "sourceAccount": "https://github.com/WisnakeX",
+      "displayName": "Волков Андрей",
+      "slackUserId": "U04UW6YJZUP",
+      "sourceRepo": "https://github.com/WisnakeX/SplitPL",
+      "image": "https://raw.githubusercontent.com/kbTPKsteel/TPK/main/docs/images/WisnakeX-SplitPL.png",
+      "video": null,
+      "instructions": "## Установка\n1. Скачать из раздела версий архив `SplitPL_Tekla2024.zip`.\n2. Распаковать его в **локальную** папку, например `C:\\Tools\\SplitPL\\`. Не запускайте файл из OneDrive.\n3. Оставить `SplitPL.exe` и `SplitPL.exe.config` в одной папке.\n\nПриложение собрано под Tekla Structures 2024.\n\n## Использование\n### Шаг 1. Откройте модель\nЗапустите Tekla Structures 2024 и откройте модель. Затем запустите `SplitPL.exe`.\n\n### Шаг 2. Выберите деталь\nНажмите кнопку **«Разрезать пластину»**. Укажите в модели пластину или балку.\n\n### Шаг 3. Укажите линию реза\nКликните две точки — это линия реза. Деталь и её полигональные швы режутся по этой линии.\n\n### Шаг 4. Продолжайте или выйдите\nПриложение сразу просит следующую деталь. Клавиша `Esc` выходит из режима выбора.\n\n## Что поддерживается\n- Режутся `ContourPlate` (пластины) и `Beam` (балки и полосы).\n- Режутся только полигональные швы (шов по точкам). Обычный шов между двумя деталями SplitPL не трогает.\n- Болты, вырезы и компоненты на детали обрабатывает сама Tekla.",
+      "versions": [
+        {
+          "version": "2026.10.8.1",
+          "releaseDate": "2026-10-08",
+          "notes": "Первая версия в каталоге: рез пластины и балки в Tekla 2024 вместе с полигональными сварными швами.",
+          "assets": [
+            {
+              "name": "SplitPL_Tekla2024.zip",
+              "tekla_version": "2024",
+              "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/WisnakeX-SplitPL-2026.10.8.1/SplitPL_Tekla2024.zip",
+              "size": 51186
             }
           ]
         }
