@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-08T04:25:37Z",
+  "updatedAt": "2026-10-08T06:22:30Z",
   "products": [
     {
       "id": "poluhovamaria-tech-testMacro",
@@ -410,6 +410,34 @@
               "tekla_version": "2024",
               "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/WisnakeX-SplitPL-2026.10.8.1/SplitPL_Tekla2024.zip",
               "size": 51186
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WisnakeX-BoltDiameterPicker",
+      "name": "BoltDiameterPicker",
+      "type": "macro",
+      "description": "Быстрая смена диаметра выделенных болтовых групп. Рядом с курсором появляется список диаметров,\nпри наведении на строку диаметр сразу меняется в модели.",
+      "sourceAccount": "https://github.com/WisnakeX",
+      "displayName": "Волков Андрей",
+      "slackUserId": "U04UW6YJZUP",
+      "sourceRepo": "https://github.com/WisnakeX/BoltDiameterPicker",
+      "image": null,
+      "video": null,
+      "instructions": "## Установка\n1. Скачайте файл `BoltDiameterPicker.cs` из раздела версий.\n2. Положите его в папку макросов Tekla: `...\\Environments\\<среда>\\macros\\modeling\\`.\n\n## Использование\n### Шаг 1. Выделите болты\nВ модели выделите одну или несколько болтовых групп.\n\n### Шаг 2. Запустите макрос\nЗапустите `BoltDiameterPicker` из списка макросов. Рядом с курсором появится список диаметров (M12, M16 и т. д.).\nСписок берётся из каталога болтов для стандарта первой выделенной группы. Если каталог прочитать не удалось, показывается набор M12–M48.\n\n### Шаг 3. Выберите диаметр\n- Наведите курсор на строку: диаметр всех выделенных болтовых групп сразу меняется в модели.\n- Щёлкните мышью, чтобы оставить выбранный диаметр.\n- Нажмите `Esc`, чтобы отменить выбор.\n\n**Важно:** при отмене всем выделенным группам возвращается диаметр первой из них. Если у выделенных групп были разные диаметры, они выровняются.",
+      "versions": [
+        {
+          "version": "2026.10.8.1",
+          "releaseDate": "2026-10-08",
+          "notes": "Первая публикация.",
+          "assets": [
+            {
+              "name": "BoltDiameterPicker.cs",
+              "tekla_version": null,
+              "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/WisnakeX-BoltDiameterPicker-2026.10.8.1/BoltDiameterPicker.cs",
+              "size": 8897
             }
           ]
         }
