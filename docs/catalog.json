@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-08T06:22:30Z",
+  "updatedAt": "2026-10-08T11:04:29Z",
   "products": [
     {
       "id": "poluhovamaria-tech-testMacro",
@@ -438,6 +438,34 @@
               "tekla_version": null,
               "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/WisnakeX-BoltDiameterPicker-2026.10.8.1/BoltDiameterPicker.cs",
               "size": 8897
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WisnakeX-TimeFromIFC",
+      "name": "TimeFromIFC",
+      "type": "other",
+      "description": "Расчёт трудоёмкости изготовления металлоконструкций по IFC-выгрузке из Tekla Structures.\nЧитает сборки, группирует их по конструкции и числу уникальных деталей, подгружает нормы из CSV и считает итог в часах. Результат выгружается в Excel со сворачиваемыми группами.",
+      "sourceAccount": "https://github.com/WisnakeX",
+      "displayName": "Волков Андрей",
+      "slackUserId": "U04UW6YJZUP",
+      "sourceRepo": "https://github.com/WisnakeX/TimeFromIFC",
+      "image": null,
+      "video": null,
+      "instructions": "## Установка\n1. Скачайте `TimeFromIFC.exe` из раздела версий.\n2. Установка не нужна — запустите файл двойным щелчком.\n\n**Важно:** при каждом запуске файл распаковывается во временную папку, поэтому первый экран появляется примерно через 10 секунд.\n\n## Использование\n### Шаг 1. Выберите IFC-файл\nНажмите «Обзор…» и укажите IFC-выгрузку из Tekla Structures.\n\n### Шаг 2. Запустите анализ\nНажмите «Анализировать». Сборки (`IfcElementAssembly`) появятся в таблице, сгруппированные по конструкции и числу уникальных деталей.\n\n### Шаг 3. Загрузите нормы\nНажмите «Загрузить…» в строке «Нормы трудоёмкости» и выберите CSV-файл с нормами. Пример файла — `Labour_input.csv` в репозитории. Итог в часах пересчитается автоматически.\n\n### Шаг 4. Выгрузите результат\nНажмите «Экспорт в Excel». В файле группы можно сворачивать и разворачивать.",
+      "versions": [
+        {
+          "version": "2026.10.8.1",
+          "releaseDate": "2026-10-08",
+          "notes": "Первая публикация в каталоге TPK. Одиночный exe (PyInstaller onefile), первый запуск около 10 секунд.",
+          "assets": [
+            {
+              "name": "TimeFromIFC.exe",
+              "tekla_version": null,
+              "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/WisnakeX-TimeFromIFC-2026.10.8.1/TimeFromIFC.exe",
+              "size": 299664099
             }
           ]
         }
