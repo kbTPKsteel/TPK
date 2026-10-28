@@ -385,11 +385,8 @@
     });
   }
 
-  /* ── Slack feedback (via GitHub Actions dispatch to avoid CORS) ── */
-  const GH_DISPATCH_TOKEN = 'FtoXc2XUtleYzD7ZWsO4ICndlWhkHq73erYc_phg'.split('').reverse().join('');
-  const GH_REPO           = 'kbTPKsteel/TPK';
-  const GH_DISPATCH_URL   = `https://api.github.com/repos/${GH_REPO}/dispatches`;
-  const GH_CONTENTS_URL   = `https://api.github.com/repos/${GH_REPO}/contents/`;
+  /* ── Slack feedback (via the feedback-worker relay; no tokens in the browser) ── */
+  const FEEDBACK_URL = 'https://tpk-feedback.poluhovamaria.workers.dev';
   const FEEDBACK_MAX_FILES = 5;
   const FEEDBACK_MAX_SIZE  = 5 * 1024 * 1024;
   let feedbackFiles = [];
@@ -430,33 +427,6 @@
     renderFeedbackFiles();
   });
 
-  function fileToBase64(file) {
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.onload = () => resolve(reader.result.split(',')[1]);
-      reader.onerror = reject;
-      reader.readAsDataURL(file);
-    });
-  }
-
-  async function uploadFeedbackFile(file, idx) {
-    const safeName = file.name.replace(/[^a-zA-Z0-9._-]/g, '_');
-    const path = `feedback-uploads/${Date.now()}-${idx}-${safeName}`;
-    const content = await fileToBase64(file);
-    const resp = await fetch(GH_CONTENTS_URL + path, {
-      method: 'PUT',
-      headers: {
-        'Authorization': `Bearer ${GH_DISPATCH_TOKEN}`,
-        'Accept': 'application/vnd.github+json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ message: `Feedback attachment: ${file.name}`, content })
-    });
-    const json = await resp.json();
-    if (!resp.ok) throw new Error(json.message || `Ошибка загрузки файла ${file.name}`);
-    return file.type.startsWith('image/') ? json.content.download_url : json.content.html_url;
-  }
-
   const FEEDBACK_NAME_KEY = 'tpkFeedbackName';
 
   function showFeedback() {
@@ -489,30 +459,20 @@
     if (nameInput) { try { localStorage.setItem(FEEDBACK_NAME_KEY, nameInput); } catch {} }
     document.getElementById('feedback-send').disabled = true;
     try {
-      const links = [];
-      for (let i = 0; i < feedbackFiles.length; i++) {
-        statusEl.textContent = `Загружаем файлы (${i + 1}/${feedbackFiles.length})...`;
-        links.push(await uploadFeedbackFile(feedbackFiles[i], i));
-      }
-      const mention = p.slackUserId ? `<@${p.slackUserId}> ` : '';
-      const attachments = links.length ? `\n\n📎 Файлы:\n${links.join('\n')}` : '';
-      const text = `${mention}📦 *${p.name}*\n👤 ${name}\n\n${msg}${attachments}`;
-      statusEl.textContent = 'Отправляем...';
-      const resp = await fetch(GH_DISPATCH_URL, {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${GH_DISPATCH_TOKEN}`,
-          'Accept': 'application/vnd.github+json',
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ event_type: 'slack-feedback', client_payload: { text } })
-      });
-      if (resp.status === 204) {
+      const form = new FormData();
+      form.append('product', p.name);
+      form.append('slackUserId', p.slackUserId || '');
+      form.append('name', name);
+      form.append('message', msg);
+      feedbackFiles.forEach(f => form.append('files', f, f.name));
+      statusEl.textContent = feedbackFiles.length ? 'Отправляем сообщение и файлы...' : 'Отправляем...';
+      const resp = await fetch(FEEDBACK_URL, { method: 'POST', body: form });
+      const json = await resp.json().catch(() => ({}));
+      if (resp.ok && json.ok) {
         statusEl.textContent = '✅ Сообщение отправлено!';
         setTimeout(() => document.getElementById('feedback-overlay').classList.remove('open'), 1500);
       } else {
-        const json = await resp.json();
-        statusEl.textContent = 'Ошибка: ' + (json.message || resp.status);
+        statusEl.textContent = 'Ошибка: ' + (json.error || resp.status);
         document.getElementById('feedback-send').disabled = false;
       }
     } catch (err) {
