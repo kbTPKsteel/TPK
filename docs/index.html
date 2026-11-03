@@ -253,6 +253,7 @@
 <!-- fixed-position image preview, never clipped by tile overflow -->
 <img id="img-tooltip" src="" alt="">
 
+<script src="auth.js"></script>
 <script>
   const DL_SVG = `<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v13"/><polyline points="5 14 12 21 19 14"/><line x1="3" y1="21" x2="21" y2="21"/></svg>`;
 
@@ -341,7 +342,7 @@
 
     const asset = defaultDownloadAsset(p);
     const dlBtn = asset
-      ? `<a class="download-btn" href="${asset.downloadUrl}" title="${asset.name}">${DL_SVG}</a>`
+      ? `<a class="download-btn" href="${asset.downloadUrl}" title="${asset.name}" data-auth-download>${DL_SVG}</a>`
       : '';
 
     return `<div class="card" data-id="${p.id}">
@@ -387,7 +388,7 @@
 
     const asset = defaultDownloadAsset(p);
     const dlBtn = asset
-      ? `<a class="download-btn" href="${asset.downloadUrl}" title="${asset.name}">${DL_SVG}</a>`
+      ? `<a class="download-btn" href="${asset.downloadUrl}" title="${asset.name}" data-auth-download>${DL_SVG}</a>`
       : '';
 
     return `<div class="list-tile" data-id="${p.id}">

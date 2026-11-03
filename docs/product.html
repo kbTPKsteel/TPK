@@ -249,6 +249,7 @@
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script src="auth.js"></script>
 <script>
   const TYPE_LABELS  = { app: 'Приложение', plugin: 'Плагин', macro: 'Макрос', other: 'Прочие инструменты' };
   const TYPE_CLASSES = { app: 'type-app', plugin: 'type-plugin', macro: 'type-macro', other: 'type-other' };
@@ -323,7 +324,9 @@
       render();
     }));
     const fbBtn = document.getElementById('feedback-open-btn');
-    if (fbBtn) fbBtn.addEventListener('click', showFeedback);
+    if (fbBtn) fbBtn.addEventListener('click', async () => {
+      if (await TpkAuth.require()) showFeedback();
+    });
 
     if (activeTab === 'versions') attachVersionsListeners();
   }
@@ -365,7 +368,7 @@
         <span class="ver-label">Скачать</span>
         <div class="download-row">
           ${asset
-            ? `<a class="download-btn-lg" href="${asset.downloadUrl}">${DL_SVG}${asset.name}</a>`
+            ? `<a class="download-btn-lg" href="${asset.downloadUrl}" data-auth-download>${DL_SVG}${asset.name}</a>`
             : `<span class="no-asset">Нет файлов для выбранной версии</span>`}
         </div>
       </div>`;
@@ -386,7 +389,7 @@
   }
 
   /* ── Slack feedback (via the feedback-worker relay; no tokens in the browser) ── */
-  const FEEDBACK_URL = 'https://tpk-feedback.poluhovamaria.workers.dev';
+  const FEEDBACK_URL = TpkAuth.WORKER_URL;
   const FEEDBACK_MAX_FILES = 5;
   const FEEDBACK_MAX_SIZE  = 5 * 1024 * 1024;
   let feedbackFiles = [];
@@ -466,7 +469,13 @@
       form.append('message', msg);
       feedbackFiles.forEach(f => form.append('files', f, f.name));
       statusEl.textContent = feedbackFiles.length ? 'Отправляем сообщение и файлы...' : 'Отправляем...';
-      const resp = await fetch(FEEDBACK_URL, { method: 'POST', body: form });
+      const post = () => fetch(FEEDBACK_URL, { method: 'POST', body: form, headers: TpkAuth.authHeaders() });
+      let resp = await post();
+      if (resp.status === 401) {
+        // The password was changed in Slack since the user logged in: ask again and resend.
+        TpkAuth.forget();
+        if (await TpkAuth.require()) resp = await post();
+      }
       const json = await resp.json().catch(() => ({}));
       if (resp.ok && json.ok) {
         statusEl.textContent = '✅ Сообщение отправлено!';
