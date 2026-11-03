@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-03T02:33:42Z",
+  "updatedAt": "2026-11-03T02:52:36Z",
   "products": [
     {
       "id": "poluhovamaria-tech-testMacro",
@@ -827,6 +827,34 @@
               "tekla_version": "2024",
               "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/WisnakeX-CutRiski-2026.10.23.1/CutRiski_Tekla2024.zip",
               "size": 33950
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WisnakeX-Check_Weld_Cylinders",
+      "name": "Check_Weld_Cylinders",
+      "type": "macro",
+      "description": "Проверка сварных швов выбранных сборок. Вокруг каждого шва рисуется полупрозрачный цилиндр: заводские и монтажные швы разного цвета, поэтому пропущенные и лишние швы видно сразу. В модель макрос ничего не записывает.",
+      "sourceAccount": "https://github.com/WisnakeX",
+      "displayName": "Волков Андрей",
+      "slackUserId": "U04UW6YJZUP",
+      "sourceRepo": "https://github.com/WisnakeX/Check_Weld_Cylinders",
+      "image": null,
+      "video": null,
+      "instructions": "## Установка\n1. Скачайте файл `Check_Weld_Cylinders.cs` из раздела версий.\n2. Положите его в папку макросов Tekla: `...\\Environments\\<среда>\\macros\\modeling\\`.\n\n## Использование\n### Шаг 1. Выделите сварные швы\nВ модели выделите сборку, деталь сборки или отдельные сварные швы. Деталь во вложенной сборке макрос поднимает до верхней сборки и собирает швы по всем вложенным сборкам.\n\n### Шаг 2. Запустите макрос\nЗапустите `Check_Weld_Cylinders` (Tools → Macros). Откроется окно настроек. Оно остаётся поверх Tekla, пока вы выбираете сборки.\n\n### Шаг 3. Нажмите «Показать»\nВокруг каждого шва появится цилиндр. Строка состояния показывает число сборок, швов и нарисованных цилиндров, а также время работы. Если у шва нет геометрии, его ID выводится в строке состояния.\n\n### Шаг 4. Уберите цилиндры\nНажмите «Очистить» или `Ctrl+U` в окне макроса. Макрос перерисует открытые виды.\n\n## Настройки\n- Цвет заводских швов — по умолчанию фиолетовый, монтажных — по умолчанию голубой.\n- Прозрачность — от 0 до 90 %, по умолчанию 50.\n- Радиус цилиндра — от 1 до 1000 мм, по умолчанию 30.\n- Какие швы показывать: заводские, монтажные.\n\nНастройки сохраняются между запусками в файле `%APPDATA%\\Tekla_Check_Weld_Cylinders.ini`.\n\n## Ограничения\n**Важно:** макрос использует внутренний API `Tekla.Structures.ModelInternal` (`GraphicsRenderer`). Он не документирован и может измениться в других версиях Tekla.\n\nВ Tekla 2020 макрос рисует цилиндры сетками через `GraphicsDrawer` и пишет в строке состояния «медленный режим». В остальных версиях все цилиндры рисуются одним вызовом.\n\n*Совет:* макрос проверен в Tekla 2020 (SP13) и 2021. В других версиях он не проверялся.",
+      "versions": [
+        {
+          "version": "2026.11.3.1",
+          "releaseDate": "2026-11-03",
+          "notes": "Первая публикация в каталоге TPK.",
+          "assets": [
+            {
+              "name": "Check_Weld_Cylinders.cs",
+              "tekla_version": null,
+              "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/WisnakeX-Check_Weld_Cylinders-2026.11.3.1/Check_Weld_Cylinders.cs",
+              "size": 43962
             }
           ]
         }
