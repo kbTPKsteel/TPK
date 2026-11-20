@@ -52,7 +52,7 @@ const TpkAuth = (() => {
   overlay.innerHTML = `
     <form class="tpk-auth-modal">
       <div class="tpk-auth-title">Пароль организации</div>
-      <div class="tpk-auth-hint">Для скачивания и сообщений разработчикам нужен пароль. Его можно узнать в Slack-канале TPK Warehouse.</div>
+      <div class="tpk-auth-hint">Для скачивания и сообщений разработчикам нужен пароль. Его можно узнать в Slack-канале #bugs-wishes-plugins.</div>
       <input type="password" class="tpk-auth-input" autocomplete="current-password" placeholder="XXXXXX-XXXXXX-XXXXXX">
       <div class="tpk-auth-status"></div>
       <div class="tpk-auth-buttons">

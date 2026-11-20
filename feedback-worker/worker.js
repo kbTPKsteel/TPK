@@ -141,7 +141,7 @@ async function uploadFile(env, file) {
 
 async function login(request, env, reply) {
   const hash = await env.TPK_KV.get(HASH_KEY);
-  if (!hash) return reply(503, { ok: false, error: 'Пароль ещё не задан: выполните /tpk-warehouse-password в Slack-канале.' });
+  if (!hash) return reply(503, { ok: false, error: 'Пароль ещё не задан: выполните /tpk-warehouse-password в Slack-канале #bugs-wishes-plugins.' });
 
   const ip = request.headers.get('CF-Connecting-IP') || 'unknown';
   const failKey = `fail:${ip}`;
@@ -244,7 +244,7 @@ async function slackCommand(request, env) {
   // Anyone in the feedback channel can change the password, as with /adminpass
   // in IFC_viewer: membership of the channel is the access control.
   if (params.get('channel_id') !== env.SLACK_CHANNEL)
-    return answer('ephemeral', 'Пароль сайта меняется только в канале обратной связи TPK Warehouse.');
+    return answer('ephemeral', 'Пароль сайта меняется только в Slack-канале #bugs-wishes-plugins.');
 
   const password = newPassword();
   await env.TPK_KV.put(HASH_KEY, await hashPassword(password));
