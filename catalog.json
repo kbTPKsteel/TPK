@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-20T03:06:22Z",
+  "updatedAt": "2026-11-20T06:21:59Z",
   "products": [
     {
       "id": "poluhovamaria-tech-testMacro",
@@ -948,6 +948,34 @@
               "tekla_version": "2024",
               "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/WisnakeX-RadialCuting-2026.11.20.1/RadialCuting_Tekla2024.zip",
               "size": 45161
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WisnakeX-ChangePointBeam",
+      "name": "ChangePointBeam",
+      "type": "macro",
+      "description": "Переносит опорные точки (начало и конец) выделенных уголков и швеллеров на обушок и на внешнюю грань стенки. Тело детали остаётся на месте.",
+      "sourceAccount": "https://github.com/WisnakeX",
+      "displayName": "Волков Андрей",
+      "slackUserId": "U04UW6YJZUP",
+      "sourceRepo": "https://github.com/WisnakeX/ChangePointBeam",
+      "image": null,
+      "video": null,
+      "instructions": "## Установка\n1. Скачайте файл `ChangePointBeam.cs` из раздела версий.\n2. Положите его в папку макросов Tekla, например `...\\Environments\\common\\macros\\modeling\\`.\n\n## Использование\n### Шаг 1. Выделите детали\nВ Tekla Structures выделите уголки и швеллеры. Другие объекты макрос не трогает и называет в отчёте.\n\n### Шаг 2. Запустите макрос\nОткройте список макросов (Ctrl+F, поиск по имени) и запустите `ChangePointBeam`.\n\n### Шаг 3. Прочитайте отчёт\nВ окне с итогом указано, сколько деталей сдвинуто, сколько уже стояло и какие пропущены.\n\n### Шаг 4. Сохраните модель\nCtrl+Z в Tekla отменяет перенос.\n\n## Что делает макрос\n- Уголок: опорные точки на обушок (угол, где сходятся полки).\n- Швеллер: опорные точки на внешнюю грань стенки, по середине высоты стенки.\n\n## Ограничения\n- Нужен одинаковый профиль на обоих концах. Деталь с подрезкой или косым срезом на одном конце макрос пропускает.\n- Заблокированную деталь (UDA `OBJECT_LOCKED`) Tekla не даёт изменить.\n- Макрос проверен в Tekla 2020.",
+      "versions": [
+        {
+          "version": "2026.11.20.1",
+          "releaseDate": "2026-11-20",
+          "notes": "Первая версия макроса для Tekla 2020: перенос опорных точек уголков на обушок и швеллеров на внешнюю грань стенки.",
+          "assets": [
+            {
+              "name": "ChangePointBeam.cs",
+              "tekla_version": null,
+              "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/WisnakeX-ChangePointBeam-2026.11.20.1/ChangePointBeam.cs",
+              "size": 16833
             }
           ]
         }
