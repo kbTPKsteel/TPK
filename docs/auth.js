@@ -28,6 +28,7 @@ const TpkAuth = (() => {
       font-size: 1.1rem; font-weight: 600; margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid #e2e8f0;
     }
     .tpk-auth-hint { font-size: 0.85rem; color: #475569; line-height: 1.5; margin-bottom: 12px; }
+    .tpk-auth-hint code { background: #f0f4f8; padding: 1px 4px; border-radius: 4px; font-size: 0.8rem; }
     .tpk-auth-input {
       width: 100%; padding: 8px 12px; border: 1.5px solid #cbd5e1; border-radius: 8px;
       font-size: 0.9rem; font-family: monospace; color: #1a2332; outline: none;
@@ -52,7 +53,7 @@ const TpkAuth = (() => {
   overlay.innerHTML = `
     <form class="tpk-auth-modal">
       <div class="tpk-auth-title">Пароль организации</div>
-      <div class="tpk-auth-hint">Для скачивания и сообщений разработчикам нужен пароль. Его можно узнать в Slack-канале #bugs-wishes-plugins.</div>
+      <div class="tpk-auth-hint">Для скачивания и сообщений разработчикам нужен пароль. Его можно узнать в Slack-канале #bugs-wishes-plugins. Сменить пароль можно командой <code>/tpk-warehouse-password</code> в этом канале.</div>
       <input type="password" class="tpk-auth-input" autocomplete="current-password" placeholder="XXXXXX-XXXXXX-XXXXXX">
       <div class="tpk-auth-status"></div>
       <div class="tpk-auth-buttons">
