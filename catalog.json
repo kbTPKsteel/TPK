@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-20T10:14:00Z",
+  "updatedAt": "2026-11-20T11:00:47Z",
   "products": [
     {
       "id": "poluhovamaria-tech-testMacro",
@@ -989,6 +989,34 @@
               "tekla_version": null,
               "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/WisnakeX-ChangePointBeam-2026.11.20.1/ChangePointBeam.cs",
               "size": 16833
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WisnakeX-AKU_IssueDrw",
+      "name": "AKU_IssueDrw",
+      "type": "app",
+      "description": "Приложение для Tekla Structures 2020: переносит номера чертежей из пользовательского поля чертежей\nв пользовательские атрибуты объектов модели. Работает с чертежами сборок (A), деталей (W) и монтажных схем (G).",
+      "sourceAccount": "https://github.com/WisnakeX",
+      "displayName": "Волков Андрей",
+      "slackUserId": "U04UW6YJZUP",
+      "sourceRepo": "https://github.com/WisnakeX/AKU_IssueDrw",
+      "image": "https://raw.githubusercontent.com/kbTPKsteel/TPK/main/docs/images/WisnakeX-AKU_IssueDrw.png",
+      "video": null,
+      "instructions": "## Установка\n1. Скачать из раздела версий файл `AKU_IssueDrw_Tekla2020.exe`.\n2. Положить его в любую папку. Установка не нужна.\n\n## Использование\n### Шаг 1. Подготовьте выбор\nОткройте модель в Tekla. В Менеджере документов выделите нужные чертежи (A, W, G). В модели выделите сборки.\n\n### Шаг 2. Запустите программу\nЗапустите `AKU_IssueDrw_Tekla2020.exe`. В окне появится имя модели. Нажмите **Старт**.\n\n### Шаг 3. Проверьте журнал\nВ журнале видно, сколько атрибутов записано и где не нашлось совпадений.\n\n## Что записывается\n- Чертёж сборки (A): `TPK_A_NUM` и `TPK_AQ_NUM` (число листов, если их два и больше).\n- Чертёж детали (W): `TPK_WDR_NUM`.\n- Монтажная схема (G): `TPK_MC_NUM`.\n\n**Важно:** нумерация сборок в модели должна быть актуальной. Сборки с позицией вида `Б4-32(?)` пропускаются.",
+      "versions": [
+        {
+          "version": "2026.11.20.1",
+          "releaseDate": "2026-11-20",
+          "notes": "Первая публикация в каталоге TPK: Tekla Structures 2020.",
+          "assets": [
+            {
+              "name": "AKU_IssueDrw_Tekla2020.exe",
+              "tekla_version": "2020",
+              "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/WisnakeX-AKU_IssueDrw-2026.11.20.1/AKU_IssueDrw_Tekla2020.exe",
+              "size": 161792
             }
           ]
         }
