@@ -18,6 +18,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: main   # всегда свежий main, а не SHA на момент постановки запуска в очередь
 
       - uses: actions/setup-python@v5
         with:
@@ -42,5 +44,6 @@ jobs:
           git config user.email "collector@kbTPKsteel.github"
           git add catalog.json docs/
           git diff --staged --quiet || git commit -m "Update catalog [$(date -u +%Y-%m-%d)]"
-          git pull --rebase
+          # catalog.json целиком генерируется заново, поэтому при конфликте берём свою (свежую) версию
+          git pull --rebase -X theirs
           git push
