@@ -13,13 +13,20 @@
 //   SLACK_SIGNING_SECRET  (secret)  Slack app → Basic Information → Signing Secret
 //   SLACK_CHANNEL         (text)    channel ID, e.g. C05092Y0B5X (the bot must be a member)
 //   ALLOWED_ORIGIN        (text)    https://kbtpksteel.github.io
-//   TPK_KV                (KV namespace binding) stores the password hash and login fail counters
+//   TPK_KV                (KV namespace binding) stores the password hash, login fail counters
+//                                   and download counters
 //
 // Routes:
-//   POST /login    {password} → {ok, token}
-//   GET  /session  Authorization: Bearer <token> → 200 if the token is valid, 401 otherwise
-//   POST /         feedback form (needs the token)
-//   POST /slack    Slack slash command /tpk-warehouse-password
+//   POST /login     {password} → {ok, token}
+//   GET  /session   Authorization: Bearer <token> → 200 if the token is valid, 401 otherwise
+//   GET  /downloads → {ok, counts: {productId: n}}
+//   POST /download  {product, device} (needs the token) → {ok, count}
+//   POST /          feedback form (needs the token)
+//   POST /slack     Slack slash command /tpk-warehouse-password
+//
+// Download counter: a product is counted once per device, whatever version is
+// downloaded. The site keeps a random device ID in localStorage; the worker
+// remembers each (product, device) pair and only then increases the count.
 
 const MAX_FILES = 5;
 const MAX_FILE_SIZE = 5 * 1024 * 1024;
@@ -32,6 +39,9 @@ const PASSWORD_ITERATIONS = 20000;   // kept low to stay within the Workers CPU 
 const TOKEN_DAYS = 180;
 const LOGIN_MAX_FAILS = 10;
 const LOGIN_WINDOW_SEC = 15 * 60;
+
+const COUNT_PREFIX = 'dlcount:';   // dlcount:<product> → count (also kept in metadata, so one list() reads all)
+const SEEN_PREFIX = 'dlseen:';     // dlseen:<product>:<device> → '1'
 
 export default {
   async fetch(request, env) {
@@ -57,6 +67,11 @@ export default {
       return (await tokenValid(request, env))
         ? reply(200, { ok: true })
         : reply(401, { ok: false, error: 'Нужен пароль.' });
+    if (path === '/downloads' && request.method === 'GET') return reply(200, { ok: true, counts: await downloadCounts(env) });
+    if (path === '/download' && request.method === 'POST') {
+      if (!(await tokenValid(request, env))) return reply(401, { ok: false, error: 'Нужен пароль.' });
+      return countDownload(request, env, reply);
+    }
     if (path !== '/' || request.method !== 'POST') return reply(405, { ok: false, error: 'method not allowed' });
 
     if (!(await tokenValid(request, env))) return reply(401, { ok: false, error: 'Нужен пароль.' });
@@ -135,6 +150,40 @@ async function uploadFile(env, file) {
   const up = await fetch(json.upload_url, { method: 'POST', body: await file.arrayBuffer() });
   if (!up.ok) throw new Error(`upload ${filename}: HTTP ${up.status}`);
   return { id: json.file_id, title: filename };
+}
+
+/* ── Download counter ── */
+
+async function downloadCounts(env) {
+  const counts = {};
+  let cursor;
+  do {
+    const page = await env.TPK_KV.list({ prefix: COUNT_PREFIX, cursor });
+    for (const k of page.keys) counts[k.name.slice(COUNT_PREFIX.length)] = Number(k.metadata?.n) || 0;
+    cursor = page.list_complete ? null : page.cursor;
+  } while (cursor);
+  return counts;
+}
+
+async function countDownload(request, env, reply) {
+  let product = '', device = '';
+  try {
+    const body = await request.json();
+    product = String(body.product || '');
+    device = String(body.device || '');
+  } catch {}
+  if (!/^[\w.-]{1,200}$/.test(product) || !/^[\w-]{8,64}$/.test(device))
+    return reply(400, { ok: false, error: 'bad request' });
+
+  const countKey = COUNT_PREFIX + product;
+  const seenKey = `${SEEN_PREFIX}${product}:${device}`;
+  let count = Number(await env.TPK_KV.get(countKey)) || 0;
+  if (!(await env.TPK_KV.get(seenKey))) {
+    await env.TPK_KV.put(seenKey, '1');
+    count += 1;
+    await env.TPK_KV.put(countKey, String(count), { metadata: { n: count } });
+  }
+  return reply(200, { ok: true, count });
 }
 
 /* ── Site password ── */

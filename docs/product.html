@@ -259,6 +259,7 @@
   let selTekla   = null;
   let selVersion = null;
   let activeTab  = 'info';
+  let downloadCount = null;   // from the worker; null until loaded
 
   /* ── helpers (shared logic with index.html) ── */
   function authorLabel(p) {
@@ -304,6 +305,7 @@
           <table class="info-table">
             <tr><th>Тип продукта</th><td>${badge}</td></tr>
             <tr><th>Автор</th><td><a href="${p.sourceAccount}" target="_blank">${authorLabel(p)}</a></td></tr>
+            ${downloadCount !== null ? `<tr><th>Скачиваний</th><td data-download-count="${p.id}" title="По одному на устройство">${downloadCount}</td></tr>` : ''}
           </table>
           <div class="info-actions">
             ${p.slackUserId  ? `<button class="action-btn" id="feedback-open-btn">💬 Написать автору</button>` : ''}
@@ -368,7 +370,7 @@
         <span class="ver-label">Скачать</span>
         <div class="download-row">
           ${asset
-            ? `<a class="download-btn-lg" href="${asset.downloadUrl}" data-auth-download>${DL_SVG}${asset.name}</a>`
+            ? `<a class="download-btn-lg" href="${asset.downloadUrl}" data-auth-download data-product="${p.id}">${DL_SVG}${asset.name}</a>`
             : `<span class="no-asset">Нет файлов для выбранной версии</span>`}
         </div>
       </div>`;
@@ -508,10 +510,18 @@
       selTekla   = teklaVersions.length ? teklaVersions[teklaVersions.length - 1] : null;
       selVersion = p.versions?.[0] || null;
       render();
+      TpkAuth.downloadCounts().then(counts => {
+        downloadCount = counts[p.id] || 0;
+        render();
+      });
     } catch {
       document.getElementById('product-root').innerHTML = '<div class="not-found">Не удалось загрузить каталог</div>';
     }
   }
+
+  document.addEventListener('tpk-download-counted', e => {
+    if (currentProduct && e.detail.product === currentProduct.id) downloadCount = e.detail.count;
+  });
 
   loadProduct();
 </script>

@@ -157,13 +157,60 @@ const TpkAuth = (() => {
     return askPassword();
   }
 
+  /* ── Download counter ── */
+  // A product is counted once per device, whatever version is downloaded: the
+  // worker remembers (product, device) pairs. The device is a random ID kept here.
+  const DEVICE_KEY = 'tpkDeviceId';
+
+  function deviceId() {
+    try {
+      let id = localStorage.getItem(DEVICE_KEY);
+      if (!id) localStorage.setItem(DEVICE_KEY, id = crypto.randomUUID());
+      return id;
+    } catch { return null; }
+  }
+
+  // Resolves to {productId: count}; empty if the worker is unreachable.
+  async function downloadCounts() {
+    try {
+      const json = await (await fetch(`${WORKER_URL}/downloads`)).json();
+      return json.counts || {};
+    } catch { return {}; }
+  }
+
+  // Updates counters on the page; pages that keep counts listen for the event.
+  function showCount(product, count) {
+    document.dispatchEvent(new CustomEvent('tpk-download-counted', { detail: { product, count } }));
+    document.querySelectorAll('[data-download-count]').forEach(el => {
+      if (el.dataset.downloadCount === product) el.textContent = count;
+    });
+  }
+
+  async function countDownload(product, token) {
+    const device = deviceId();
+    if (!product || !device) return;
+    try {
+      const r = await fetch(`${WORKER_URL}/download`, {
+        method: 'POST', keepalive: true,
+        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+        body: JSON.stringify({ product, device }),
+      });
+      const json = await r.json();
+      if (json.ok) showCount(product, json.count);
+    } catch {}
+  }
+
   // Download links: ask for the password first, then follow the link.
+  // data-product="<id>" on the link makes the download count for that product.
   document.addEventListener('click', async e => {
     const link = e.target.closest('a[data-auth-download]');
     if (!link || e.button !== 0) return;
     e.preventDefault();
-    if (await require()) window.location.href = link.href;
+    const token = await require();
+    if (!token) return;
+    countDownload(link.dataset.product, token);
+    window.location.href = link.href;
   });
 
-  return { WORKER_URL, require, forget, authHeaders };
+  return { WORKER_URL, require, forget, authHeaders, downloadCounts };
 })();

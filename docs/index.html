@@ -139,6 +139,13 @@
     .download-btn:hover { background: #2d6a9f; }
     .download-btn svg { pointer-events: none; }
 
+    /* ── Download counter ── */
+    .download-count {
+      font-size: 0.78rem; font-weight: 600; color: #64748b;
+      flex-shrink: 0; white-space: nowrap; cursor: default;
+    }
+    .download-count:empty { display: none; }
+
     /* ── List (tile) view ── */
     .list-grid {
       display: grid;
@@ -263,10 +270,16 @@
   let activeAuthor = 'all';
   let searchQuery  = '';
   let viewMode     = 'grid';
+  let downloadCounts = null;   // {productId: count} from the worker; null until loaded
 
   /* ── helpers ── */
   function authorLabel(p) {
     return p.displayName || p.sourceAccount.replace('https://github.com/', '');
+  }
+
+  function downloadCountHTML(p) {
+    const n = downloadCounts ? (downloadCounts[p.id] || 0) : '';
+    return `<span class="download-count" data-download-count="${p.id}" title="Скачиваний (по одному на устройство)">${n}</span>`;
   }
 
   function getProductTeklaVersions(p) {
@@ -342,7 +355,7 @@
 
     const asset = defaultDownloadAsset(p);
     const dlBtn = asset
-      ? `<a class="download-btn" href="${asset.downloadUrl}" title="${asset.name}" data-auth-download>${DL_SVG}</a>`
+      ? `<a class="download-btn" href="${asset.downloadUrl}" title="${asset.name}" data-auth-download data-product="${p.id}">${DL_SVG}</a>`
       : '';
 
     return `<div class="card" data-id="${p.id}">
@@ -350,7 +363,7 @@
       <div class="card-body">
         <div class="card-top">
           <div class="card-name">${p.name}</div>
-          ${dlBtn}
+          ${downloadCountHTML(p)}${dlBtn}
         </div>
         <div class="card-desc">${p.description || ''}</div>
       </div>
@@ -388,7 +401,7 @@
 
     const asset = defaultDownloadAsset(p);
     const dlBtn = asset
-      ? `<a class="download-btn" href="${asset.downloadUrl}" title="${asset.name}" data-auth-download>${DL_SVG}</a>`
+      ? `<a class="download-btn" href="${asset.downloadUrl}" title="${asset.name}" data-auth-download data-product="${p.id}">${DL_SVG}</a>`
       : '';
 
     return `<div class="list-tile" data-id="${p.id}">
@@ -396,7 +409,7 @@
       <div class="list-tile-body">
         <div class="list-tile-top">
           <div class="list-tile-name">${p.name}</div>
-          ${dlBtn}
+          ${downloadCountHTML(p)}${dlBtn}
         </div>
         <div class="list-tile-desc">${p.description || ''}</div>
       </div>
@@ -523,7 +536,19 @@
     render();
   }
 
-  loadCatalog();
+  // Counts come from the worker separately, so a slow worker never delays the catalog.
+  async function loadDownloadCounts() {
+    const [counts] = await Promise.all([TpkAuth.downloadCounts(), catalogLoaded]);
+    downloadCounts = counts;
+    if (allProducts.length) render();
+  }
+
+  document.addEventListener('tpk-download-counted', e => {
+    if (downloadCounts) downloadCounts[e.detail.product] = e.detail.count;
+  });
+
+  const catalogLoaded = loadCatalog();
+  loadDownloadCounts();
 </script>
 </body>
 </html>
