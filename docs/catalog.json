@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-23T04:11:28Z",
+  "updatedAt": "2026-11-23T06:02:51Z",
   "products": [
     {
       "id": "poluhovamaria-tech-testMacro",
@@ -1099,6 +1099,40 @@
               "tekla_version": "2020",
               "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/WisnakeX-AKU_Release_DP-2026.11.23.1/AKU_Release_DP_Tekla2020.exe",
               "size": 194048
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WisnakeX-RotateHook",
+      "name": "RotateHook",
+      "type": "app",
+      "description": "Поворачивает свободный конец крюка (полибалка из 4 точек) в Tekla Structures.\nЗадаёшь два угла, и точка P3 вращается вокруг P2, длина последнего сегмента не меняется.",
+      "sourceAccount": "https://github.com/WisnakeX",
+      "displayName": "Волков Андрей",
+      "slackUserId": "U04UW6YJZUP",
+      "sourceRepo": "https://github.com/WisnakeX/RotateHook",
+      "image": "https://raw.githubusercontent.com/kbTPKsteel/TPK/main/docs/images/WisnakeX-RotateHook.png",
+      "video": null,
+      "instructions": "## Установка\n1. Выберите версию Tekla (2020 или 2024) и скачайте архив из раздела версий.\n2. Распакуйте архив в любую папку. Установка не нужна.\n\n## Использование\n### Шаг 1. Выделите крюк\nОткройте модель в Tekla и выделите один или несколько крюков (`PolyBeam` ровно из 4 точек).\n\n### Шаг 2. Запустите программу\nЗапустите `RotateHook<версия>.exe` при открытой Tekla нужной версии.\n\n### Шаг 3. Введите углы\n- Горизонтальная плоскость — поворот P3 вокруг оси P1-P2, в градусах.\n- Вертикальная плоскость — наклон P3 из плоскости 0-1-2, в градусах.\n\nУглы — приращение от текущего положения, 0 значит «не менять». Можно `+` и `-`, запятую или точку.\n\n### Шаг 4. Нажмите кнопку\nНажмите **Повернуть выбранные крюки**. В журнале окна видны углы до и после.\n\n**Важно:** exe работает только со своей версией Tekla. Заблокированные объекты и объекты не из 4 точек пропускаются.\n*Совет:* окно можно не закрывать — выберите другой крюк и нажмите кнопку снова.",
+      "versions": [
+        {
+          "version": "2026.11.23.1",
+          "releaseDate": "2026-11-23",
+          "notes": "Первый релиз: поворот свободного конца крюка в Tekla 2020 и 2024.",
+          "assets": [
+            {
+              "name": "RotateHook_Tekla2020.zip",
+              "tekla_version": "2020",
+              "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/WisnakeX-RotateHook-2026.11.23.1/RotateHook_Tekla2020.zip",
+              "size": 10405
+            },
+            {
+              "name": "RotateHook_Tekla2024.zip",
+              "tekla_version": "2024",
+              "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/WisnakeX-RotateHook-2026.11.23.1/RotateHook_Tekla2024.zip",
+              "size": 10409
             }
           ]
         }
