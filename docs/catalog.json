@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-22T13:59:26Z",
+  "updatedAt": "2026-11-23T02:50:59Z",
   "products": [
     {
       "id": "poluhovamaria-tech-testMacro",
@@ -1043,6 +1043,34 @@
               "tekla_version": "2020",
               "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/WisnakeX-AKU_IssueDrw-2026.11.20.1/AKU_IssueDrw_Tekla2020.exe",
               "size": 161792
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WisnakeX-AKU_CompareObj_to_Table",
+      "name": "AKU_CompareObj_to_Table",
+      "type": "app",
+      "description": "Приложение для Tekla Structures: сравнивает выбранные в модели сборки, чертежи сборок (тип A) и чертежи монтажных схем (тип G)\nсо списком «Нужно сделать» из таблицы Excel или CSV. Показывает, чего нет в модели или нет чертежа, и что сделано сверх списка.",
+      "sourceAccount": "https://github.com/WisnakeX",
+      "displayName": "Волков Андрей",
+      "slackUserId": "U04UW6YJZUP",
+      "sourceRepo": "https://github.com/WisnakeX/AKU_CompareObj_to_Table",
+      "image": "https://raw.githubusercontent.com/kbTPKsteel/TPK/main/docs/images/WisnakeX-AKU_CompareObj_to_Table.png",
+      "video": null,
+      "instructions": "## Установка\n1. Скачать из раздела версий файл `AKU_CompareObj_to_Table_Tekla2020.exe`.\n2. Положить его в любую папку. Установка не нужна, WebView2 и интерфейс встроены в файл.\n\n## Использование\n### Шаг 1. Выделите объекты\nОткройте Tekla Structures 2020 с моделью. Выделите в модели сборки и (или) в диспетчере чертежей чертежи сборок (A) и монтажных схем (G).\n\n### Шаг 2. Запустите приложение\nЗапустите `AKU_CompareObj_to_Table_Tekla2020.exe`. Кнопка «Обновить из Tekla» пересобирает таблицу после смены выделения.\n\n### Шаг 3. Загрузите список\nКнопка «Загрузить таблицу» принимает xls, xlsx, xlsm, csv и txt. Первый столбец попадает в «Нужно сделать».\n\n## Как сравнивается\n- Префикс — всё до первого `.` или `-`. `Б4.35` (чертёж A) и `Б4-35` (модель или монтажная схема) дают ключ `Б4`.\n- Нет совпадения: `нет в модели` или `нет чертежа` (розовая заливка).\n- Найдено в Tekla, но нет в списке: строка внизу таблицы с пустым первым столбцом (жёлтая заливка).\n\n**Важно:** для чтения xls и xlsx нужен установленный Excel. Без Excel сохраните список в `.csv`.",
+      "versions": [
+        {
+          "version": "2026.11.23.1",
+          "releaseDate": "2026-11-23",
+          "notes": "Первая версия в каталоге TPK (Tekla 2020).",
+          "assets": [
+            {
+              "name": "AKU_CompareObj_to_Table_Tekla2020.exe",
+              "tekla_version": "2020",
+              "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/WisnakeX-AKU_CompareObj_to_Table-2026.11.23.1/AKU_CompareObj_to_Table_Tekla2020.exe",
+              "size": 1051648
             }
           ]
         }
