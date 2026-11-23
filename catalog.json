@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-23T02:50:59Z",
+  "updatedAt": "2026-11-23T04:11:28Z",
   "products": [
     {
       "id": "poluhovamaria-tech-testMacro",
@@ -1071,6 +1071,34 @@
               "tekla_version": "2020",
               "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/WisnakeX-AKU_CompareObj_to_Table-2026.11.23.1/AKU_CompareObj_to_Table_Tekla2020.exe",
               "size": 1051648
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WisnakeX-AKU_Release_DP",
+      "name": "AKU Release DP",
+      "type": "app",
+      "description": "Приложение для Tekla Structures 2020 с двумя режимами в одном окне. «Проверка» сравнивает сборки модели и чертежи со списком «Нужно сделать». «Выпуск комплекта» переносит номера чертежей в UDA объектов модели.",
+      "sourceAccount": "https://github.com/WisnakeX",
+      "displayName": "Волков Андрей",
+      "slackUserId": "U04UW6YJZUP",
+      "sourceRepo": "https://github.com/WisnakeX/AKU_Release_DP",
+      "image": "https://raw.githubusercontent.com/kbTPKsteel/TPK/main/docs/images/WisnakeX-AKU_Release_DP.png",
+      "video": null,
+      "instructions": "## Установка\n1. Скачайте файл `AKU_Release_DP_Tekla2020.exe` из раздела версий.\n2. Положите его в любую папку. Установка не нужна.\n\n## Использование\n### Шаг 1. Запустите Tekla Structures 2020\nОткройте модель. Приложение подключается к запущенной Tekla.\n\n### Шаг 2. Запустите приложение\nВыберите режим в верхней части окна. Оба режима работают независимо, данные при переключении не теряются.\n\n### Режим «Проверка»\n- Выделите сборки в модели.\n- Загрузите список «Нужно сделать» из `xls`, `xlsx`, `csv` или вставьте из буфера обмена.\n- Приложение сравнивает сборки, чертежи сборок (тип A) и монтажные схемы (тип G) со списком.\n\n### Режим «Выпуск комплекта»\n- Приложение берёт номер чертежа из UDA `TPK_DR_NUM`.\n- Номер записывается в UDA объектов модели: `TPK_A_NUM`, `TPK_AQ_NUM`, `TPK_WDR_NUM`, `TPK_MC_NUM`, `TPK_MCQ_NUM`.\n- Перед записью проверьте предпросмотр нумерации.",
+      "versions": [
+        {
+          "version": "2026.11.23.1",
+          "releaseDate": "2026-11-23",
+          "notes": "Первый релиз в каталог TPK.",
+          "assets": [
+            {
+              "name": "AKU_Release_DP_Tekla2020.exe",
+              "tekla_version": "2020",
+              "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/WisnakeX-AKU_Release_DP-2026.11.23.1/AKU_Release_DP_Tekla2020.exe",
+              "size": 194048
             }
           ]
         }
