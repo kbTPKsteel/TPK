@@ -80,6 +80,11 @@
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath fill='%237c3aed' d='M0 0l5 6 5-6z'/%3E%3C/svg%3E");
     }
 
+    .filter-sort {
+      color: #475569; border-color: #94a3b8;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath fill='%23475569' d='M0 0l5 6 5-6z'/%3E%3C/svg%3E");
+    }
+
     /* View toggle */
     .view-toggle { margin-left: auto; display: flex; gap: 4px; flex-shrink: 0; }
     .view-btn {
@@ -231,6 +236,12 @@
     <option value="all">Все авторы</option>
   </select>
 
+  <select id="sort-select" class="filter-select filter-sort" title="Сортировка">
+    <option value="new">Сначала новые</option>
+    <option value="name">По названию</option>
+    <option value="downloads">По скачиваниям</option>
+  </select>
+
   <div class="view-toggle">
     <button class="view-btn active" id="btn-grid" title="Карточки">
       <svg viewBox="0 0 16 16" fill="currentColor">
@@ -269,6 +280,7 @@
   let activeTekla  = 'all';
   let activeAuthor = 'all';
   let searchQuery  = '';
+  let activeSort   = 'new';
   let viewMode     = 'grid';
   let downloadCounts = null;   // {productId: count} from the worker; null until loaded
 
@@ -330,10 +342,20 @@
     });
   }
 
+  /* ── sorting ── */
+  // allProducts is already newest first; the other orders keep it for ties.
+  function sorted(products) {
+    if (activeSort === 'name')
+      return [...products].sort((a, b) => a.name.localeCompare(b.name, 'ru', { sensitivity: 'base' }));
+    if (activeSort === 'downloads' && downloadCounts)
+      return [...products].sort((a, b) => (downloadCounts[b.id] || 0) - (downloadCounts[a.id] || 0));
+    return products;
+  }
+
   /* ── render ── */
   function render() {
     saveState();
-    const out = filtered();
+    const out = sorted(filtered());
     const container = document.getElementById('catalog-output');
     if (!out.length) {
       container.innerHTML = '<div class="grid"><div class="empty">Ничего не найдено</div></div>';
@@ -453,7 +475,7 @@
 
   function saveState() {
     try {
-      localStorage.setItem(STATE_KEY, JSON.stringify({ viewMode, activeType, activeTekla, activeAuthor, searchQuery }));
+      localStorage.setItem(STATE_KEY, JSON.stringify({ viewMode, activeType, activeTekla, activeAuthor, searchQuery, activeSort }));
     } catch {}
   }
 
@@ -485,6 +507,10 @@
       activeAuthor = saved.activeAuthor;
       authorSel.value = activeAuthor;
     }
+    if (['new', 'name', 'downloads'].includes(saved.activeSort)) {
+      activeSort = saved.activeSort;
+      document.getElementById('sort-select').value = activeSort;
+    }
     if (typeof saved.searchQuery === 'string') {
       searchQuery = saved.searchQuery;
       document.getElementById('search').value = searchQuery;
@@ -495,6 +521,7 @@
   document.getElementById('type-filter').addEventListener('change', e => { activeType = e.target.value; render(); });
   document.getElementById('tekla-filter').addEventListener('change', e => { activeTekla = e.target.value; render(); });
   document.getElementById('author-filter').addEventListener('change', e => { activeAuthor = e.target.value; render(); });
+  document.getElementById('sort-select').addEventListener('change', e => { activeSort = e.target.value; render(); });
   document.getElementById('search').addEventListener('input', e => { searchQuery = e.target.value; render(); });
 
   /* ── View toggle ── */
