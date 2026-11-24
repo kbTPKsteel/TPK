@@ -41,7 +41,7 @@ jobs:
         run: |
           cp catalog.json docs/catalog.json
           git config user.name "TPK Collector"
-          git config user.email "collector@kbTPKsteel.github"
+          git config user.email "collector@axcodesign.github"
           git add catalog.json docs/
           git diff --staged --quiet || git commit -m "Update catalog [$(date -u +%Y-%m-%d)]"
           # catalog.json целиком генерируется заново, поэтому при конфликте берём свою (свежую) версию

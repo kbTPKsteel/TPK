@@ -13,5 +13,5 @@ jobs:
           curl -X POST \
             -H "Authorization: token ${{ secrets.TPK_DISPATCH_TOKEN }}" \
             -H "Accept: application/vnd.github+json" \
-            https://api.github.com/repos/kbTPKsteel/TPK/actions/workflows/collect.yml/dispatches \
+            https://api.github.com/repos/axcodesign/TPK_warehouse/actions/workflows/collect.yml/dispatches \
             -d '{"ref":"main"}'

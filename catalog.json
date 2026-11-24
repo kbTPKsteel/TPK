@@ -10,7 +10,7 @@
       "displayName": "Полюхова Мария",
       "slackUserId": "U04UNPXPM63",
       "sourceRepo": "https://github.com/poluhovamaria-tech/testMacro",
-      "image": "https://raw.githubusercontent.com/kbTPKsteel/TPK/main/docs/images/poluhovamaria-tech-testMacro.png",
+      "image": "https://raw.githubusercontent.com/axcodesign/TPK_warehouse/main/docs/images/poluhovamaria-tech-testMacro.png",
       "video": null,
       "instructions": "## Установка\n1. Скачать файл .cs из раздела версий\n2. Скопировать в папку макросов\n3. Обновить каталог в текле",
       "versions": [
@@ -22,7 +22,7 @@
             {
               "name": "AxCoDesign_Change_Direction_Handles_Of_Contour_Plate.cs",
               "tekla_version": null,
-              "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/poluhovamaria-tech-testMacro-2026.9.10.2/AxCoDesign_Change_Direction_Handles_Of_Contour_Plate.cs",
+              "downloadUrl": "https://github.com/axcodesign/TPK_warehouse/releases/download/poluhovamaria-tech-testMacro-2026.9.10.2/AxCoDesign_Change_Direction_Handles_Of_Contour_Plate.cs",
               "size": 2582
             }
           ]
@@ -35,7 +35,7 @@
             {
               "name": "AxCoDesign_ChangeMainPart.cs",
               "tekla_version": null,
-              "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/poluhovamaria-tech-testMacro-2026.9.10.1/AxCoDesign_ChangeMainPart.cs",
+              "downloadUrl": "https://github.com/axcodesign/TPK_warehouse/releases/download/poluhovamaria-tech-testMacro-2026.9.10.1/AxCoDesign_ChangeMainPart.cs",
               "size": 2435
             }
           ]
@@ -51,7 +51,7 @@
       "displayName": "Волков Андрей",
       "slackUserId": "U04UW6YJZUP",
       "sourceRepo": "https://github.com/WisnakeX/Issue_Drawings",
-      "image": "https://raw.githubusercontent.com/kbTPKsteel/TPK/main/docs/images/WisnakeX-Issue_Drawings.png",
+      "image": "https://raw.githubusercontent.com/axcodesign/TPK_warehouse/main/docs/images/WisnakeX-Issue_Drawings.png",
       "video": null,
       "instructions": "## Установка\n1. Скачать `Issue_Drawings.exe` (под Tekla 2020) или `Issue_Drawings2024.exe`\n   (под Tekla 2024) из раздела версий.\n2. Положить рядом `PdfSharp-gdi.dll` и `PdfSharp.Charting-gdi.dll` из того же\n   релиза — без них не заработает склейка PDF.\n\n## Использование\n1. Открыть Tekla Structures с моделью.\n2. Выделить в модели объекты сборками.\n3. В диспетчере документов выделить чертежи сборок (A) и чертежи деталей (W).\n4. Запустить exe → вкладка «Проверка готовности» → «Выполнить проверку».",
       "versions": [
@@ -63,13 +63,13 @@
             {
               "name": "Issue_Drawings_Tekla2020.exe",
               "tekla_version": "2020",
-              "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/WisnakeX-Issue_Drawings-2026.9.11.1/Issue_Drawings_Tekla2020.exe",
+              "downloadUrl": "https://github.com/axcodesign/TPK_warehouse/releases/download/WisnakeX-Issue_Drawings-2026.9.11.1/Issue_Drawings_Tekla2020.exe",
               "size": 416768
             },
             {
               "name": "Issue_Drawings_Tekla2024.exe",
               "tekla_version": "2024",
-              "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/WisnakeX-Issue_Drawings-2026.9.11.1/Issue_Drawings_Tekla2024.exe",
+              "downloadUrl": "https://github.com/axcodesign/TPK_warehouse/releases/download/WisnakeX-Issue_Drawings-2026.9.11.1/Issue_Drawings_Tekla2024.exe",
               "size": 416768
             }
           ]
@@ -85,7 +85,7 @@
       "displayName": "Куликов Павел",
       "slackUserId": "U050248KTLH",
       "sourceRepo": "https://github.com/learnpartner/tube-unfold",
-      "image": "https://raw.githubusercontent.com/kbTPKsteel/TPK/main/docs/images/learnpartner-tube-unfold.png",
+      "image": "https://raw.githubusercontent.com/axcodesign/TPK_warehouse/main/docs/images/learnpartner-tube-unfold.png",
       "video": null,
       "instructions": "## Установка\nСкачайте и запустите файл из раздела версий \nОткроется окно программы.\n\n## Использование\n\nШаг 1. Выделите трубу\nВ Tekla Structures откройте модель и выделите нужную трубу мышью. Окно программы должно оставаться открытым — свернуть его можно, закрывать не нужно.\n\nШаг 2. Проверьте параметры в окне\nОбычно ничего менять не нужно, значения по умолчанию подходят для большинства случаев. Если нужно что-то особое:\n\n- Поверхность — по умолчанию «наружная Ø», этого достаточно для разметки шаблоном по трубе.\n- Выпустить — какие файлы создавать. Отмечены DXF и PDF — обычно этого хватает.\n- Каталог вывода — куда сохранятся файлы. Можно нажать «Обзор…» и выбрать папку.\n- Остальные поля (поворот трубы, отсчёт угла, база отсчёта) необходимо в случае, если есть необходимость установить угол построение развертки относительно риски, (например риска в 0 градусов)\n\nШаг 3. Нажмите «Построить развёртку»\nПрограмма посчитает развёртку и сохранит файлы в указанную папку.\n\nЕсли появится жёлтое предупреждение про фаску или про то, что у трубы нет плоского торца — прочитайте его и нажмите «Да», если хотите продолжить, или «Нет», чтобы отменить и разобраться. Само по себе предупреждение не значит, что что-то сломалось — оно означает, что нужно перепроверить деталь.\nКак правило выгружать надо детали без фаски, можно из спеуиаьн созданной для этого модели\n\nПосле успешного построения программа предложит открыть папку с готовыми файлами — нажмите «Да».\n\nЧто делать с готовыми файлами\nФайл ..._izgotovlenie.dxf — по нему раскраивают заготовку, это основной файл для производства.\nФайл ..._prosmotr.dxf — только для просмотра на экране, для раскроя не подходит.\nФайл ....pdf — печатный лист с чертежом, таблицей размеров и схемой.\nЕсли нужна ещё одна труба\nПросто выделите в Tekla другую деталь и снова нажмите «Построить развёртку» — окно закрывать не нужно.\n\nЕсли что-то не получается\n«Ничего не выделено» / труба не разворачивается — убедитесь, что в Tekla действительно выделена труба (одна деталь), и попробуйте ещё раз.\nФайл не записался, программа пишет «занят другой программой» — закройте PDF или DXF, если он открыт в другой программе (например, в просмотрщике), и нажмите «Построить развёртку» снова.\nПолный ход расчёта и все сообщения об ошибках можно посмотреть на вкладке «Протокол» в том же окне.",
       "versions": [
@@ -97,7 +97,7 @@
             {
               "name": "Tube_Unfold.exe",
               "tekla_version": null,
-              "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/learnpartner-tube-unfold-2026.09.15.1/Tube_Unfold.exe",
+              "downloadUrl": "https://github.com/axcodesign/TPK_warehouse/releases/download/learnpartner-tube-unfold-2026.09.15.1/Tube_Unfold.exe",
               "size": 72039771
             }
           ]
@@ -110,7 +110,7 @@
             {
               "name": "Tube_Unfold.exe",
               "tekla_version": null,
-              "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/learnpartner-tube-unfold-2026.9.14.1/Tube_Unfold.exe",
+              "downloadUrl": "https://github.com/axcodesign/TPK_warehouse/releases/download/learnpartner-tube-unfold-2026.9.14.1/Tube_Unfold.exe",
               "size": 15549762
             }
           ]
@@ -126,7 +126,7 @@
       "displayName": "Куликов Даниил",
       "slackUserId": "U05BAV31Y6T",
       "sourceRepo": "https://github.com/SomebodyDaDaDa/weld-album",
-      "image": "https://raw.githubusercontent.com/kbTPKsteel/TPK/main/docs/images/SomebodyDaDaDa-weld-album.png",
+      "image": "https://raw.githubusercontent.com/axcodesign/TPK_warehouse/main/docs/images/SomebodyDaDaDa-weld-album.png",
       "video": null,
       "instructions": "## Что внутри\n\n- ГОСТ 5264-80, 14771-76, 23518-79, 11534-75 целиком — 131 соединение\n- Альбом VLS-SPG-2024-WB_00 (Усть-Луга) — 83 ячейки с эскизами и обозначением в модели\n\nВсе карточки помечены «черновик»: базу заполнял ИИ, с первоисточником\nеё не сверяли. Под каждой карточкой — ссылка на страницу ГОСТа, по которой\nчисло можно проверить.\n\n## Что нужно\n\n- Tekla Structures 2020 или 2024\n- Windows 10/11 x64, .NET Framework 4.8\n- Microsoft Edge WebView2 Runtime (в Windows 11 уже стоит)\n\n## Установка\n\nУстанавливать ничего не нужно: альбом работает из любой папки\nи сам подключается к запущенной Tekla. Архивы под 2020 и 2024\nодинаковые — внутри связь с обеими версиями.\n\n### Шаг 1. Скачать и разблокировать архив\nСкачайте архив из раздела версий. До распаковки откройте его\n**Свойства** и поставьте галочку **Разблокировать** → ОК.\n*Совет:* без этого при первом запуске Windows покажет синее окно\n«Система Windows защитила ваш компьютер» — тогда\n**Подробнее → Выполнить в любом случае**.\n\n### Шаг 2. Распаковать\nРаспакуйте в любую постоянную папку, например `D:\\Программы`.\nВнутри архива — папка `WeldAlbum`.\n\n### Шаг 3. Запустить\nЗапустите `WeldAlbum\\WeldAlbum.exe`. Чтобы не искать его каждый раз —\nправой кнопкой по значку на панели задач → **Закрепить на панели задач**.\n\n### Обновление\nВыйдите из альбома через значок в трее (**Выход**) и распакуйте новую\nверсию поверх старой. Пока альбом в трее, его файлы заменить не получится.\n\n### Удаление\nВыйдите через трей и удалите папку `WeldAlbum`. Журнал и служебные\nфайлы лежат в `%LOCALAPPDATA%\\WeldAlbum` — их тоже можно удалить.\n\n## Использование\n\nПорядок — как на картинке.\n\n### Шаг 1. Выбрать альбом\nСписок вверху слева. Пока есть только альбом по Усть-Луге.\n\n### Шаг 2. Настроить фильтры\nИсполнение, угол, тип соединения, разделка. Квадратик добавляет вариант\nк отмеченным, остальная кнопка оставляет только его.\n\n### Шаг 3. Задать толщины и угол\nВручную — `s`, `s₁`, угол, катет `k`. Или из модели: **Указать детали**,\nзатем в Tekla две грани — сначала у основания, потом у привариваемой детали.\n\n### Шаг 4. Выбрать шов\nСправа — список подходящих швов с посчитанными размерами и свойствами\nшва для окна Tekla. Карточки, которые не подходят по числам, подсвечены;\nгалочка «Фильтровать по углу и толщине» их скрывает.\n\n### Шаг 5. Вставить в модель\nКнопки в правом верхнем углу карточки: верхняя — шов между деталями,\nнижняя — по линии. Повторяется до Esc.\n\n### Шаг 6. Проверить по источникам\n«Первоисточники» под карточкой — обозначение из альбома и страница ГОСТа.\n**Базу заполнял ИИ — числа нужно проверять.**\n\n## Полезно знать\n\n- Окно живёт в трее и держится поверх модели: крестик или Esc прячет,\n  **Ctrl+Alt+W** возвращает, выход — из меню значка в трее.\n- Альбом можно запускать до Tekla. Но если Tekla перезапустили\n  или открыли другую версию — выйдите из альбома через трей\n  и запустите заново: связь с Tekla устанавливается одна на всё время работы.\n- Журнал ошибок: `%LOCALAPPDATA%\\WeldAlbum\\app.log`.",
       "versions": [
@@ -138,13 +138,13 @@
             {
               "name": "WeldAlbum_Tekla2020.zip",
               "tekla_version": "2020",
-              "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/SomebodyDaDaDa-weld-album-2026.9.29.1/WeldAlbum_Tekla2020.zip",
+              "downloadUrl": "https://github.com/axcodesign/TPK_warehouse/releases/download/SomebodyDaDaDa-weld-album-2026.9.29.1/WeldAlbum_Tekla2020.zip",
               "size": 22178023
             },
             {
               "name": "WeldAlbum_Tekla2024.zip",
               "tekla_version": "2024",
-              "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/SomebodyDaDaDa-weld-album-2026.9.29.1/WeldAlbum_Tekla2024.zip",
+              "downloadUrl": "https://github.com/axcodesign/TPK_warehouse/releases/download/SomebodyDaDaDa-weld-album-2026.9.29.1/WeldAlbum_Tekla2024.zip",
               "size": 22178023
             }
           ]
@@ -157,13 +157,13 @@
             {
               "name": "WeldAlbum_Tekla2020.zip",
               "tekla_version": "2020",
-              "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/SomebodyDaDaDa-weld-album-2026.9.25.1/WeldAlbum_Tekla2020.zip",
+              "downloadUrl": "https://github.com/axcodesign/TPK_warehouse/releases/download/SomebodyDaDaDa-weld-album-2026.9.25.1/WeldAlbum_Tekla2020.zip",
               "size": 22177282
             },
             {
               "name": "WeldAlbum_Tekla2024.zip",
               "tekla_version": "2024",
-              "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/SomebodyDaDaDa-weld-album-2026.9.25.1/WeldAlbum_Tekla2024.zip",
+              "downloadUrl": "https://github.com/axcodesign/TPK_warehouse/releases/download/SomebodyDaDaDa-weld-album-2026.9.25.1/WeldAlbum_Tekla2024.zip",
               "size": 22177282
             }
           ]
@@ -179,7 +179,7 @@
       "displayName": "Волков Андрей",
       "slackUserId": "U04UW6YJZUP",
       "sourceRepo": "https://github.com/WisnakeX/StiffenerBWLD",
-      "image": "https://raw.githubusercontent.com/kbTPKsteel/TPK/main/docs/images/WisnakeX-StiffenerBWLD.png",
+      "image": "https://raw.githubusercontent.com/axcodesign/TPK_warehouse/main/docs/images/WisnakeX-StiffenerBWLD.png",
       "video": null,
       "instructions": "## Установка\n1. Скачать из раздела версий архив под свою версию Tekla: `StiffenerBWLD_Tekla2020.zip`, `StiffenerBWLD_Tekla2021.zip` или `StiffenerBWLD_Tekla2024.zip`.\n2. Распаковать архив. Внутри лежит установочный пакет `StiffenerBWLD_Tekla<версия>_<номер>.tsep`.\n3. Закрыть Tekla и дважды щёлкнуть по пакету. Откроется Менеджер расширений Tekla. Либо в Tekla: «Приложения и компоненты» → «Управление расширениями» → Менеджер расширений → «Импорт», выбрать файл и версию Tekla.\n4. Перезапустить Tekla. Плагин появится в каталоге «Приложения и компоненты» как `StiffenerBWLD`.\n\nПакет собран под одну версию Tekla и в другой не установится: берите архив своей версии. Пакет не подписан, поэтому Tekla может предупредить о неизвестном издателе. Не ставьте пакет и копию `StiffenerBWLD.dll` вручную в одну версию Tekla: получатся два экземпляра плагина.\n\n## Использование\n1. Открыть каталог «Приложения и компоненты» и выбрать `StiffenerBWLD`.\n2. Выбрать три элемента двутавра: верхнюю полку, стенку и нижнюю полку (в любом порядке, можно рамкой), затем нажать среднюю кнопку мыши.\n3. Указать точку на двутавре или рядом с ним. В этом месте плагин ставит ребро.\n\nВ диалоге плагина задаются: положение рёбер (справа, слева, оба), толщина, зазор до полок, отступ от кромки полки, скос углов, катеты и тип швов (заводской или монтажный).\n\nУ вертикального двутавра (и двутавра, лежащего на боку) полки выбирайте по очереди, начиная с верхней: от этого зависит, какая сторона считается «справа».\n\nРебро — обычный компонент модели: смена параметров в диалоге или правка двутавра пересоздаёт его, удаление компонента удаляет ребро.",
       "versions": [
@@ -191,19 +191,19 @@
             {
               "name": "StiffenerBWLD_Tekla2020.zip",
               "tekla_version": "2020",
-              "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/WisnakeX-StiffenerBWLD-2026.10.12.1/StiffenerBWLD_Tekla2020.zip",
+              "downloadUrl": "https://github.com/axcodesign/TPK_warehouse/releases/download/WisnakeX-StiffenerBWLD-2026.10.12.1/StiffenerBWLD_Tekla2020.zip",
               "size": 43542
             },
             {
               "name": "StiffenerBWLD_Tekla2021.zip",
               "tekla_version": "2021",
-              "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/WisnakeX-StiffenerBWLD-2026.10.12.1/StiffenerBWLD_Tekla2021.zip",
+              "downloadUrl": "https://github.com/axcodesign/TPK_warehouse/releases/download/WisnakeX-StiffenerBWLD-2026.10.12.1/StiffenerBWLD_Tekla2021.zip",
               "size": 43546
             },
             {
               "name": "StiffenerBWLD_Tekla2024.zip",
               "tekla_version": "2024",
-              "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/WisnakeX-StiffenerBWLD-2026.10.12.1/StiffenerBWLD_Tekla2024.zip",
+              "downloadUrl": "https://github.com/axcodesign/TPK_warehouse/releases/download/WisnakeX-StiffenerBWLD-2026.10.12.1/StiffenerBWLD_Tekla2024.zip",
               "size": 43546
             }
           ]
@@ -216,19 +216,19 @@
             {
               "name": "StiffenerBWLD_Tekla2020.zip",
               "tekla_version": "2020",
-              "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/WisnakeX-StiffenerBWLD-2026.10.7.1/StiffenerBWLD_Tekla2020.zip",
+              "downloadUrl": "https://github.com/axcodesign/TPK_warehouse/releases/download/WisnakeX-StiffenerBWLD-2026.10.7.1/StiffenerBWLD_Tekla2020.zip",
               "size": 35992
             },
             {
               "name": "StiffenerBWLD_Tekla2021.zip",
               "tekla_version": "2021",
-              "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/WisnakeX-StiffenerBWLD-2026.10.7.1/StiffenerBWLD_Tekla2021.zip",
+              "downloadUrl": "https://github.com/axcodesign/TPK_warehouse/releases/download/WisnakeX-StiffenerBWLD-2026.10.7.1/StiffenerBWLD_Tekla2021.zip",
               "size": 36003
             },
             {
               "name": "StiffenerBWLD_Tekla2024.zip",
               "tekla_version": "2024",
-              "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/WisnakeX-StiffenerBWLD-2026.10.7.1/StiffenerBWLD_Tekla2024.zip",
+              "downloadUrl": "https://github.com/axcodesign/TPK_warehouse/releases/download/WisnakeX-StiffenerBWLD-2026.10.7.1/StiffenerBWLD_Tekla2024.zip",
               "size": 36003
             }
           ]
@@ -244,7 +244,7 @@
       "displayName": "Волков Андрей",
       "slackUserId": "U04UW6YJZUP",
       "sourceRepo": "https://github.com/WisnakeX/ScreenshotEngeneers",
-      "image": "https://raw.githubusercontent.com/kbTPKsteel/TPK/main/docs/images/WisnakeX-ScreenshotEngeneers.png",
+      "image": "https://raw.githubusercontent.com/axcodesign/TPK_warehouse/main/docs/images/WisnakeX-ScreenshotEngeneers.png",
       "video": null,
       "instructions": "## Установка\n1. Скачайте `ScreenshotEngeneers.exe` из раздела версий.\n2. Положите файл в **локальную** папку, например `%LocalAppData%\\ScreenshotEngeneers\\`. Не запускайте его из OneDrive: автозапуск может ссылаться на ещё не скачанный файл.\n3. Запустите файл один раз — приложение появится в системном трее и пропишется в автозагрузку.\n\n**Важно:** антивирус (например, Kaspersky) может ложно сработать на скриншотер без цифровой подписи. Добавьте файл в исключения антивируса.\n\n## Использование\n### Шаг 1. Сделайте снимок\nНажмите **Ctrl+Print Screen**. Экран замрёт. Зажмите левую кнопку мыши и протяните рамку выделения. Края рамки можно менять после выделения.\n\n### Шаг 2. Поставьте пометки\nВ плавающем тулбаре выберите инструмент и рисуйте прямо на снимке:\n- Стрелка и двойная стрелка — «клик — начало, клик — конец».\n- Размер — 3 клика: начало, конец, отступ размерной линии. Режим «С меткой» добавляет текст.\n- Разрез, Уровень, Выноска — метки с текстом.\n- Прямоугольник, Овал, Карандаш, Текст — свободная разметка.\n- Выбор — правка уже поставленных пометок.\n\n*Совет:* колесо мыши меняет толщину линий и размер шрифта, `Shift` рисует строго по горизонтали или вертикали.\n\n### Шаг 3. Скопируйте или сохраните\n- `Enter` или `Ctrl+C` — скопировать результат в буфер обмена.\n- `Ctrl+S` — сохранить в файл PNG, JPG или BMP.\n- `Ctrl+Z` — отменить последнюю пометку.\n- `Esc` — закрыть без сохранения.\n\n## Настройки\nВ меню значка в трее можно сменить клавишу запуска (Ctrl+Print Screen или Ctrl+F12), отключить автозапуск и выйти из приложения.",
       "versions": [
@@ -256,7 +256,7 @@
             {
               "name": "ScreenshotEngeneers.exe",
               "tekla_version": null,
-              "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/WisnakeX-ScreenshotEngeneers-2026.11.2.1/ScreenshotEngeneers.exe",
+              "downloadUrl": "https://github.com/axcodesign/TPK_warehouse/releases/download/WisnakeX-ScreenshotEngeneers-2026.11.2.1/ScreenshotEngeneers.exe",
               "size": 51722921
             }
           ]
@@ -269,7 +269,7 @@
             {
               "name": "ScreenshotEngeneers.exe",
               "tekla_version": null,
-              "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/WisnakeX-ScreenshotEngeneers-2026.10.7.1/ScreenshotEngeneers.exe",
+              "downloadUrl": "https://github.com/axcodesign/TPK_warehouse/releases/download/WisnakeX-ScreenshotEngeneers-2026.10.7.1/ScreenshotEngeneers.exe",
               "size": 51719221
             }
           ]
@@ -285,7 +285,7 @@
       "displayName": "Волков Андрей",
       "slackUserId": "U04UW6YJZUP",
       "sourceRepo": "https://github.com/WisnakeX/NumberDrw",
-      "image": "https://raw.githubusercontent.com/kbTPKsteel/TPK/main/docs/images/WisnakeX-NumberDrw.png",
+      "image": "https://raw.githubusercontent.com/axcodesign/TPK_warehouse/main/docs/images/WisnakeX-NumberDrw.png",
       "video": null,
       "instructions": "## Установка\nСкачайте файл для вашей версии Tekla из раздела версий. Установка не нужна — это один `.exe`.\n\n**Важно:** версия Tekla в имени файла должна совпадать с версией запущенной Tekla Structures. Запускайте приложение только после запуска Tekla.\n\n## Использование\n### Шаг 1. Выберите чертежи\nВ Tekla откройте диспетчер документов и выделите чертежи, которые нужно пронумеровать.\n\n### Шаг 2. Запустите NumberDrw\nОкно покажет выбранные чертежи в таблице. Тип чертежа (G, A или W) определяется автоматически.\n\n### Шаг 3. Выберите поле для номера\nДля каждого типа чертежа выберите, куда записывать номер:\n- стандартные атрибуты — `Name`, `Title1`, `Title2`, `Title3`;\n- любое UDA из `objects*.inp` или с самих чертежей. Имя UDA можно вписать вручную.\n\n**Важно:** выбранное поле всегда перезаписывается.\n\n### Шаг 4. Расставьте порядок\nНажмите «Предв. нумерация» — номера присвоятся в порядке строк таблицы сверху вниз. Порядок можно менять: сортировка по заголовку столбца или перетаскивание строк за ячейку «Тип».\n\n### Шаг 5. Запишите номера\n- «Нумеровать чертежи» — надёжная запись, около 3 секунд на чертёж.\n- «Быстрая нумерация» — быстрее, но значение может не отобразиться в диспетчере до сохранения модели.\n\nПовторный клик по активной кнопке отменяет запись.\n\n## Правила нумерации\nОдин сквозной счётчик по всем выбранным чертежам в порядке таблицы:\n- чертёж типа G или W — очередное целое число: 7, 8, 9;\n- чертёж типа A без доп. листов — тоже очередное целое;\n- сборка из нескольких листов — главный лист `7.1`, доп. листы `7.2`, `7.3` и т.д.\n\nДоп. лист сборки определяется по дефису в метке: `Б.1` — главный, `Б.1-1`, `Б.1-2` — доп. листы.",
       "versions": [
@@ -297,19 +297,19 @@
             {
               "name": "NumberDrw_Tekla2020.exe",
               "tekla_version": "2020",
-              "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/WisnakeX-NumberDrw-2026.10.7.1/NumberDrw_Tekla2020.exe",
+              "downloadUrl": "https://github.com/axcodesign/TPK_warehouse/releases/download/WisnakeX-NumberDrw-2026.10.7.1/NumberDrw_Tekla2020.exe",
               "size": 148992
             },
             {
               "name": "NumberDrw_Tekla2021.exe",
               "tekla_version": "2021",
-              "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/WisnakeX-NumberDrw-2026.10.7.1/NumberDrw_Tekla2021.exe",
+              "downloadUrl": "https://github.com/axcodesign/TPK_warehouse/releases/download/WisnakeX-NumberDrw-2026.10.7.1/NumberDrw_Tekla2021.exe",
               "size": 148992
             },
             {
               "name": "NumberDrw_Tekla2024.exe",
               "tekla_version": "2024",
-              "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/WisnakeX-NumberDrw-2026.10.7.1/NumberDrw_Tekla2024.exe",
+              "downloadUrl": "https://github.com/axcodesign/TPK_warehouse/releases/download/WisnakeX-NumberDrw-2026.10.7.1/NumberDrw_Tekla2024.exe",
               "size": 148992
             }
           ]
@@ -325,7 +325,7 @@
       "displayName": "Волков Андрей",
       "slackUserId": "U04UW6YJZUP",
       "sourceRepo": "https://github.com/WisnakeX/XlsxToTeklaRTF",
-      "image": "https://raw.githubusercontent.com/kbTPKsteel/TPK/main/docs/images/WisnakeX-XlsxToTeklaRTF.png",
+      "image": "https://raw.githubusercontent.com/axcodesign/TPK_warehouse/main/docs/images/WisnakeX-XlsxToTeklaRTF.png",
       "video": null,
       "instructions": "## Установка\n1. Скачайте файл `XlsxToTeklaRTF_Tekla2020.exe` из раздела версий.\n2. Положите его в любую папку и запустите. Установка не нужна.\n\n**Важно:** перед запуском откройте Tekla Structures 2020 и модель. Без открытой модели программа не подключится к Tekla.\n\n## Использование\n### Шаг 1. Выберите файлы\nУкажите файл `.xlsx` с таблицей и папку, куда сохранить RTF-файлы.\n\n### Шаг 2. Настройте таблицу\n- Высота шрифта — размер текста в таблице на чертеже.\n- Число строк заголовка — сколько верхних строк повторять на каждом листе.\n\n### Шаг 3. Выберите форматы листа\nОтметьте нужные форматы (A3, A2, A1, A0) и для каждого выберите шаблон чертежа Tekla.\n\n### Шаг 4. Настройте нумерацию листов\nЗадайте UDA для номера листа и стартовый номер.\n\n### Шаг 5. Запустите\nНажмите **Выполнить**. В выбранной папке появятся RTF-файлы. Если таблица не влезла на один лист, программа создаст несколько файлов.\n\n*Совет:* для светлого оформления окна включите переключатель «Светлая тема».",
       "versions": [
@@ -337,7 +337,7 @@
             {
               "name": "XlsxToTeklaRTF_Tekla2020.exe",
               "tekla_version": "2020",
-              "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/WisnakeX-XlsxToTeklaRTF-2026.10.7.1/XlsxToTeklaRTF_Tekla2020.exe",
+              "downloadUrl": "https://github.com/axcodesign/TPK_warehouse/releases/download/WisnakeX-XlsxToTeklaRTF-2026.10.7.1/XlsxToTeklaRTF_Tekla2020.exe",
               "size": 2492928
             }
           ]
@@ -365,7 +365,7 @@
             {
               "name": "FIND_CURVE_PART.cs",
               "tekla_version": null,
-              "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/WisnakeX-FIND_CURVE_PART-2026.10.7.1/FIND_CURVE_PART.cs",
+              "downloadUrl": "https://github.com/axcodesign/TPK_warehouse/releases/download/WisnakeX-FIND_CURVE_PART-2026.10.7.1/FIND_CURVE_PART.cs",
               "size": 10696
             }
           ]
@@ -393,7 +393,7 @@
             {
               "name": "OpenClose_DRW.cs",
               "tekla_version": null,
-              "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/WisnakeX-OpenClose_DRW-2026.10.7.1/OpenClose_DRW.cs",
+              "downloadUrl": "https://github.com/axcodesign/TPK_warehouse/releases/download/WisnakeX-OpenClose_DRW-2026.10.7.1/OpenClose_DRW.cs",
               "size": 2561
             }
           ]
@@ -409,7 +409,7 @@
       "displayName": "Волков Андрей",
       "slackUserId": "U04UW6YJZUP",
       "sourceRepo": "https://github.com/WisnakeX/SplitPL",
-      "image": "https://raw.githubusercontent.com/kbTPKsteel/TPK/main/docs/images/WisnakeX-SplitPL.png",
+      "image": "https://raw.githubusercontent.com/axcodesign/TPK_warehouse/main/docs/images/WisnakeX-SplitPL.png",
       "video": null,
       "instructions": "## Установка\n1. Скачать из раздела версий архив под свою версию Tekla: `SplitPL_Tekla2020.zip`, `SplitPL_Tekla2021.zip` или `SplitPL_Tekla2024.zip`.\n2. Распаковать его в **локальную** папку, например `C:\\Tools\\SplitPL\\`. Не запускайте файл из OneDrive.\n3. Оставить `SplitPL<версия>.exe` и `SplitPL<версия>.exe.config` в одной папке.\n\nКаждый exe работает только с Tekla своей версии. Если запущена другая версия, окно приложения так и напишет.\n\n## Использование\n### Шаг 1. Откройте модель\nЗапустите Tekla Structures и откройте модель. Затем запустите `SplitPL<версия>.exe` той же версии.\n\n### Шаг 2. Выберите деталь\nНажмите кнопку **«Разрезать пластину»**. Укажите в модели пластину или балку.\n\n### Шаг 3. Укажите линию реза\nКликните две точки — это линия реза. Деталь и её швы режутся по этой линии.\n\n### Шаг 4. Проверьте итог и продолжайте\nОкно печатает итог: какие швы остались у каждой части и какой они длины. Приложение сразу просит следующую деталь. Клавиша `Esc` выходит из режима выбора.\n\n## Что поддерживается\n- Режутся `ContourPlate` (пластины) и `Beam` (балки и полосы).\n- Режутся швы по точкам и обычные швы между двумя деталями. Группы швов SplitPL не трогает.\n- Болты, вырезы и компоненты на детали обрабатывает сама Tekla.",
       "versions": [
@@ -421,19 +421,19 @@
             {
               "name": "SplitPL_Tekla2020.zip",
               "tekla_version": "2020",
-              "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/WisnakeX-SplitPL-2026.10.8.2/SplitPL_Tekla2020.zip",
+              "downloadUrl": "https://github.com/axcodesign/TPK_warehouse/releases/download/WisnakeX-SplitPL-2026.10.8.2/SplitPL_Tekla2020.zip",
               "size": 53366
             },
             {
               "name": "SplitPL_Tekla2021.zip",
               "tekla_version": "2021",
-              "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/WisnakeX-SplitPL-2026.10.8.2/SplitPL_Tekla2021.zip",
+              "downloadUrl": "https://github.com/axcodesign/TPK_warehouse/releases/download/WisnakeX-SplitPL-2026.10.8.2/SplitPL_Tekla2021.zip",
               "size": 53374
             },
             {
               "name": "SplitPL_Tekla2024.zip",
               "tekla_version": "2024",
-              "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/WisnakeX-SplitPL-2026.10.8.2/SplitPL_Tekla2024.zip",
+              "downloadUrl": "https://github.com/axcodesign/TPK_warehouse/releases/download/WisnakeX-SplitPL-2026.10.8.2/SplitPL_Tekla2024.zip",
               "size": 53558
             }
           ]
@@ -446,7 +446,7 @@
             {
               "name": "SplitPL_Tekla2024.zip",
               "tekla_version": "2024",
-              "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/WisnakeX-SplitPL-2026.10.8.1/SplitPL_Tekla2024.zip",
+              "downloadUrl": "https://github.com/axcodesign/TPK_warehouse/releases/download/WisnakeX-SplitPL-2026.10.8.1/SplitPL_Tekla2024.zip",
               "size": 51186
             }
           ]
@@ -474,7 +474,7 @@
             {
               "name": "BoltDiameterPicker.cs",
               "tekla_version": null,
-              "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/WisnakeX-BoltDiameterPicker-2026.10.8.1/BoltDiameterPicker.cs",
+              "downloadUrl": "https://github.com/axcodesign/TPK_warehouse/releases/download/WisnakeX-BoltDiameterPicker-2026.10.8.1/BoltDiameterPicker.cs",
               "size": 8897
             }
           ]
@@ -490,7 +490,7 @@
       "displayName": "Волков Андрей",
       "slackUserId": "U04UW6YJZUP",
       "sourceRepo": "https://github.com/WisnakeX/TimeFromIFC",
-      "image": "https://raw.githubusercontent.com/kbTPKsteel/TPK/main/docs/images/WisnakeX-TimeFromIFC.png",
+      "image": "https://raw.githubusercontent.com/axcodesign/TPK_warehouse/main/docs/images/WisnakeX-TimeFromIFC.png",
       "video": null,
       "instructions": "## Установка\n1. Скачайте `TimeFromIFC.exe` из раздела версий.\n2. Установка не нужна — запустите файл двойным щелчком.\n\n**Важно:** при каждом запуске файл распаковывается во временную папку, поэтому первый экран появляется примерно через 10 секунд.\n\n## Использование\n### Шаг 1. Выберите IFC-файл\nНажмите «Обзор…» и укажите IFC-выгрузку из Tekla Structures.\n\n### Шаг 2. Запустите анализ\nНажмите «Анализировать». Сборки (`IfcElementAssembly`) появятся в таблице, сгруппированные по конструкции и числу уникальных деталей.\n\n### Шаг 3. Загрузите нормы\nНажмите «Загрузить…» в строке «Нормы трудоёмкости» и выберите CSV-файл с нормами. Пример файла — `Labour_input.csv` в репозитории. Итог в часах пересчитается автоматически.\n\n### Шаг 4. Выгрузите результат\nНажмите «Экспорт в Excel». В файле группы можно сворачивать и разворачивать.",
       "versions": [
@@ -502,7 +502,7 @@
             {
               "name": "TimeFromIFC.exe",
               "tekla_version": null,
-              "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/WisnakeX-TimeFromIFC-2026.10.8.1/TimeFromIFC.exe",
+              "downloadUrl": "https://github.com/axcodesign/TPK_warehouse/releases/download/WisnakeX-TimeFromIFC-2026.10.8.1/TimeFromIFC.exe",
               "size": 299664099
             }
           ]
@@ -518,7 +518,7 @@
       "displayName": "Волков Андрей",
       "slackUserId": "U04UW6YJZUP",
       "sourceRepo": "https://github.com/WisnakeX/CutProfileAlong",
-      "image": "https://raw.githubusercontent.com/kbTPKsteel/TPK/main/docs/images/WisnakeX-CutProfileAlong.png",
+      "image": "https://raw.githubusercontent.com/axcodesign/TPK_warehouse/main/docs/images/WisnakeX-CutProfileAlong.png",
       "video": null,
       "instructions": "## Установка\n1. Скачать из раздела версий архив под свою версию Tekla: `CutProfileAlong_Tekla2020.zip`, `CutProfileAlong_Tekla2021.zip` или `CutProfileAlong_Tekla2024.zip`.\n2. Распаковать архив. Внутри лежит установочный пакет `CutProfileAlong_Tekla<версия>_<номер>.tsep`.\n3. Закрыть Tekla и дважды щёлкнуть по пакету. Откроется Менеджер расширений Tekla. Либо в Tekla: «Приложения и компоненты» → «Управление расширениями» → Менеджер расширений → «Импорт», выбрать файл и версию Tekla.\n4. Перезапустить Tekla. Плагин появится в каталоге «Приложения и компоненты» как `CutProfileAlong`.\n\nПакет собран под одну версию Tekla и в другой не установится: берите архив своей версии. Пакет не подписан, поэтому Tekla может предупредить о неизвестном издателе. Не ставьте пакет и копию `CutProfileAlong.dll` вручную в одну версию Tekla: получатся два экземпляра плагина.\n\n## Использование\n### Шаг 1. Откройте диалог\nВ каталоге «Приложения и компоненты» выберите `CutProfileAlong`. Чтобы диалог показал настоящий катет, выберите трубу и пластину в модели до его открытия.\n\n### Шаг 2. Задайте параметры\n- **Зазор до пластины** — по умолчанию 1 мм, с каждой стороны пластины.\n- **Зазор в торце** — по умолчанию 2 мм, от пластины до торца выреза вдоль оси трубы.\n- **Радиус скругления** — по умолчанию 3 мм, два угла у закрытого торца выреза.\n- **Тип швов** — заводской или монтажный, один для всех четырёх швов.\n- **Катет шва** — **Авто** берёт меньшую из толщин пластины и стенки трубы, **Вручную** принимает ваше число.\n\nНажмите «Применить».\n\n### Шаг 3. Выберите детали\nВыберите трубу и пластину в любом порядке (по очереди или рамкой), затем нажмите среднюю кнопку мыши. Плагин сам определяет, какая деталь труба, а какая пластина.\n\n## Что создаётся\n- Два выреза в противоположных стенках трубы.\n- Четыре шва `PolygonWeld` по длинным краям выреза: от торца трубы до края пластины.\n- Если создать что-то не удалось, плагин удаляет всё созданное.\n\n## Ограничения\n- Пластина параллельна оси трубы и выступает за наружную поверхность обеих стенок.\n- У прямоугольной трубы плоскость пластины параллельна одной из пар стенок. Вырез не должен заходить на скруглённый угол.\n- Работают только `Beam` и `ContourPlate`. `PolyBeam` и гнутые пластины не поддерживаются.",
       "versions": [
@@ -530,19 +530,19 @@
             {
               "name": "CutProfileAlong_Tekla2020.zip",
               "tekla_version": "2020",
-              "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/WisnakeX-CutProfileAlong-2026.10.12.1/CutProfileAlong_Tekla2020.zip",
+              "downloadUrl": "https://github.com/axcodesign/TPK_warehouse/releases/download/WisnakeX-CutProfileAlong-2026.10.12.1/CutProfileAlong_Tekla2020.zip",
               "size": 31768
             },
             {
               "name": "CutProfileAlong_Tekla2021.zip",
               "tekla_version": "2021",
-              "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/WisnakeX-CutProfileAlong-2026.10.12.1/CutProfileAlong_Tekla2021.zip",
+              "downloadUrl": "https://github.com/axcodesign/TPK_warehouse/releases/download/WisnakeX-CutProfileAlong-2026.10.12.1/CutProfileAlong_Tekla2021.zip",
               "size": 31754
             },
             {
               "name": "CutProfileAlong_Tekla2024.zip",
               "tekla_version": "2024",
-              "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/WisnakeX-CutProfileAlong-2026.10.12.1/CutProfileAlong_Tekla2024.zip",
+              "downloadUrl": "https://github.com/axcodesign/TPK_warehouse/releases/download/WisnakeX-CutProfileAlong-2026.10.12.1/CutProfileAlong_Tekla2024.zip",
               "size": 31757
             }
           ]
@@ -555,19 +555,19 @@
             {
               "name": "CutProfileAlong_Tekla2020.zip",
               "tekla_version": "2020",
-              "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/WisnakeX-CutProfileAlong-2026.10.9.2/CutProfileAlong_Tekla2020.zip",
+              "downloadUrl": "https://github.com/axcodesign/TPK_warehouse/releases/download/WisnakeX-CutProfileAlong-2026.10.9.2/CutProfileAlong_Tekla2020.zip",
               "size": 31757
             },
             {
               "name": "CutProfileAlong_Tekla2021.zip",
               "tekla_version": "2021",
-              "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/WisnakeX-CutProfileAlong-2026.10.9.2/CutProfileAlong_Tekla2021.zip",
+              "downloadUrl": "https://github.com/axcodesign/TPK_warehouse/releases/download/WisnakeX-CutProfileAlong-2026.10.9.2/CutProfileAlong_Tekla2021.zip",
               "size": 31748
             },
             {
               "name": "CutProfileAlong_Tekla2024.zip",
               "tekla_version": "2024",
-              "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/WisnakeX-CutProfileAlong-2026.10.9.2/CutProfileAlong_Tekla2024.zip",
+              "downloadUrl": "https://github.com/axcodesign/TPK_warehouse/releases/download/WisnakeX-CutProfileAlong-2026.10.9.2/CutProfileAlong_Tekla2024.zip",
               "size": 31758
             }
           ]
@@ -580,7 +580,7 @@
             {
               "name": "CutProfileAlong_Tekla2021.zip",
               "tekla_version": "2021",
-              "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/WisnakeX-CutProfileAlong-2026.10.9.1/CutProfileAlong_Tekla2021.zip",
+              "downloadUrl": "https://github.com/axcodesign/TPK_warehouse/releases/download/WisnakeX-CutProfileAlong-2026.10.9.1/CutProfileAlong_Tekla2021.zip",
               "size": 29916
             }
           ]
@@ -596,7 +596,7 @@
       "displayName": "Волков Андрей",
       "slackUserId": "U04UW6YJZUP",
       "sourceRepo": "https://github.com/WisnakeX/ConnectBeamStairs",
-      "image": "https://raw.githubusercontent.com/kbTPKsteel/TPK/main/docs/images/WisnakeX-ConnectBeamStairs.png",
+      "image": "https://raw.githubusercontent.com/axcodesign/TPK_warehouse/main/docs/images/WisnakeX-ConnectBeamStairs.png",
       "video": null,
       "instructions": "## Установка\n1. Скачать из раздела версий архив под свою версию Tekla: `ConnectBeamStairs_Tekla2020.zip`, `ConnectBeamStairs_Tekla2021.zip` или `ConnectBeamStairs_Tekla2024.zip`.\n2. Распаковать архив. Внутри лежит установочный пакет `ConnectBeamStairs_Tekla<версия>_<номер>.tsep`.\n3. Закрыть Tekla и дважды щёлкнуть по пакету. Откроется Менеджер расширений Tekla. Либо в Tekla: «Приложения и компоненты» → «Управление расширениями» → Менеджер расширений → «Импорт», выбрать файл и версию Tekla.\n4. Перезапустить Tekla. Плагин появится в каталоге «Приложения и компоненты» как `ConnectBeamStairs`.\n\nПакет собран под одну версию Tekla и в другой не установится: берите архив своей версии. Пакет не подписан, поэтому Tekla может предупредить о неизвестном издателе. Не ставьте пакет и копию `ConnectBeamStairs.dll` вручную в одну версию Tekla: получатся два экземпляра плагина.\n\nРасчёт и создание проверены вживую в Tekla 2020 (двутавры и швеллеры) и в Tekla 2021 (двутавры). В Tekla 2024 пакет собран и проверен по сборкам, но плагин там ещё не запускали. Швеллеры не проверены в Tekla 2021 и 2024.\n\n## Использование\n### Шаг 1. Откройте диалог\nВ каталоге «Приложения и компоненты» выберите `ConnectBeamStairs`. Диалог состоит из четырёх частей: верхняя полка, нижняя полка, стенка, выкружки. Рядом с каждым полем стоит флажок «применять».\n\n### Шаг 2. Задайте параметры\n- **Верхняя и нижняя полка** — положение разделки (снаружи или изнутри), общий угол (по умолчанию 50°) и притупление (по умолчанию 2 мм). У каждой полки свои значения.\n- **Стенка** — «С разделкой» или «Без разделки», угол скоса (50°), притупление (1 мм) и сторона скоса (−Z или +Z).\n- **Выкружки** — круглый вырез в стенке у верхней и (или) нижней полки; радиус по умолчанию 25 мм.\n\nНажмите «Применить».\n\n### Шаг 3. Выберите балки\nУкажите **первую** балку: у неё скашивается стенка, и она становится главной деталью швов. Затем укажите **вторую** балку. Картинка в диалоге нарисована для двутавра: окно открывается до выбора балок. Поля у швеллера те же. Чтобы поменять значения у уже созданного стыка, откройте диалог и нажмите «Изменить».\n\n## Что создаётся\n- Два `Fitting` — рез по плоскости-биссектрисе, по одному на балку.\n- Режущие детали разделки полок и стенки, подрезающие плоскости `CutPlane` и (по выбору) выкружки.\n- Три шва `PolygonWeld`: по одному на каждую полку и один по стенке. Свойства швов заданы как у ручных: заводской, непрерывный.\n\n## Ограничения\n- Балки прямые (`Beam`), одного сечения: два двутавра или два швеллера. Оси балок лежат в плоскости стенок.\n- Швеллеры — только с параллельными гранями полок (серия П), повёрнутые полками в одну сторону. Двутавр вместе со швеллером плагин не принимает.\n- Излом — от 2° до 160°. Если условия не выполнены, плагин сообщает причину и ничего не создаёт.\n- Балки можно выбирать неподрезанными: `Fitting` плагин ставит сам.",
       "versions": [
@@ -608,19 +608,19 @@
             {
               "name": "ConnectBeamStairs_Tekla2020.zip",
               "tekla_version": "2020",
-              "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/WisnakeX-ConnectBeamStairs-2026.10.21.1/ConnectBeamStairs_Tekla2020.zip",
+              "downloadUrl": "https://github.com/axcodesign/TPK_warehouse/releases/download/WisnakeX-ConnectBeamStairs-2026.10.21.1/ConnectBeamStairs_Tekla2020.zip",
               "size": 54655
             },
             {
               "name": "ConnectBeamStairs_Tekla2021.zip",
               "tekla_version": "2021",
-              "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/WisnakeX-ConnectBeamStairs-2026.10.21.1/ConnectBeamStairs_Tekla2021.zip",
+              "downloadUrl": "https://github.com/axcodesign/TPK_warehouse/releases/download/WisnakeX-ConnectBeamStairs-2026.10.21.1/ConnectBeamStairs_Tekla2021.zip",
               "size": 54630
             },
             {
               "name": "ConnectBeamStairs_Tekla2024.zip",
               "tekla_version": "2024",
-              "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/WisnakeX-ConnectBeamStairs-2026.10.21.1/ConnectBeamStairs_Tekla2024.zip",
+              "downloadUrl": "https://github.com/axcodesign/TPK_warehouse/releases/download/WisnakeX-ConnectBeamStairs-2026.10.21.1/ConnectBeamStairs_Tekla2024.zip",
               "size": 54655
             }
           ]
@@ -633,19 +633,19 @@
             {
               "name": "ConnectBeamStairs_Tekla2020.zip",
               "tekla_version": "2020",
-              "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/WisnakeX-ConnectBeamStairs-2026.10.9.1/ConnectBeamStairs_Tekla2020.zip",
+              "downloadUrl": "https://github.com/axcodesign/TPK_warehouse/releases/download/WisnakeX-ConnectBeamStairs-2026.10.9.1/ConnectBeamStairs_Tekla2020.zip",
               "size": 52792
             },
             {
               "name": "ConnectBeamStairs_Tekla2021.zip",
               "tekla_version": "2021",
-              "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/WisnakeX-ConnectBeamStairs-2026.10.9.1/ConnectBeamStairs_Tekla2021.zip",
+              "downloadUrl": "https://github.com/axcodesign/TPK_warehouse/releases/download/WisnakeX-ConnectBeamStairs-2026.10.9.1/ConnectBeamStairs_Tekla2021.zip",
               "size": 53178
             },
             {
               "name": "ConnectBeamStairs_Tekla2024.zip",
               "tekla_version": "2024",
-              "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/WisnakeX-ConnectBeamStairs-2026.10.9.1/ConnectBeamStairs_Tekla2024.zip",
+              "downloadUrl": "https://github.com/axcodesign/TPK_warehouse/releases/download/WisnakeX-ConnectBeamStairs-2026.10.9.1/ConnectBeamStairs_Tekla2024.zip",
               "size": 52785
             }
           ]
@@ -661,7 +661,7 @@
       "displayName": "Волков Андрей",
       "slackUserId": "U04UW6YJZUP",
       "sourceRepo": "https://github.com/WisnakeX/PlateT2",
-      "image": "https://raw.githubusercontent.com/kbTPKsteel/TPK/main/docs/images/WisnakeX-PlateT2.png",
+      "image": "https://raw.githubusercontent.com/axcodesign/TPK_warehouse/main/docs/images/WisnakeX-PlateT2.png",
       "video": null,
       "instructions": "## Установка\n1. Скачать из раздела версий архив под свою версию Tekla: `PlateT2_Tekla2020.zip`, `PlateT2_Tekla2021.zip` или `PlateT2_Tekla2024.zip`.\n2. Распаковать архив. Внутри лежит установочный пакет `PlateT2_Tekla<версия>_<номер>.tsep`.\n3. Закрыть Tekla и дважды щёлкнуть по пакету. Откроется Менеджер расширений Tekla. Либо в Tekla: «Приложения и компоненты» → «Управление расширениями» → Менеджер расширений → «Импорт», выбрать файл и версию Tekla.\n4. Перезапустить Tekla. Плагин появится в каталоге «Приложения и компоненты» как `PlateT2`.\n\nПакет собран под одну версию Tekla и в другой не установится: берите архив своей версии. Пакет не подписан, поэтому Tekla может предупредить о неизвестном издателе. Не ставьте пакет и копию `PlateT2.dll` вручную в одну версию Tekla: получатся два экземпляра плагина. Если плагин уже стоит копированием вручную, сначала удалите папку `PlateT2`.\n\n**Важно:** версия 2.6 установлена автором в Tekla 2020. Ширину торца и режим без накладок автор проверил скриптом в живой модели на узле S32 с двумя кольцами, во всех четырёх вариантах пластины. Диалог с двумя вкладками проверен вне Tekla, в самой Tekla его вид и работу ещё не подтверждали. Версии 2.4 и 2.5 дали нормальный результат в Tekla 2020. Сварка, накладки, пластина раскоса и болты стыка (доработка коллеги) добавлены в 2.2, их расчёт сверен со сборкой коллеги на синтетических сценариях. Сборки под 2021 и 2024 собираются без ошибок, но в Tekla не запускались. Для первого запуска возьмите копию модели.\n\n## Использование\n### Шаг 1. Откройте плагин\nВ каталоге «Приложения и компоненты» выберите `PlateT2`. Поля диалога:\n\n- Толщина t2 — 0 значит «взять из узла».\n- Привязка «перемен.» — длина от края кольца до края накладки со стороны барабана, по умолчанию 300 мм.\n- Вариант пластины — форма контура: «Между кольцами» (по умолчанию), «С вырезами под кольца», «Гибрид: ровная грань», «Прямоугольная с вырезом».\n- Подрезка балки — «По концу накладки» (по умолчанию) или «Не подрезать».\n- Сварка и разделка — швы и разделка кромок к колонне и кольцам, включено по умолчанию.\n- Зазор под сварку — между пластиной и кольцом или колонной у разделанных кромок, по умолчанию 1 мм. Поле работает, пока включена сварка.\n- Накладки — включено по умолчанию. Если выключить флажок, плагин создаст только пластину t2: без накладок, пластины раскоса, болтов и отверстий.\n- Болты у фасонки и Болты со стороны раскоса — включены по умолчанию. Если выключить флажок, плагин создаст только отверстия. Без накладок болты недоступны.\n- Вкладка «Размеры», поле Ширина торца — новая ширина торца пластины t2 для всех четырёх вариантов. Значение 0 оставляет ширину узла. Пластина расширяется или сужается симметрично оси балки. Торец остаётся на месте, кромки у колонны и колец остаются на них. Накладки и пластина раскоса сохраняют ширину узла.\n\nУ варианта «Гибрид» под списком появляется рисунок с одной ячейкой: расстояние от оси балки до ровной кромки, то есть той, где вырез под кольцо. Ровная кромка снизу, если балка уходит от колонны вниз, иначе сверху. Значение 0 оставляет кромку на ширине узла. Вторая кромка идёт по своему кольцу, её размер не задаётся.\n\nУ варианта «Прямоугольная с вырезом» появляется рисунок с двумя ячейками a и b. Это расстояния от оси балки до верхней и нижней точки пластины у колонны. Значение 0 оставляет пластину прямоугольной, на ширину узла.\n\n### Шаг 2. Выберите объекты\nНажмите «Применить» и по запросам Tekla выберите по очереди:\n\n1. колонну (круглую трубу «барабан»);\n2. балку-раскос;\n3. одно или два кольца, затем нажмите среднюю кнопку мыши.\n\n### Шаг 3. Проверьте результат\nУзел плагин подбирает сам по профилю балки и пишет его в строке состояния Tekla (внизу слева), например `узел S25`. Маркировка узла есть и в имени пластины: `PL_T2_S25`. Если сечения балки нет в таблице узлов, плагин покажет окно с ошибкой и списком сечений.\n\nПлагин создаёт:\n\n- пластину t2 (`ContourPlate`, класс равен толщине);\n- две накладки по граням пластины и пластину раскоса (`DUMMY`, класс 0);\n- две группы болтов: у фасонки и со стороны раскоса;\n- швы колонна и кольцо → пластина и разделку кромок (T4, T7, T8).\n\nНакладки, пластина раскоса и болты создаются, пока включён флажок «Накладки».\n\n## Что нужно в модели\n- Узлы S8–S33: круглые трубы Ø102–Ø377, квадратные и прямоугольные трубы 200x8, 300x300x12, 300x200x12, 350x250x16.\n- Имена профилей в каталоге: `O…_32931_2015` (круглые), `PK…` (квадратные), `PP…` (прямоугольные).\n- Стандарт болтов `32484.3-HR10.9`.\n- С версии 2.5 толщина 24 мм заменена на 25 мм: пластина t2 у S8, S9, S12 и накладки у S10, S11, S13, S24. Болты M24 не менялись.\n- В каталоге профилей должны быть `D{2R}` (диаметр) и `PL…` (пластины).\n- Номера опций атрибутов шва (`weld_GOST_tip_shva`, `weld_tip`, `weld_tip_T`) берутся из среды ТПК. В другой среде проверьте результат.\n\n## Советы\n- Плоскость пластины следует за поворотом трубы вокруг оси (поле «Поворот» в свойствах балки). Если плагин пишет, что кольцо слишком далеко от плоскости, поверните трубу.\n- Если плагин пишет «Проверьте: пластина расширена до кольца», посмотрите на контур вручную: кольцо выходит за ширину узла больше чем на 150 мм.\n- Варианты «С вырезами под кольца» и «Гибрид» требуют два кольца; с одним кольцом плагин строит вариант «Между кольцами» и предупреждает об этом.\n- Узлы S10 и S11 в версии 2.2 считаются по данным коллеги: отверстия 80 и 160 от оси стыка, край накладки 240. Сверьте их с листом 11.\n- Журнал последнего запуска: `%TEMP%\\PlateT2.log`.",
       "versions": [
@@ -673,19 +673,19 @@
             {
               "name": "PlateT2_Tekla2020.zip",
               "tekla_version": "2020",
-              "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/WisnakeX-PlateT2-2026.11.19.1/PlateT2_Tekla2020.zip",
+              "downloadUrl": "https://github.com/axcodesign/TPK_warehouse/releases/download/WisnakeX-PlateT2-2026.11.19.1/PlateT2_Tekla2020.zip",
               "size": 71249
             },
             {
               "name": "PlateT2_Tekla2021.zip",
               "tekla_version": "2021",
-              "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/WisnakeX-PlateT2-2026.11.19.1/PlateT2_Tekla2021.zip",
+              "downloadUrl": "https://github.com/axcodesign/TPK_warehouse/releases/download/WisnakeX-PlateT2-2026.11.19.1/PlateT2_Tekla2021.zip",
               "size": 71253
             },
             {
               "name": "PlateT2_Tekla2024.zip",
               "tekla_version": "2024",
-              "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/WisnakeX-PlateT2-2026.11.19.1/PlateT2_Tekla2024.zip",
+              "downloadUrl": "https://github.com/axcodesign/TPK_warehouse/releases/download/WisnakeX-PlateT2-2026.11.19.1/PlateT2_Tekla2024.zip",
               "size": 71250
             }
           ]
@@ -698,19 +698,19 @@
             {
               "name": "PlateT2_Tekla2020.zip",
               "tekla_version": "2020",
-              "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/WisnakeX-PlateT2-2026.11.3.1/PlateT2_Tekla2020.zip",
+              "downloadUrl": "https://github.com/axcodesign/TPK_warehouse/releases/download/WisnakeX-PlateT2-2026.11.3.1/PlateT2_Tekla2020.zip",
               "size": 69101
             },
             {
               "name": "PlateT2_Tekla2021.zip",
               "tekla_version": "2021",
-              "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/WisnakeX-PlateT2-2026.11.3.1/PlateT2_Tekla2021.zip",
+              "downloadUrl": "https://github.com/axcodesign/TPK_warehouse/releases/download/WisnakeX-PlateT2-2026.11.3.1/PlateT2_Tekla2021.zip",
               "size": 69105
             },
             {
               "name": "PlateT2_Tekla2024.zip",
               "tekla_version": "2024",
-              "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/WisnakeX-PlateT2-2026.11.3.1/PlateT2_Tekla2024.zip",
+              "downloadUrl": "https://github.com/axcodesign/TPK_warehouse/releases/download/WisnakeX-PlateT2-2026.11.3.1/PlateT2_Tekla2024.zip",
               "size": 69105
             }
           ]
@@ -723,19 +723,19 @@
             {
               "name": "PlateT2_Tekla2020.zip",
               "tekla_version": "2020",
-              "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/WisnakeX-PlateT2-2026.11.2.3/PlateT2_Tekla2020.zip",
+              "downloadUrl": "https://github.com/axcodesign/TPK_warehouse/releases/download/WisnakeX-PlateT2-2026.11.2.3/PlateT2_Tekla2020.zip",
               "size": 69087
             },
             {
               "name": "PlateT2_Tekla2021.zip",
               "tekla_version": "2021",
-              "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/WisnakeX-PlateT2-2026.11.2.3/PlateT2_Tekla2021.zip",
+              "downloadUrl": "https://github.com/axcodesign/TPK_warehouse/releases/download/WisnakeX-PlateT2-2026.11.2.3/PlateT2_Tekla2021.zip",
               "size": 69093
             },
             {
               "name": "PlateT2_Tekla2024.zip",
               "tekla_version": "2024",
-              "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/WisnakeX-PlateT2-2026.11.2.3/PlateT2_Tekla2024.zip",
+              "downloadUrl": "https://github.com/axcodesign/TPK_warehouse/releases/download/WisnakeX-PlateT2-2026.11.2.3/PlateT2_Tekla2024.zip",
               "size": 69091
             }
           ]
@@ -748,19 +748,19 @@
             {
               "name": "PlateT2_Tekla2020.zip",
               "tekla_version": "2020",
-              "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/WisnakeX-PlateT2-2026.11.2.2/PlateT2_Tekla2020.zip",
+              "downloadUrl": "https://github.com/axcodesign/TPK_warehouse/releases/download/WisnakeX-PlateT2-2026.11.2.2/PlateT2_Tekla2020.zip",
               "size": 68628
             },
             {
               "name": "PlateT2_Tekla2021.zip",
               "tekla_version": "2021",
-              "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/WisnakeX-PlateT2-2026.11.2.2/PlateT2_Tekla2021.zip",
+              "downloadUrl": "https://github.com/axcodesign/TPK_warehouse/releases/download/WisnakeX-PlateT2-2026.11.2.2/PlateT2_Tekla2021.zip",
               "size": 68625
             },
             {
               "name": "PlateT2_Tekla2024.zip",
               "tekla_version": "2024",
-              "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/WisnakeX-PlateT2-2026.11.2.2/PlateT2_Tekla2024.zip",
+              "downloadUrl": "https://github.com/axcodesign/TPK_warehouse/releases/download/WisnakeX-PlateT2-2026.11.2.2/PlateT2_Tekla2024.zip",
               "size": 68630
             }
           ]
@@ -773,19 +773,19 @@
             {
               "name": "PlateT2_Tekla2020.zip",
               "tekla_version": "2020",
-              "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/WisnakeX-PlateT2-2026.11.2.1/PlateT2_Tekla2020.zip",
+              "downloadUrl": "https://github.com/axcodesign/TPK_warehouse/releases/download/WisnakeX-PlateT2-2026.11.2.1/PlateT2_Tekla2020.zip",
               "size": 67880
             },
             {
               "name": "PlateT2_Tekla2021.zip",
               "tekla_version": "2021",
-              "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/WisnakeX-PlateT2-2026.11.2.1/PlateT2_Tekla2021.zip",
+              "downloadUrl": "https://github.com/axcodesign/TPK_warehouse/releases/download/WisnakeX-PlateT2-2026.11.2.1/PlateT2_Tekla2021.zip",
               "size": 67890
             },
             {
               "name": "PlateT2_Tekla2024.zip",
               "tekla_version": "2024",
-              "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/WisnakeX-PlateT2-2026.11.2.1/PlateT2_Tekla2024.zip",
+              "downloadUrl": "https://github.com/axcodesign/TPK_warehouse/releases/download/WisnakeX-PlateT2-2026.11.2.1/PlateT2_Tekla2024.zip",
               "size": 67888
             }
           ]
@@ -798,19 +798,19 @@
             {
               "name": "PlateT2_Tekla2020.zip",
               "tekla_version": "2020",
-              "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/WisnakeX-PlateT2-2026.10.23.1/PlateT2_Tekla2020.zip",
+              "downloadUrl": "https://github.com/axcodesign/TPK_warehouse/releases/download/WisnakeX-PlateT2-2026.10.23.1/PlateT2_Tekla2020.zip",
               "size": 47638
             },
             {
               "name": "PlateT2_Tekla2021.zip",
               "tekla_version": "2021",
-              "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/WisnakeX-PlateT2-2026.10.23.1/PlateT2_Tekla2021.zip",
+              "downloadUrl": "https://github.com/axcodesign/TPK_warehouse/releases/download/WisnakeX-PlateT2-2026.10.23.1/PlateT2_Tekla2021.zip",
               "size": 47634
             },
             {
               "name": "PlateT2_Tekla2024.zip",
               "tekla_version": "2024",
-              "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/WisnakeX-PlateT2-2026.10.23.1/PlateT2_Tekla2024.zip",
+              "downloadUrl": "https://github.com/axcodesign/TPK_warehouse/releases/download/WisnakeX-PlateT2-2026.10.23.1/PlateT2_Tekla2024.zip",
               "size": 47632
             }
           ]
@@ -826,7 +826,7 @@
       "displayName": "Волков Андрей",
       "slackUserId": "U04UW6YJZUP",
       "sourceRepo": "https://github.com/WisnakeX/CutRiski",
-      "image": "https://raw.githubusercontent.com/kbTPKsteel/TPK/main/docs/images/WisnakeX-CutRiski.png",
+      "image": "https://raw.githubusercontent.com/axcodesign/TPK_warehouse/main/docs/images/WisnakeX-CutRiski.png",
       "video": null,
       "instructions": "## Установка\n1. Скачать из раздела версий архив под свою версию Tekla: `CutRiski_Tekla2020.zip`, `CutRiski_Tekla2021.zip` или `CutRiski_Tekla2024.zip`.\n2. Распаковать архив. Внутри лежит установочный пакет `CutRiski_Tekla<версия>_<номер>.tsep`.\n3. Закрыть Tekla и дважды щёлкнуть по пакету. Откроется Менеджер расширений Tekla. Либо в Tekla: «Приложения и компоненты» → «Управление расширениями» → Менеджер расширений → «Импорт», выбрать файл и версию Tekla.\n4. Перезапустить Tekla. Плагин появится в каталоге «Приложения и компоненты» как `CutRiski`.\n\nПакет собран под одну версию Tekla и в другой не установится: берите архив своей версии. Пакет не подписан, поэтому Tekla может предупредить о неизвестном издателе. Не ставьте пакет и копию `CutRiski.dll` вручную в одну версию Tekla: получатся два экземпляра плагина.\n\n**Важно:** в живой Tekla плагин проверен на версии 2020. Для 2021 и 2024 пакеты собраны, но в самих Tekla ещё не запускались.\n\n## Использование\n### Шаг 1. Откройте плагин\nВ каталоге «Приложения и компоненты» выберите `CutRiski`. В окне отметьте стороны, где нужны риски, и нажмите «Применить».\n\n### Шаг 2. Выберите две трубы\nСначала выберите **главную** трубу (на ней будут риски), затем **второстепенную**. Порядок важен. Трубы должны иметь прямоугольное или квадратное сечение.\n\n### Шаг 3. Проверьте результат\nПлагин создаёт риски на главной трубе. Если изменить любую из двух труб, риски пересчитываются сами.\n\n## Стороны\nОкно показывает вид на грань главной трубы снаружи. Ось главной идёт слева направо (от начала к концу балки). Серый прямоугольник — контур касания второстепенной трубы. Четыре флажка вокруг него — стороны, где встанут риски:\n\n- слева, справа — у сторон контура поперёк оси главной трубы. По умолчанию отмечены именно они.\n- сверху, снизу — у сторон контура вдоль оси главной трубы.\n\nКрасные штрихи на рисунке показывают, где встанут риски. Если не отмечена ни одна сторона, кнопки «ОК» и «Применить» недоступны.\n\n## Когда риск не создаётся\n- Риск вышел бы за грань главной трубы (например, у труб одной ширины риски «сверху» и «снизу» легли бы на кромку). Остальные риски создаются, плагин пишет, какие пропущены.\n- Ось второстепенной трубы не упирается в грань главной. Чаще всего перепутан порядок выбора.\n- Сечение одной из труб не прямоугольное.\n\nРиск — это режущая деталь `PL1` (класс 99) с `BooleanPart` на главной трубе. Размеры зашиты в плагине и не меняются в окне.",
       "versions": [
@@ -838,19 +838,19 @@
             {
               "name": "CutRiski_Tekla2020.zip",
               "tekla_version": "2020",
-              "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/WisnakeX-CutRiski-2026.10.23.1/CutRiski_Tekla2020.zip",
+              "downloadUrl": "https://github.com/axcodesign/TPK_warehouse/releases/download/WisnakeX-CutRiski-2026.10.23.1/CutRiski_Tekla2020.zip",
               "size": 33968
             },
             {
               "name": "CutRiski_Tekla2021.zip",
               "tekla_version": "2021",
-              "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/WisnakeX-CutRiski-2026.10.23.1/CutRiski_Tekla2021.zip",
+              "downloadUrl": "https://github.com/axcodesign/TPK_warehouse/releases/download/WisnakeX-CutRiski-2026.10.23.1/CutRiski_Tekla2021.zip",
               "size": 33955
             },
             {
               "name": "CutRiski_Tekla2024.zip",
               "tekla_version": "2024",
-              "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/WisnakeX-CutRiski-2026.10.23.1/CutRiski_Tekla2024.zip",
+              "downloadUrl": "https://github.com/axcodesign/TPK_warehouse/releases/download/WisnakeX-CutRiski-2026.10.23.1/CutRiski_Tekla2024.zip",
               "size": 33950
             }
           ]
@@ -878,7 +878,7 @@
             {
               "name": "Check_Weld_Cylinders.cs",
               "tekla_version": null,
-              "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/WisnakeX-Check_Weld_Cylinders-2026.11.3.1/Check_Weld_Cylinders.cs",
+              "downloadUrl": "https://github.com/axcodesign/TPK_warehouse/releases/download/WisnakeX-Check_Weld_Cylinders-2026.11.3.1/Check_Weld_Cylinders.cs",
               "size": 43962
             }
           ]
@@ -894,7 +894,7 @@
       "displayName": "Куликов Даниил",
       "slackUserId": "U05BAV31Y6T",
       "sourceRepo": "https://github.com/SomebodyDaDaDa-tpk/TubeS26",
-      "image": "https://raw.githubusercontent.com/kbTPKsteel/TPK/main/docs/images/SomebodyDaDaDa-tpk-TubeS26.png",
+      "image": "https://raw.githubusercontent.com/axcodesign/TPK_warehouse/main/docs/images/SomebodyDaDaDa-tpk-TubeS26.png",
       "video": null,
       "instructions": "## Установка\n1. Скачать из раздела версий архив `TubeS26_Tekla2020.zip`.\n2. Распаковать архив. Внутри лежит установочный пакет `TubeS26_<номер>_Tekla2020.tsep`.\n3. Закрыть Tekla и дважды щёлкнуть по пакету. Откроется Менеджер расширений Tekla. Либо в Tekla: «Приложения и компоненты» → «Управление расширениями» → Менеджер расширений → «Импорт», выбрать файл и версию Tekla.\n4. Перезапустить Tekla. Плагин появится в каталоге «Приложения и компоненты» как `TubeS26`, макрос `TubeS26_AlignTube` — в макросах моделирования.\n\nПакет собран под Tekla 2020 и в другой версии не установится. Пакет не подписан, поэтому Tekla может предупредить о неизвестном издателе. Не ставьте пакет и копию `TubeS26.dll` вручную в одну версию Tekla: получатся два экземпляра плагина. Если плагин уже стоит копированием вручную, сначала удалите папку `TubeS26` из `nt\\bin\\plugins`.\n\n**Важно:** версия 1.0 проверена автором в Tekla 2020: плагином в живой модели, а построение узла — скриптом на пяти узлах объекта (пластины, швы, объёмы, коллизии). Установку пакетом через Менеджер расширений ещё не проверяли. Узел S34 (□350×250) строится по сечению трубы, но в живой модели не проверялся. Для первого запуска возьмите копию модели.\n\n## Использование\n### Шаг 1. Выровняйте трубу\nНиз трубы должен прийти в нижнюю плоскость нижнего диска — его дальнюю от трубы грань. Запустите макрос `TubeS26_AlignTube` и выберите по очереди колонну, трубу и нижний диск. Макрос покажет недоход и спросит, сдвигать ли: конец трубы у колонны сдвигается вдоль оси колонны, дальний конец стоит, труба поворачивается вокруг своей оси так, чтобы низ лёг на диск по всей ширине. Отмена — Ctrl+Z.\n\nБез выравнивания плагин пишет предупреждение «трубу сначала выровнять», а при большом недоходе узел не строится.\n### Шаг 2. Откройте плагин\nВ каталоге «Приложения и компоненты» выберите `TubeS26`. Поля диалога:\n\n- Толщина пластин — по умолчанию 25 мм. Пластины, примыкающие к трубе (боковые, горизонтальная), толще стенки наружу: внутренние грани вровень со стенкой трубы. Нижняя не выходит за низ трубы — её лишняя толщина внутрь, у трубы верх скошен под 15°, притупление разделки — на уровне внутренней грани стенки.\n- Торец трубы за краем диска не менее — от края верхнего диска до торца трубы, по умолчанию 260 мм. Скос трубы всегда 45°; если он начинается дальше края нижнего диска, торец уходит дальше.\n- Исполнение узла — *заводское* (по умолчанию) или *монтажное*.\n\n### Шаг 3. Выберите объекты\nНажмите «Применить» и по запросам Tekla выберите по очереди:\n\n1. колонну (круглую трубу «барабан»);\n2. балку-трубу;\n3. два диска колонны с обеих сторон балки, затем нажмите среднюю кнопку мыши.\n\n### Шаг 4. Проверьте результат\nУзел (S26 или S34) плагин определяет по сечению трубы и пишет в строке состояния Tekla (внизу слева) вместе со списком созданного и предупреждениями.\n\nПлагин создаёт:\n\n- пластины `PL_S26` (`PL_S34`), по умолчанию t25: две боковые, горизонтальную, наклонную и нижнюю;\n- разделки кромок и вырезы у шва диск-колонна (тупой угол — круглый вырез, острый — скос 15×15);\n- подкладки PL4×60 под односторонние швы — у колонны и на наклонной;\n- сварные швы с атрибутами ГОСТа: заводское — ГОСТ 14771 / 23518, монтажное — швы к колонне и дискам ручной дуговой, ГОСТ 5264 / 11534; нестандартный угол — обозначение «по <тип>»;\n- подрезку трубы: скос 45° — подгонкой, нижняя стенка у скоса — вырезом.\n\nВ монтажном исполнении пластины собраны в свою сборку с главной деталью «боковая −», в поле 1 сборки записано «не грунтовать».\n\n## Что нужно в модели\n- Узел нижнего пояса: балка-труба между двумя дисками колонны, низ трубы — в нижнем диске. Верхний пояс не поддерживается.\n- Колонна — балка с круглой трубой, балка — прямоугольная труба (`PK…`, `PP…`), диски — контурные пластины-кольца вокруг колонны.\n- В каталоге профилей должны быть `D{диаметр}` и `PL…`.\n- Номера опций атрибутов шва (`weld_GOST_tip_shva`, `weld_tip`, `weld_tip_T`, `weld_tip_Y`, `weld_tip_C`) берутся из среды ТПК. В другой среде проверьте результат.\n\n## Советы\n- Сначала выравнивание, потом плагин: от положения трубы зависит вся геометрия узла.\n- Если плагин пишет предупреждения (например, о выступе наклонной за диск больше 6 мм), посмотрите узел вручную.\n- Если верхний диск лежит почти на трубе и наклонная над горизонтальной не помещается, плагин строит узел **без горизонтальной**: наклонная идёт от торца диска к верхней полке трубы, без подкладок. Об этом плагин сообщает окном — такой узел проверьте и при необходимости доработайте вручную.\n- Журнал последнего запуска: `%TEMP%\\TubeS26.log`.",
       "versions": [
@@ -906,7 +906,7 @@
             {
               "name": "TubeS26_Tekla2020.zip",
               "tekla_version": "2020",
-              "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/SomebodyDaDaDa-tpk-TubeS26-v1.3/TubeS26_Tekla2020.zip",
+              "downloadUrl": "https://github.com/axcodesign/TPK_warehouse/releases/download/SomebodyDaDaDa-tpk-TubeS26-v1.3/TubeS26_Tekla2020.zip",
               "size": 83312
             }
           ]
@@ -919,7 +919,7 @@
             {
               "name": "TubeS26_Tekla2020.zip",
               "tekla_version": "2020",
-              "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/SomebodyDaDaDa-tpk-TubeS26-v1.2/TubeS26_Tekla2020.zip",
+              "downloadUrl": "https://github.com/axcodesign/TPK_warehouse/releases/download/SomebodyDaDaDa-tpk-TubeS26-v1.2/TubeS26_Tekla2020.zip",
               "size": 81339
             }
           ]
@@ -932,7 +932,7 @@
             {
               "name": "TubeS26_Tekla2020.zip",
               "tekla_version": "2020",
-              "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/SomebodyDaDaDa-tpk-TubeS26-v1.1/TubeS26_Tekla2020.zip",
+              "downloadUrl": "https://github.com/axcodesign/TPK_warehouse/releases/download/SomebodyDaDaDa-tpk-TubeS26-v1.1/TubeS26_Tekla2020.zip",
               "size": 81261
             }
           ]
@@ -945,7 +945,7 @@
             {
               "name": "TubeS26_Tekla2020.zip",
               "tekla_version": "2020",
-              "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/SomebodyDaDaDa-tpk-TubeS26-v1.0.1/TubeS26_Tekla2020.zip",
+              "downloadUrl": "https://github.com/axcodesign/TPK_warehouse/releases/download/SomebodyDaDaDa-tpk-TubeS26-v1.0.1/TubeS26_Tekla2020.zip",
               "size": 81256
             }
           ]
@@ -958,7 +958,7 @@
             {
               "name": "TubeS26_Tekla2020.zip",
               "tekla_version": "2020",
-              "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/SomebodyDaDaDa-tpk-TubeS26-v1.0/TubeS26_Tekla2020.zip",
+              "downloadUrl": "https://github.com/axcodesign/TPK_warehouse/releases/download/SomebodyDaDaDa-tpk-TubeS26-v1.0/TubeS26_Tekla2020.zip",
               "size": 80667
             }
           ]
@@ -974,7 +974,7 @@
       "displayName": "Волков Андрей",
       "slackUserId": "U04UW6YJZUP",
       "sourceRepo": "https://github.com/WisnakeX/RadialCuting",
-      "image": "https://raw.githubusercontent.com/kbTPKsteel/TPK/main/docs/images/WisnakeX-RadialCuting.png",
+      "image": "https://raw.githubusercontent.com/axcodesign/TPK_warehouse/main/docs/images/WisnakeX-RadialCuting.png",
       "video": null,
       "instructions": "## Установка\n1. Скачать из раздела версий архив под свою версию Tekla: `RadialCuting_Tekla2020.zip`, `RadialCuting_Tekla2021.zip` или `RadialCuting_Tekla2024.zip`.\n2. Распаковать архив. Внутри лежит установочный пакет `RadialCuting_Tekla<версия>_<номер>.tsep`.\n3. Закрыть Tekla и дважды щёлкнуть по пакету. Откроется Менеджер расширений Tekla. Либо в Tekla: «Приложения и компоненты» → «Управление расширениями» → Менеджер расширений → «Импорт», выбрать файл и версию Tekla.\n4. Перезапустить Tekla. Плагин появится в каталоге «Приложения и компоненты» как `RadialCuting`.\n\nПакет собран под одну версию Tekla и в другой не установится: берите архив своей версии. Пакет не подписан, поэтому Tekla может предупредить о неизвестном издателе. Не ставьте пакет и копию `RadialCuting.dll` вручную в одну версию Tekla: получатся два экземпляра плагина. Если плагин уже стоит копированием вручную, сначала удалите папку `RadialCuting`.\n\n**Важно:** автор проверил плагин в Tekla 2020: запуск из каталога, диалог, выбор объектов и результат. Сборки под 2021 и 2024 собираются без ошибок, но в Tekla не запускались. Для первого запуска возьмите копию модели.\n\n## Использование\n### Шаг 1. Откройте плагин\nВ каталоге «Приложения и компоненты» выберите `RadialCuting`. Поля диалога:\n\n- Вид шва — «двусторонняя» (по умолчанию), «односторонняя» или «односторонняя (нестандартная)». Нестандартная ставит скос со стороны острого угла и называет шов «Нестандартный по Т4».\n- Зазор под сварку — расстояние от трубы до полосы притупления, по умолчанию 1 мм.\n- Выкружки — флажок, по умолчанию включён.\n- Радиус выкружки — по умолчанию 25 мм, больше 0. Поле доступно, пока флажок включён.\n\n### Шаг 2. Выберите объекты\nНажмите «Применить» и по запросам Tekla выберите по очереди:\n\n1. круглую трубу;\n2. одну или несколько контурных пластин, затем нажмите среднюю кнопку мыши.\n\n### Шаг 3. Проверьте результат\nРезультат по каждой пластине виден в строке состояния Tekla (внизу слева). Подробный журнал последнего запуска: `%TEMP%\\RadialCuting.log`.\n\nЕсли пластина не пересекает трубу, плагин покажет окно «Нет пересечения пластины с трубой» и перечислит такие пластины. Для них ничего не создаётся.\n\n## Что строится\nНа каждой пластине (сама пластина не заменяется):\n\n- подрезка по трубе: торец идёт перпендикулярно пластине;\n- разделка кромки по углу между пластиной и трубой (узлы T4, T7, T8);\n- сварной шов «труба → пластина»;\n- выкружки в углах, где пластина касается другой пластины и трубы.\n\nПовторный запуск сначала убирает прежние объекты плагина на этой пластине и считает заново, поэтому дублей нет.\n\n## Что нужно в модели\n- Труба — круглая балка (`Beam`), пластины — контурные пластины (`ContourPlate`). Другие детали плагин не принимает.\n- Пластина должна входить в трубу краем. Если труба рассекает пластину насквозь или лежит внутри контура, плагин откажет с сообщением.\n- Каталог профилей должен содержать `D{2R}` (круглая балка для выкружки) и `PL…` (пластины).\n- Номера опций атрибутов шва (`weld_GOST_tip_shva`, `weld_tip`, `weld_tip_T`) берутся из среды ТПК. В другой среде проверьте результат.\n\n## Советы\n- Шов, который ставит плагин, присоединяет пластину к сборке трубы: Tekla делает пластину второстепенной деталью сборки колонны. Это поведение Tekla для швов из API. Учитывайте это перед запуском.\n- Двусторонняя разделка есть, пока угол между пластиной и трубой отклоняется от прямого не больше чем на 20°. Дальше плагин ставит одностороннюю T4 и пишет об этом в строке состояния.\n- Если первый сегмент кромки строго вертикален, эта кромка остаётся без разделки и шва, плагин пишет предупреждение.\n- Выкружка ставится только там, где кромка пластины прилегает к грани другой пластины, с которой у неё есть шов. Если пластина упирается торцом в кромку другой пластины, угол не находится.\n- Радиус выкружки не проверяется на то, что он помещается: слишком большой радиус съест угол пластины.",
       "versions": [
@@ -986,19 +986,19 @@
             {
               "name": "RadialCuting_Tekla2020.zip",
               "tekla_version": "2020",
-              "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/WisnakeX-RadialCuting-2026.11.20.1/RadialCuting_Tekla2020.zip",
+              "downloadUrl": "https://github.com/axcodesign/TPK_warehouse/releases/download/WisnakeX-RadialCuting-2026.11.20.1/RadialCuting_Tekla2020.zip",
               "size": 45170
             },
             {
               "name": "RadialCuting_Tekla2021.zip",
               "tekla_version": "2021",
-              "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/WisnakeX-RadialCuting-2026.11.20.1/RadialCuting_Tekla2021.zip",
+              "downloadUrl": "https://github.com/axcodesign/TPK_warehouse/releases/download/WisnakeX-RadialCuting-2026.11.20.1/RadialCuting_Tekla2021.zip",
               "size": 45165
             },
             {
               "name": "RadialCuting_Tekla2024.zip",
               "tekla_version": "2024",
-              "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/WisnakeX-RadialCuting-2026.11.20.1/RadialCuting_Tekla2024.zip",
+              "downloadUrl": "https://github.com/axcodesign/TPK_warehouse/releases/download/WisnakeX-RadialCuting-2026.11.20.1/RadialCuting_Tekla2024.zip",
               "size": 45161
             }
           ]
@@ -1026,7 +1026,7 @@
             {
               "name": "ChangePointBeam.cs",
               "tekla_version": null,
-              "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/WisnakeX-ChangePointBeam-2026.11.20.1/ChangePointBeam.cs",
+              "downloadUrl": "https://github.com/axcodesign/TPK_warehouse/releases/download/WisnakeX-ChangePointBeam-2026.11.20.1/ChangePointBeam.cs",
               "size": 16833
             }
           ]
@@ -1042,7 +1042,7 @@
       "displayName": "Волков Андрей",
       "slackUserId": "U04UW6YJZUP",
       "sourceRepo": "https://github.com/WisnakeX/AKU_IssueDrw",
-      "image": "https://raw.githubusercontent.com/kbTPKsteel/TPK/main/docs/images/WisnakeX-AKU_IssueDrw.png",
+      "image": "https://raw.githubusercontent.com/axcodesign/TPK_warehouse/main/docs/images/WisnakeX-AKU_IssueDrw.png",
       "video": null,
       "instructions": "## Установка\n1. Скачать из раздела версий файл `AKU_IssueDrw_Tekla2020.exe`.\n2. Положить его в любую папку. Установка не нужна.\n\n## Использование\n### Шаг 1. Подготовьте выбор\nОткройте модель в Tekla. В Менеджере документов выделите нужные чертежи (A, W, G). В модели выделите сборки.\n\n### Шаг 2. Запустите программу\nЗапустите `AKU_IssueDrw_Tekla2020.exe`. В окне появится имя модели. Нажмите **Старт**.\n\n### Шаг 3. Проверьте журнал\nВ журнале видно, сколько атрибутов записано и где не нашлось совпадений.\n\n## Что записывается\n- Чертёж сборки (A): `TPK_A_NUM` и `TPK_AQ_NUM` (число листов, если их два и больше).\n- Чертёж детали (W): `TPK_WDR_NUM`.\n- Монтажная схема (G): `TPK_MC_NUM`.\n\n**Важно:** нумерация сборок в модели должна быть актуальной. Сборки с позицией вида `Б4-32(?)` пропускаются.",
       "versions": [
@@ -1054,7 +1054,7 @@
             {
               "name": "AKU_IssueDrw_Tekla2020.exe",
               "tekla_version": "2020",
-              "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/WisnakeX-AKU_IssueDrw-2026.11.20.1/AKU_IssueDrw_Tekla2020.exe",
+              "downloadUrl": "https://github.com/axcodesign/TPK_warehouse/releases/download/WisnakeX-AKU_IssueDrw-2026.11.20.1/AKU_IssueDrw_Tekla2020.exe",
               "size": 161792
             }
           ]
@@ -1070,7 +1070,7 @@
       "displayName": "Волков Андрей",
       "slackUserId": "U04UW6YJZUP",
       "sourceRepo": "https://github.com/WisnakeX/AKU_CompareObj_to_Table",
-      "image": "https://raw.githubusercontent.com/kbTPKsteel/TPK/main/docs/images/WisnakeX-AKU_CompareObj_to_Table.png",
+      "image": "https://raw.githubusercontent.com/axcodesign/TPK_warehouse/main/docs/images/WisnakeX-AKU_CompareObj_to_Table.png",
       "video": null,
       "instructions": "## Установка\n1. Скачать из раздела версий файл `AKU_CompareObj_to_Table_Tekla2020.exe`.\n2. Положить его в любую папку. Установка не нужна, WebView2 и интерфейс встроены в файл.\n\n## Использование\n### Шаг 1. Выделите объекты\nОткройте Tekla Structures 2020 с моделью. Выделите в модели сборки и (или) в диспетчере чертежей чертежи сборок (A) и монтажных схем (G).\n\n### Шаг 2. Запустите приложение\nЗапустите `AKU_CompareObj_to_Table_Tekla2020.exe`. Кнопка «Обновить из Tekla» пересобирает таблицу после смены выделения.\n\n### Шаг 3. Загрузите список\nКнопка «Загрузить таблицу» принимает xls, xlsx, xlsm, csv и txt. Первый столбец попадает в «Нужно сделать».\n\n## Как сравнивается\n- Префикс — всё до первого `.` или `-`. `Б4.35` (чертёж A) и `Б4-35` (модель или монтажная схема) дают ключ `Б4`.\n- Нет совпадения: `нет в модели` или `нет чертежа` (розовая заливка).\n- Найдено в Tekla, но нет в списке: строка внизу таблицы с пустым первым столбцом (жёлтая заливка).\n\n**Важно:** для чтения xls и xlsx нужен установленный Excel. Без Excel сохраните список в `.csv`.",
       "versions": [
@@ -1082,7 +1082,7 @@
             {
               "name": "AKU_CompareObj_to_Table_Tekla2020.exe",
               "tekla_version": "2020",
-              "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/WisnakeX-AKU_CompareObj_to_Table-2026.11.23.1/AKU_CompareObj_to_Table_Tekla2020.exe",
+              "downloadUrl": "https://github.com/axcodesign/TPK_warehouse/releases/download/WisnakeX-AKU_CompareObj_to_Table-2026.11.23.1/AKU_CompareObj_to_Table_Tekla2020.exe",
               "size": 1051648
             }
           ]
@@ -1098,7 +1098,7 @@
       "displayName": "Волков Андрей",
       "slackUserId": "U04UW6YJZUP",
       "sourceRepo": "https://github.com/WisnakeX/AKU_Release_DP",
-      "image": "https://raw.githubusercontent.com/kbTPKsteel/TPK/main/docs/images/WisnakeX-AKU_Release_DP.png",
+      "image": "https://raw.githubusercontent.com/axcodesign/TPK_warehouse/main/docs/images/WisnakeX-AKU_Release_DP.png",
       "video": null,
       "instructions": "## Установка\n1. Скачайте файл `AKU_Release_DP_Tekla2020.exe` из раздела версий.\n2. Положите его в любую папку. Установка не нужна.\n\n## Использование\n### Шаг 1. Запустите Tekla Structures 2020\nОткройте модель. Приложение подключается к запущенной Tekla.\n\n### Шаг 2. Запустите приложение\nВыберите режим в верхней части окна. Оба режима работают независимо, данные при переключении не теряются.\n\n### Режим «Проверка»\n- Выделите сборки в модели.\n- Загрузите список «Нужно сделать» из `xls`, `xlsx`, `csv` или вставьте из буфера обмена.\n- Приложение сравнивает сборки, чертежи сборок (тип A) и монтажные схемы (тип G) со списком.\n\n### Режим «Выпуск комплекта»\n- Приложение берёт номер чертежа из UDA `TPK_DR_NUM`.\n- Номер записывается в UDA объектов модели: `TPK_A_NUM`, `TPK_AQ_NUM`, `TPK_WDR_NUM`, `TPK_MC_NUM`, `TPK_MCQ_NUM`.\n- Перед записью проверьте предпросмотр нумерации.",
       "versions": [
@@ -1110,7 +1110,7 @@
             {
               "name": "AKU_Release_DP_Tekla2020.exe",
               "tekla_version": "2020",
-              "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/WisnakeX-AKU_Release_DP-2026.11.23.1/AKU_Release_DP_Tekla2020.exe",
+              "downloadUrl": "https://github.com/axcodesign/TPK_warehouse/releases/download/WisnakeX-AKU_Release_DP-2026.11.23.1/AKU_Release_DP_Tekla2020.exe",
               "size": 194048
             }
           ]
@@ -1126,7 +1126,7 @@
       "displayName": "Волков Андрей",
       "slackUserId": "U04UW6YJZUP",
       "sourceRepo": "https://github.com/WisnakeX/RotateHook",
-      "image": "https://raw.githubusercontent.com/kbTPKsteel/TPK/main/docs/images/WisnakeX-RotateHook.png",
+      "image": "https://raw.githubusercontent.com/axcodesign/TPK_warehouse/main/docs/images/WisnakeX-RotateHook.png",
       "video": null,
       "instructions": "## Установка\n1. Выберите версию Tekla (2020 или 2024) и скачайте архив из раздела версий.\n2. Распакуйте архив в любую папку. Установка не нужна.\n\n## Использование\n### Шаг 1. Выделите крюк\nОткройте модель в Tekla и выделите один или несколько крюков (`PolyBeam` ровно из 4 точек).\n\n### Шаг 2. Запустите программу\nЗапустите `RotateHook<версия>.exe` при открытой Tekla нужной версии.\n\n### Шаг 3. Введите углы\n- Горизонтальная плоскость — поворот P3 вокруг оси P1-P2, в градусах.\n- Вертикальная плоскость — наклон P3 из плоскости 0-1-2, в градусах.\n\nУглы — приращение от текущего положения, 0 значит «не менять». Можно `+` и `-`, запятую или точку.\n\n### Шаг 4. Нажмите кнопку\nНажмите **Повернуть выбранные крюки**. В журнале окна видны углы до и после.\n\n**Важно:** exe работает только со своей версией Tekla. Заблокированные объекты и объекты не из 4 точек пропускаются.\n*Совет:* окно можно не закрывать — выберите другой крюк и нажмите кнопку снова.",
       "versions": [
@@ -1138,13 +1138,13 @@
             {
               "name": "RotateHook_Tekla2020.zip",
               "tekla_version": "2020",
-              "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/WisnakeX-RotateHook-2026.11.23.1/RotateHook_Tekla2020.zip",
+              "downloadUrl": "https://github.com/axcodesign/TPK_warehouse/releases/download/WisnakeX-RotateHook-2026.11.23.1/RotateHook_Tekla2020.zip",
               "size": 10405
             },
             {
               "name": "RotateHook_Tekla2024.zip",
               "tekla_version": "2024",
-              "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/WisnakeX-RotateHook-2026.11.23.1/RotateHook_Tekla2024.zip",
+              "downloadUrl": "https://github.com/axcodesign/TPK_warehouse/releases/download/WisnakeX-RotateHook-2026.11.23.1/RotateHook_Tekla2024.zip",
               "size": 10409
             }
           ]
@@ -1160,7 +1160,7 @@
       "displayName": "Волков Андрей",
       "slackUserId": "U04UW6YJZUP",
       "sourceRepo": "https://github.com/WisnakeX/ReviewChecker",
-      "image": "https://raw.githubusercontent.com/kbTPKsteel/TPK/main/docs/images/WisnakeX-ReviewChecker.png",
+      "image": "https://raw.githubusercontent.com/axcodesign/TPK_warehouse/main/docs/images/WisnakeX-ReviewChecker.png",
       "video": null,
       "instructions": "## Установка\n1. Скачать из раздела версий архив `ReviewChecker_Tekla2020.zip`.\n2. Распаковать его в любую папку. В архиве лежат `ReviewChecker2020.exe`, `ReviewChecker2020.exe.config` и таблица `Узлы_лист13.xlsx`.\n3. Оставить таблицу рядом с `.exe`: программа ищет её в своей папке и в папках выше.\n\n## Использование\n### Шаг 1. Запустите Tekla и откройте модель\nНужна Tekla Structures 2020. Верхняя строка окна ReviewChecker показывает связь с Tekla: зелёная — подключено, красная — Tekla не запущена или запущена другая версия.\n\n### Шаг 2. Выделите балки\nВ Tekla выделите балки из труб, узлы которых нужно проверить.\n\n### Шаг 3. Нажмите «Старт»\nПолоса показывает процент и «обработано N из M балок». Кнопка «Стоп» останавливает проверку после текущей балки.\n\n### Шаг 4. Посмотрите результат\n- Верхний список — балки. У балки без ошибок зелёная галочка. Строка с ошибкой красная.\n- Щелчок по балке показывает в нижнем списке все объекты её узлов и выделяет балку в модели.\n- Нижний список — детали узла: роль, ID, размер в модели, значение по таблице и результат. Щелчок по объекту выделяет его в модели.\n\n**Важно:** щелчок по строке заменяет текущее выделение в Tekla.\n\n## Значки\n- ✓ зелёный — совпадает с таблицей.\n- ✗ красный — параметр не совпал, в строке написано, что в модели и что нужно.\n- ! оранжевый — узел не похож на узел листа 13, не проверялся, посмотрите вручную.\n- — серый — не проверяется: заглушка, профиля нет в таблице, на балке нет узлов.\n\n*Совет:* таблицу `Узлы_лист13.xlsx` можно править в Excel между проверками. Она читается заново при каждом нажатии «Старт». Названия колонок менять нельзя.",
       "versions": [
@@ -1172,7 +1172,7 @@
             {
               "name": "ReviewChecker_Tekla2020.zip",
               "tekla_version": "2020",
-              "downloadUrl": "https://github.com/kbTPKsteel/TPK/releases/download/WisnakeX-ReviewChecker-2026.11.24.1/ReviewChecker_Tekla2020.zip",
+              "downloadUrl": "https://github.com/axcodesign/TPK_warehouse/releases/download/WisnakeX-ReviewChecker-2026.11.24.1/ReviewChecker_Tekla2020.zip",
               "size": 44973
             }
           ]

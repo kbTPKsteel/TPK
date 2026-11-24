@@ -26,7 +26,7 @@ def find_best_for_tekla(assets, tekla_ver, primary_ext):
             return a
     return None
 
-CENTRAL_REPO = "kbTPKsteel/TPK"
+CENTRAL_REPO = "axcodesign/TPK_warehouse"
 CATALOG_FILE = Path("catalog.json")
 REPOS_FILE   = Path("repos.yml")
 IMAGES_DIR   = Path("docs/images")

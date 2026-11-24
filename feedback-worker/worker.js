@@ -12,7 +12,7 @@
 //   SLACK_BOT_TOKEN       (secret)  Bot User OAuth Token, scopes: chat:write, files:write, commands
 //   SLACK_SIGNING_SECRET  (secret)  Slack app → Basic Information → Signing Secret
 //   SLACK_CHANNEL         (text)    channel ID, e.g. C05092Y0B5X (the bot must be a member)
-//   ALLOWED_ORIGIN        (text)    https://kbtpksteel.github.io
+//   ALLOWED_ORIGIN        (text)    https://axcodesign.github.io
 //   TPK_KV                (KV namespace binding) stores the password hash, login fail counters
 //                                   and download counters
 //
