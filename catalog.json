@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-25T16:45:44Z",
+  "updatedAt": "2026-11-26T16:20:36Z",
   "products": [
     {
       "id": "poluhovamaria-tech-testMacro",
@@ -252,7 +252,14 @@
           "version": "2026.11.2.1",
           "releaseDate": "2026-11-02",
           "notes": "## Что нового\n- Выделение текста в текстовых полях (текст, метка размера, выноска, метки разреза и уровня): мышью и Shift+стрелки, Ctrl+A.\n- Буфер обмена в текстовых полях: Ctrl+C и Ctrl+Insert — копировать, Ctrl+V и Shift+Insert — вставить. Ввод или вставка заменяет выделенный текст.\n- Обновление заменой: новая версия при запуске закрывает старую работающую копию и занимает её место. Если у старой копии открыто окно снимка, приложение сначала спросит. Версия видна во всплывающей подсказке значка в трее.\n\n## Как обновиться\nЗапустите новый `ScreenshotEngeneers.exe` из локальной папки. Старую копию закрывать вручную не нужно.",
-          "assets": []
+          "assets": [
+            {
+              "name": "ScreenshotEngeneers.exe",
+              "tekla_version": null,
+              "downloadUrl": "https://github.com/axcodesign/TPK_warehouse/releases/download/WisnakeX-ScreenshotEngeneers-2026.11.2.1/ScreenshotEngeneers.exe",
+              "size": 51722921
+            }
+          ]
         },
         {
           "version": "2026.10.7.1",
